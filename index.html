@@ -8,6 +8,15 @@
 </head>
 <body>
 
+  <!-- Camera viewfinder cursor -->
+  <div class="viewfinder" aria-hidden="true">
+    <span class="vf-corner vf-corner-tl"></span>
+    <span class="vf-corner vf-corner-tr"></span>
+    <span class="vf-corner vf-corner-bl"></span>
+    <span class="vf-corner vf-corner-br"></span>
+    <span class="vf-dot"></span>
+  </div>
+
   <header class="topbar">
     <div class="topbar-inner">
       <span class="topbar-logo">Anouk</span>
@@ -25,6 +34,26 @@
       <source src="assets/eifel-sunset.mp4" type="video/mp4">
     </video>
     <div class="hero-fallback" aria-hidden="true"></div>
+
+    <!-- Parallax forest/hill silhouette layers for 3D depth -->
+    <div class="hero-layers" aria-hidden="true">
+      <div class="hero-layer hero-layer--back" data-depth="10">
+        <svg viewBox="0 0 1200 300" preserveAspectRatio="none">
+          <path fill="#3d6e6b" d="M0,300 L0,180 C150,120 300,200 450,150 C600,100 750,180 900,140 C1050,100 1150,160 1200,140 L1200,300 Z"/>
+        </svg>
+      </div>
+      <div class="hero-layer hero-layer--mid" data-depth="22">
+        <svg viewBox="0 0 1200 300" preserveAspectRatio="none">
+          <path fill="#274f4d" d="M0,300 L0,210 C100,160 250,230 400,190 C550,150 700,220 850,180 C1000,140 1100,200 1200,180 L1200,300 Z"/>
+        </svg>
+      </div>
+      <div class="hero-layer hero-layer--front" data-depth="36">
+        <svg viewBox="0 0 1200 300" preserveAspectRatio="none">
+          <path fill="#16302f" d="M0,300 L0,240 C120,210 260,260 380,230 C520,200 640,250 780,225 C920,200 1060,250 1200,225 L1200,300 Z"/>
+        </svg>
+      </div>
+    </div>
+
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>Zichtbaar worden op jouw manier.</h1>
@@ -71,10 +100,16 @@
       <div class="over-photo-wrap" id="tilt-wrap">
         <img
           src="assets/anouk-natuur.jpg"
-          alt="Anouk in de natuur"
+          alt="Anouk met camera in de natuur"
           class="over-photo"
           id="tilt-photo"
         >
+        <div class="over-frame" aria-hidden="true">
+          <span class="frame-corner tl"></span>
+          <span class="frame-corner tr"></span>
+          <span class="frame-corner bl"></span>
+          <span class="frame-corner br"></span>
+        </div>
       </div>
       <div class="over-text">
         <h2>Over Anouk</h2>
@@ -94,18 +129,30 @@
     <h2 class="wegwijzer-title">Wegwijzer</h2>
     <div class="wegwijzer-grid">
       <a class="wegwijzer-card" href="#branding">
+        <div class="wegwijzer-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M20.59 13.41L11 3.83A2 2 0 0 0 9.59 3.17H4a1 1 0 0 0-1 1v5.59a2 2 0 0 0 .59 1.41l9.59 9.59a2 2 0 0 0 2.82 0l4.59-4.59a2 2 0 0 0 0-2.82z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>
+        </div>
         <h3>Branding</h3>
         <p>Ontdek hoe je merk eruit kan zien.</p>
       </a>
       <a class="wegwijzer-card" href="#fotografie">
+        <div class="wegwijzer-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3 7l2-3h14l2 3"/><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="3.5"/></svg>
+        </div>
         <h3>Fotografie</h3>
         <p>Beelden die laten zien wie je bent.</p>
       </a>
       <a class="wegwijzer-card" href="#portfolio">
+        <div class="wegwijzer-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5-4 4-3-3-6 6"/></svg>
+        </div>
         <h3>Portfolio</h3>
         <p>Eerder werk en samenwerkingen.</p>
       </a>
       <a class="wegwijzer-card" href="#natuur">
+        <div class="wegwijzer-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M12 14c0-4 4-6 7-6 0 4-2 8-7 8z"/><path d="M12 10c0-4-4-6-7-6 0 4 2 8 7 8z"/></svg>
+        </div>
         <h3>Natuur voor jouw ruimte</h3>
         <p>Rust en inspiratie voor je werkplek.</p>
       </a>
