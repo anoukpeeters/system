@@ -3,16 +3,115 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>anouk.is-a.dev</title>
-  <style>
-    body {
-      font-size: 2.8em;
-      background-color: pink;
-    }
-  </style>
+  <title>Anouk — Zichtbaar worden op jouw manier</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1 style="font-size: 12px;">Hello from anouk.is-a.dev</h1>
-  <p>Hi Anouk, het systeem is klaar. Type in het linkerscherm wat je aan de site wil veranderen, druk op ENTER. Wacht totdat het Claude model klaar is, refresh vervolgens zelf de rechter pagina, met de ronde pijl icon. (de refresh kan tot 2min duren voordat deze zichtbaar wordt)</p>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <span class="topbar-logo">Anouk</span>
+      <nav class="topbar-nav">
+        <a href="#blik">Anouk's Blik</a>
+        <a href="#masterclass">Masterclass</a>
+        <a href="#over">Over Anouk</a>
+        <a href="#wegwijzer">Wegwijzer</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="assets/eifel-sunset.mp4" type="video/mp4">
+    </video>
+    <div class="hero-fallback" aria-hidden="true"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Zichtbaar worden op jouw manier.</h1>
+      <p class="hero-subline">
+        voor coaches en therapeuten die authentiek zichtbaar willen zijn
+        zonder zichzelf te verliezen.
+      </p>
+    </div>
+  </section>
+
+  <section class="block block-blik" id="blik">
+    <div class="card card-blik">
+      <h2>Anouk's Blik — gratis gesprek</h2>
+      <p>
+        In 20 minuten kijk ik met je mee naar je socials, je website en je
+        totale online uitstraling. Geen standaard stappenplan, gewoon mijn
+        eerlijke blik op jouw totaalplaatje.
+      </p>
+      <a href="#" class="cta">Plan je gratis gesprek</a>
+      <div class="availability">
+        <div class="availability-dots" aria-hidden="true">
+          <span class="dot dot-active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+        <span class="availability-label">Drie plekken per week — één nog beschikbaar</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="block block-masterclass" id="masterclass">
+    <div class="card card-masterclass">
+      <h2>Masterclass — <span class="placeholder">[naam placeholder]</span></h2>
+      <p class="placeholder">
+        Korte beschrijving van de masterclass komt hier.
+      </p>
+      <p class="masterclass-date placeholder">[datum placeholder]</p>
+      <a href="#" class="cta cta-outline">Bekijk de masterclass</a>
+    </div>
+  </section>
+
+  <section class="block block-over" id="over">
+    <div class="over-content">
+      <div class="over-photo-wrap" id="tilt-wrap">
+        <img
+          src="assets/anouk-natuur.jpg"
+          alt="Anouk in de natuur"
+          class="over-photo"
+          id="tilt-photo"
+        >
+      </div>
+      <div class="over-text">
+        <h2>Over Anouk</h2>
+        <p>
+          Anouk gelooft dat zichtbaarheid niet betekent dat je jezelf
+          opnieuw moet uitvinden. Met jarenlange ervaring in fotografie en
+          branding helpt ze coaches en therapeuten om hun werk te laten
+          zien zoals het werkelijk is — warm, eerlijk en herkenbaar. Geen
+          gladde marketingformules, maar een blik die aansluit bij wie je
+          al bent, zodat de mensen die jou nodig hebben je ook echt vinden.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block block-wegwijzer" id="wegwijzer">
+    <h2 class="wegwijzer-title">Wegwijzer</h2>
+    <div class="wegwijzer-grid">
+      <a class="wegwijzer-card" href="#branding">
+        <h3>Branding</h3>
+        <p>Ontdek hoe je merk eruit kan zien.</p>
+      </a>
+      <a class="wegwijzer-card" href="#fotografie">
+        <h3>Fotografie</h3>
+        <p>Beelden die laten zien wie je bent.</p>
+      </a>
+      <a class="wegwijzer-card" href="#portfolio">
+        <h3>Portfolio</h3>
+        <p>Eerder werk en samenwerkingen.</p>
+      </a>
+      <a class="wegwijzer-card" href="#natuur">
+        <h3>Natuur voor jouw ruimte</h3>
+        <p>Rust en inspiratie voor je werkplek.</p>
+      </a>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>
