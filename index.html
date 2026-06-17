@@ -145,12 +145,14 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .pc::after{bottom:10px;right:10px;border-left:none;border-top:none}
 
 /* GALERIJ — rustige auto-scroll (geen kanteling/stagger), goede gezicht-crop bij staand */
-#strips{position:relative;z-index:10;background:var(--sage);padding:90px 0 100px;overflow:hidden}
+#strips{position:relative;z-index:10;background:var(--deep2);padding:90px 0 100px;overflow:hidden}
 #strips .swp{filter:grayscale(.85) blur(3px) brightness(.85);transition:filter 1.6s ease}
 #strips.dev .swp{filter:none}
 .stit{text-align:center;padding:0 5vw;margin-bottom:48px}
 .stit h2{font:200 clamp(24px,3.5vw,44px)/1.1 "Helvetica Neue";color:var(--td)}
 .stit h2 em{font-style:italic;color:var(--deep3)}
+#strips .stit h2{color:var(--tl)}
+#strips .stit h2 em{color:var(--goldB)}
 .swp{overflow:hidden;margin-bottom:16px}
 .swp:last-of-type{margin-bottom:0}
 .str{display:flex;gap:16px;width:max-content;will-change:transform;animation:sL 46s linear infinite}
@@ -203,19 +205,16 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .od.on{background:var(--gold);box-shadow:0 0 6px rgba(200,160,60,.5)}
 
 /* NATUUR */
-#natuur{position:relative;z-index:10;background:var(--sage2);padding:100px 5vw}
+#natuur{position:relative;z-index:10;background:var(--deep3);padding:100px 5vw}
 #natuur .inn{max-width:1040px;margin:0 auto;
   display:grid;grid-template-columns:1.15fr 1fr;gap:70px;align-items:center}
-.nph{aspect-ratio:2/3;background-size:cover;background-position:center;border-radius:3px;
-  box-shadow:0 24px 60px rgba(26,54,24,.25);position:relative}
-.nph::before,.nph::after{content:"";position:absolute;width:24px;height:24px;border:1.5px solid var(--gold);z-index:2}
-.nph::before{top:12px;left:12px;border-right:none;border-bottom:none}
-.nph::after{bottom:12px;right:12px;border-left:none;border-top:none}
-#natuur h2{font:200 clamp(26px,4vw,50px)/1.06 "Helvetica Neue";color:var(--td);margin-bottom:16px}
-#natuur h2 em{font-style:italic;color:var(--gold)}
+.nph-cap{text-align:center;margin-top:14px;font:300 italic 13px/1.4 "Helvetica Neue";color:var(--ml)}
+#natuur .od{background:rgba(232,201,106,.25)}
+#natuur h2{font:200 clamp(26px,4vw,50px)/1.06 "Helvetica Neue";color:var(--tl);margin-bottom:16px}
+#natuur h2 em{font-style:italic;color:var(--goldB)}
 #natuur blockquote{font:300 italic 17px/1.62 "Helvetica Neue";
-  color:var(--deep3);border-left:2px solid var(--gold);padding-left:15px;margin-bottom:16px}
-#natuur p{font:300 16px/1.78 "Helvetica Neue";color:var(--md);margin-bottom:11px}
+  color:var(--goldS);border-left:2px solid var(--gold);padding-left:15px;margin-bottom:16px}
+#natuur p{font:300 16px/1.78 "Helvetica Neue";color:var(--ml);margin-bottom:11px}
 
 /* (blikpanel verwijderd) */
 .gc{max-width:460px;padding:38px 40px;border-radius:3px;
@@ -282,7 +281,8 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
   display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:center}
 #blik .lt{position:relative;padding:28px 30px;border-radius:4px}
 #blik .lt::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:4px;
-  background:linear-gradient(135deg,rgba(255,252,246,.6),rgba(255,252,246,.32))}
+  background:linear-gradient(135deg,rgba(255,252,246,.86),rgba(255,252,246,.62));
+  box-shadow:0 18px 44px rgba(26,54,24,.12)}
 #blik h2{font:200 clamp(26px,4vw,48px)/1.06 "Helvetica Neue";color:var(--td);margin-bottom:16px}
 #blik h2 em{font-style:italic;color:var(--gold)}
 #blik .lt p{font:300 17px/1.78 "Helvetica Neue";color:var(--md);opacity:.95;margin-bottom:11px}
@@ -299,14 +299,15 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .gld{height:1px;margin:18px 0;background:linear-gradient(90deg,transparent,rgba(26,54,24,.32) 30%,rgba(26,54,24,.32) 70%,transparent)}
 
 /* OVER ANOUK */
-#over{position:relative;z-index:10;background:var(--sage2);padding:110px 6vw}
+#over{position:relative;z-index:10;background:var(--deep3);padding:110px 6vw}
 #over .inn{max-width:1060px;margin:0 auto;
   display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:center}
-#over h2{font:200 clamp(26px,4vw,48px)/1.06 "Helvetica Neue";color:var(--td);margin-bottom:18px}
-#over h2 em{font-style:italic;color:var(--deep3)}
+#over h2{font:200 clamp(26px,4vw,48px)/1.06 "Helvetica Neue";color:var(--tl);margin-bottom:18px}
+#over h2 em{font-style:italic;color:var(--goldB)}
 #over blockquote{font:300 italic 17px/1.55 "Helvetica Neue";
-  color:var(--deep3);border-left:2px solid var(--gold);padding-left:15px;margin-bottom:16px}
-#over p{font:300 16px/1.78 "Helvetica Neue";color:var(--md);margin-bottom:11px}
+  color:var(--goldS);border-left:2px solid var(--gold);padding-left:15px;margin-bottom:16px}
+#over p{font:300 16px/1.78 "Helvetica Neue";color:var(--ml);margin-bottom:11px}
+#over .od{background:rgba(232,201,106,.25)}
 
 /* FOOTER */
 footer{position:relative;z-index:10;background:var(--deep);
@@ -432,7 +433,7 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
 .pbg{filter:grayscale(.82) blur(2.5px) brightness(.82);transition:filter 1.15s ease,transform 1.1s cubic-bezier(.2,.7,.2,1)}
 .pc.in .pbg{filter:none}
 .nph{filter:grayscale(.8) blur(3px) brightness(.82);transition:filter 1.2s ease,opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
-.nph.in{filter:none}
+.nph-slide.in .nph{filter:none}
 .pv-photo{filter:grayscale(.85) blur(2.5px) brightness(.8);transition:filter 1.3s ease}
 #pad-verhalen.dev .pv-photo{filter:none}
 
@@ -456,8 +457,8 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
 
 /* ANOUK'S BLIK — donker bosinterieur sfeer */
 .blik-bg{position:absolute;inset:0;background-size:cover;background-position:center 30%;
-  opacity:.4;filter:saturate(.75) brightness(1.15);animation:bosPan 24s ease-in-out infinite}
-.blik-ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(247,243,236,.55),rgba(247,243,236,.8))}
+  opacity:.85;filter:saturate(1) brightness(.95);animation:bosPan 24s ease-in-out infinite}
+.blik-ov{position:absolute;inset:0;background:linear-gradient(115deg,rgba(31,62,28,.62) 0%,rgba(31,62,28,.3) 32%,rgba(247,243,236,.4) 55%,rgba(247,243,236,.88) 78%)}
 .blik-sun{position:absolute;z-index:1;pointer-events:none;left:30%;top:38%;width:160px;height:160px;
   border-radius:50%;transform:translate(-50%,-50%);
   background:radial-gradient(circle,rgba(255,238,120,.6) 0%,rgba(255,210,50,.22) 45%,transparent 70%);
@@ -483,7 +484,7 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
 @media(max-width:760px){
   .pgrid{grid-template-columns:1fr}.pc{aspect-ratio:4/3}
   #natuur .inn,#blik .inn,#over .inn{grid-template-columns:1fr}
-  .nph{aspect-ratio:16/9}
+  #natuur .oslide-frame{aspect-ratio:16/9}
   .bk,#rail{display:none}
   .boscpy blockquote{font-size:clamp(20px,5.5vw,34px)}
   #vineWrap,#butterfly,#camCursor{display:none}
@@ -649,7 +650,16 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
 <!-- NATUUR FOTOGRAFIE -->
 <section id="natuur">
   <div class="inn">
-    <div class="nph rl" id="nph"></div>
+    <div class="nph-slide rl" id="nphSlide">
+      <div class="oslide-frame">
+        <div class="oslide-img nph active" id="nphP1"></div>
+        <div class="oslide-img nph" id="nphP2"></div>
+      </div>
+      <div class="oslide-dots">
+        <span class="od on"></span><span class="od"></span>
+      </div>
+      <div class="nph-cap">Los, of hangend in jouw praktijk — bekijk beide</div>
+    </div>
     <div>
       <div class="lbl">Natuur in jouw ruimte</div>
       <h2>Breng de <em>buitenwereld</em><br>naar binnen</h2>
@@ -686,8 +696,8 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
     <div class="lt">
       <div class="lbl">Start hier</div>
       <h2>Begin met<br>Anouk's <em>Blik</em></h2>
-      <p>De meest directe manier om te weten of we bij elkaar passen.</p>
-      <p>In 20 minuten geef ik je mijn eerlijke, frisse blik — geen verplichtingen, geen standaard advies.</p>
+      <p>Ik werp vrijblijvend een blik op het totale plaatje van jouw zichtbaarheid — een soort brand scan.</p>
+      <p>In 20 minuten vertel ik je precies waar voor jou winst te behalen is.</p>
     </div>
     <div class="bc rv">
       <div class="lbl">Gratis · 20 min</div>
@@ -777,8 +787,25 @@ const PAD=[
 ];
 PAD.forEach((u,i)=>{const e=document.getElementById('pb'+(i+1));if(e)e.style.backgroundImage="url('"+u+"')";});
 
-// Natuur sectie — waterval
-const nph=document.getElementById('nph');if(nph)nph.style.backgroundImage="url('"+L("waterval-eifel.jpg")+"')";
+// Natuur sectie — waterval los, en hoe hij hangt in een praktijkruimte
+const nphP1=document.getElementById('nphP1');if(nphP1)nphP1.style.backgroundImage="url('"+L("waterval-eifel.jpg")+"')";
+const nphP2=document.getElementById('nphP2');if(nphP2)nphP2.style.backgroundImage="url('"+L("waterval-in-praktijkruimte.jpg")+"')";
+(function(){
+  const imgs=[document.getElementById('nphP1'),document.getElementById('nphP2')].filter(Boolean);
+  const dots=[...document.querySelectorAll('#nphSlide .od')];
+  if(imgs.length<2)return;
+  let idx=0;
+  setInterval(()=>{
+    imgs[idx].classList.remove('active');dots[idx]?.classList.remove('on');
+    idx=(idx+1)%imgs.length;
+    imgs[idx].classList.add('active');dots[idx]?.classList.add('on');
+  },5200);
+  dots.forEach((d,i)=>d.addEventListener('click',()=>{
+    imgs[idx].classList.remove('active');dots[idx].classList.remove('on');
+    idx=i;
+    imgs[idx].classList.add('active');dots[idx].classList.add('on');
+  }));
+})();
 
 // Animated forest section — zonsondergang met zon door boom
 const bosBg=document.getElementById('bosBg');
@@ -806,6 +833,8 @@ const G1=[
   [img("2024/02/Viola-2024-105-scaled.jpg",500),'v'],
   [img("2022/05/Roos-Akkerzicht-2022-91-scaled.jpg",700),'h'],
   [img("2024/07/Marinka-109-scaled.jpg",500),'v'],
+  [L("bloemenveld-goudenuur.jpg"),'h'],
+  [L("bloem-papaver.jpg"),'v'],
 ];
 const G2=[
   [L("zonsondergang-heuvels.jpg"),'h'],
@@ -951,9 +980,9 @@ function addLeafDeco(sel,opts){
     });
   });
 }
-addLeafDeco('#strips',[{c:'tl'},{c:'br'}]);
-addLeafDeco('#natuur',[{c:'br'}]);
-addLeafDeco('#over',[{c:'tl'}]);
+addLeafDeco('#strips',[{c:'tl',gold:true},{c:'br',gold:true}]);
+addLeafDeco('#natuur',[{c:'br',gold:true}]);
+addLeafDeco('#over',[{c:'tl',gold:true}]);
 addLeafDeco('#pad-verhalen',[{c:'br'}]);
 addLeafDeco('footer',[{c:'tl',gold:true}]);
 
