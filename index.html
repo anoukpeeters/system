@@ -399,18 +399,11 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
   transition:transform .35s ease,opacity .35s ease}
 
 /* SUBTIEL BLADER-MOTIEF — in hoeken van vlakke kleurvlakken, voor de 'wandeling'-sfeer */
-.leaf-deco{position:absolute;pointer-events:none;width:150px;height:150px;z-index:0;opacity:.07;color:var(--deep3)}
+.leaf-deco{position:absolute;pointer-events:none;width:150px;height:150px;z-index:0;opacity:.05;color:var(--deep3)}
 .leaf-deco.tl{top:0;left:0}
 .leaf-deco.br{bottom:0;right:0;transform:rotate(180deg)}
-.leaf-deco.gold{color:var(--goldB);opacity:.09}
+.leaf-deco.gold{color:var(--goldB);opacity:.065}
 
-/* BOTANISCHE SCROLLLIJN — slingerend pad door het bos, naar beneden */
-#vineWrap{position:fixed;left:0;top:96px;bottom:96px;width:24px;z-index:17;pointer-events:none}
-#vineSvg{display:block;width:100%;height:100%}
-#vinePath{filter:drop-shadow(0 0 4px rgba(200,160,60,.5))}
-#vineDot{position:absolute;top:0;left:0;width:8px;height:8px;border-radius:50%;
-  background:var(--goldB);box-shadow:0 0 10px rgba(232,201,106,.9);
-  transform:translate(-50%,-50%);transition:top .12s linear,left .12s linear}
 
 /* HERO WOORD-ANIMATIE */
 .hw{display:inline-block;opacity:0;animation:wordIn 1.5s cubic-bezier(.2,.7,.2,1) forwards}
@@ -483,7 +476,7 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
   .bc-cta .btn{display:block;text-align:center;width:100%}
   .bk,#rail{display:none}
   .boscpy blockquote{font-size:clamp(20px,5.5vw,34px)}
-  #vineWrap,#butterfly,#camCursor{display:none}
+  #butterfly,#camCursor{display:none}
 }
 @media(max-width:480px){
   #hdr{padding:0 16px;height:60px}
@@ -493,19 +486,6 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
 <body>
 
 <canvas id="scene"></canvas>
-
-<div id="vineWrap">
-  <svg id="vineSvg" viewBox="0 0 24 400" preserveAspectRatio="none" width="100%" height="100%">
-    <defs><linearGradient id="vineGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#2f5229"/><stop offset="55%" stop-color="#c8a03c"/><stop offset="100%" stop-color="#e8c96a"/>
-    </linearGradient></defs>
-    <path id="vineTrack" d="M12 0 C20 30,4 50,12 80 C20 110,4 130,12 160 C20 190,4 210,12 240 C20 270,4 290,12 320 C20 350,4 370,12 400"
-      stroke="rgba(200,160,60,.16)" stroke-width="2.2" fill="none"/>
-    <path id="vinePath" d="M12 0 C20 30,4 50,12 80 C20 110,4 130,12 160 C20 190,4 210,12 240 C20 270,4 290,12 320 C20 350,4 370,12 400"
-      stroke="url(#vineGrad)" stroke-width="2.2" fill="none"/>
-  </svg>
-  <div id="vineDot"></div>
-</div>
 
 <div id="butterfly"><svg viewBox="0 0 160 110" xmlns="http://www.w3.org/2000/svg">
   <defs><linearGradient id="bfg" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -780,10 +760,10 @@ const L=p=>"fotos/"+p;
 
 // Kies je pad — mix van klanten + natuur, allemaal liggend zodat ze passend in beeld komen
 const PAD=[
-  L("anouk-camera-goldenhour.jpg"),                               // Branding — coaching, foto van Anouk zelf
+  L("anouk-paikea-steiger.jpg"),                                  // Branding — Anouk en Paikea, uitkijkend over de natuur
   img("2024/05/Gertina-Zee-2024-73-scaled.jpg",900),              // Fotografie — klant, liggend
   L("zonsondergang-heuvels.jpg"),                                 // Natuur voor je ruimte — liggend
-  img("2025/11/Livedag-oktober-2025-scaled.jpg",900),            // Live dag — echte livedag-foto, liggend
+  L("smartphone-groep-natuur.jpg"),                               // Live dag — smartphone + duo in de natuur
 ];
 PAD.forEach((u,i)=>{const e=document.getElementById('pb'+(i+1));if(e)e.style.backgroundImage="url('"+u+"')";});
 
@@ -812,9 +792,9 @@ const bosBg=document.getElementById('bosBg');
 if(bosBg)bosBg.style.backgroundImage="url('"+L("bos-zonnestraal.jpg")+"')";
 
 // Over Anouk: 3 foto's
-const opP1=document.getElementById('opP1');if(opP1)opP1.style.backgroundImage="url('"+L("anouk-camera-goldenhour.jpg")+"')";
+const opP1=document.getElementById('opP1');if(opP1)opP1.style.backgroundImage="url('"+L("anouk-camera-lachend.jpg")+"')";
 const opP2=document.getElementById('opP2');if(opP2)opP2.style.backgroundImage="url('"+L("anouk-schilderen-papaver.jpg")+"')";
-const opP3=document.getElementById('opP3');if(opP3)opP3.style.backgroundImage="url('"+L("anouk-paikea-steiger.jpg")+"')";
+const opP3=document.getElementById('opP3');if(opP3)opP3.style.backgroundImage="url('"+L("anouk-bos-boom.jpg")+"')";
 
 // GALERIJ — rustige auto-scroll, liggend/staand afgewisseld, alleen klant + natuur
 function buildStrip(items,el){
@@ -962,17 +942,17 @@ if(stripsEl){
 
 // SUBTIEL BLADER-MOTIEF in de hoeken van vlakke kleurvlakken (geen foto-achtergrond)
 const LEAF_SVG='<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">'+
-  '<path d="M22 190 Q44 140 38 95 Q34 55 50 18" stroke="currentColor" stroke-width="1.4"/>'+
-  '<g transform="translate(50,18)">'+
-    '<ellipse cx="0" cy="-15" rx="7.5" ry="14" fill="currentColor" opacity=".92"/>'+
-    '<ellipse cx="14" cy="-7" rx="7.5" ry="14" fill="currentColor" opacity=".92" transform="rotate(72 14 -7)"/>'+
-    '<ellipse cx="9" cy="10" rx="7.5" ry="14" fill="currentColor" opacity=".92" transform="rotate(144 9 10)"/>'+
-    '<ellipse cx="-9" cy="10" rx="7.5" ry="14" fill="currentColor" opacity=".92" transform="rotate(216 -9 10)"/>'+
-    '<ellipse cx="-14" cy="-7" rx="7.5" ry="14" fill="currentColor" opacity=".92" transform="rotate(288 -14 -7)"/>'+
-    '<circle cx="0" cy="0" r="4.5" fill="currentColor"/>'+
+  '<path d="M26 188 Q46 142 40 98 Q36 60 50 24" stroke="currentColor" stroke-width="1.1"/>'+
+  '<g transform="translate(50,24)">'+
+    '<path d="M0,0 C-9,-11 -10,-26 0,-40 C10,-26 9,-11 0,0Z" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity=".18"/>'+
+    '<path d="M0,0 C-9,-11 -10,-26 0,-40 C10,-26 9,-11 0,0Z" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity=".18" transform="rotate(60)"/>'+
+    '<path d="M0,0 C-9,-11 -10,-26 0,-40 C10,-26 9,-11 0,0Z" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity=".18" transform="rotate(120)"/>'+
+    '<path d="M0,0 C-9,-11 -10,-26 0,-40 C10,-26 9,-11 0,0Z" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity=".18" transform="rotate(180)"/>'+
+    '<path d="M0,0 C-9,-11 -10,-26 0,-40 C10,-26 9,-11 0,0Z" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity=".18" transform="rotate(240)"/>'+
+    '<path d="M0,0 C-9,-11 -10,-26 0,-40 C10,-26 9,-11 0,0Z" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity=".18" transform="rotate(300)"/>'+
+    '<circle cx="0" cy="0" r="3" fill="currentColor" opacity=".6"/>'+
   '</g>'+
-  '<ellipse cx="33" cy="100" rx="6.5" ry="10" fill="currentColor" opacity=".7" transform="rotate(-32 33 100)"/>'+
-  '<ellipse cx="26" cy="142" rx="5.5" ry="8.5" fill="currentColor" opacity=".7" transform="rotate(26 26 142)"/>'+
+  '<path d="M0,0 C-6,-7 -6,-16 0,-24 C6,-16 6,-7 0,0Z" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity=".15" transform="translate(34,108) rotate(-30)"/>'+
   '</svg>';
 function addLeafDeco(sel,opts){
   document.querySelectorAll(sel).forEach(el=>{
@@ -1016,29 +996,6 @@ addEventListener('scroll',updR,{passive:true});
 // Blik sectie bos-sfeer — natuur-foto #3 (zon door de boom), zelfde bewegende glinster-effect
 const blikBg=document.getElementById('blikBg');
 if(blikBg)blikBg.style.backgroundImage="url('"+L("anouk-camera-goldenhour.jpg")+"')";
-
-// BOTANISCHE SCROLLLIJN — slingerend pad door het bos, vult zich al scrollend
-const vinePath=document.getElementById('vinePath');
-const vineDot=document.getElementById('vineDot');
-const vineWrap=document.getElementById('vineWrap');
-let vineLen=0;
-if(vinePath)vineLen=vinePath.getTotalLength();
-function updVine(){
-  if(!vinePath)return;
-  const mx=document.body.scrollHeight-innerHeight;
-  const pct=mx>0?Math.min(1,Math.max(0,scrollY/mx)):0;
-  vinePath.style.strokeDasharray=vineLen;
-  vinePath.style.strokeDashoffset=vineLen*(1-pct);
-  const pt=vinePath.getPointAtLength(vineLen*pct);
-  const box=vineWrap.getBoundingClientRect();
-  if(vineDot){
-    vineDot.style.left=(pt.x/24*box.width)+"px";
-    vineDot.style.top=(pt.y/400*box.height)+"px";
-  }
-}
-addEventListener('scroll',updVine,{passive:true});
-addEventListener('resize',updVine);
-updVine();
 
 // GOUDEN VLINDER — meescrollend, pauzeert bij 'Kies jouw pad'
 const bfEl=document.getElementById('butterfly');
