@@ -156,12 +156,43 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 @keyframes sR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 .si{width:260px;height:195px;background-size:cover;background-position:center;
   flex-shrink:0;border-radius:3px;position:relative;overflow:hidden;cursor:pointer}
+.si.si-portrait{width:170px;height:255px}
 .si::before,.si::after{content:"";position:absolute;width:15px;height:15px;
   border:1px solid rgba(200,160,60,.62);z-index:2}
 .si::before{top:7px;left:7px;border-right:none;border-bottom:none}
 .si::after{bottom:7px;right:7px;border-left:none;border-top:none}
 .si .sh{position:absolute;inset:0;background:rgba(200,160,60,0);transition:background .35s}
 .si:hover .sh{background:rgba(200,160,60,.07)}
+
+/* PORTFOLIO CTA — camera-diafragma knop */
+.strip-cta{text-align:center;margin-top:44px;padding:0 5vw}
+.ap-btn{display:inline-flex;align-items:center;gap:14px;padding:15px 30px;border-radius:40px;
+  border:1px solid rgba(200,160,60,.4);color:var(--goldB);text-decoration:none;
+  font:600 12px/1 "SF Mono",monospace;letter-spacing:.12em;text-transform:uppercase;
+  transition:.4s cubic-bezier(.2,.7,.2,1);background:rgba(232,201,106,.06)}
+.ap-btn:hover{background:rgba(232,201,106,.14);border-color:var(--goldB);
+  box-shadow:0 10px 30px rgba(200,160,60,.28);gap:20px}
+.ap-icon{width:28px;height:28px;flex-shrink:0;color:var(--goldB);
+  transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+.ap-btn:hover .ap-icon{transform:rotate(48deg)}
+.ap-icon .blade{transition:transform .4s ease;transform-origin:20px 20px}
+.ap-btn:hover .ap-icon .blade{transform:scale(.62)}
+.ap-arrow{transition:transform .3s}
+.ap-btn:hover .ap-arrow{transform:translateX(4px)}
+
+/* OVER ANOUK — slideshow ipv statisch grid */
+.oslide-frame{aspect-ratio:3/4;border-radius:3px;overflow:hidden;position:relative;
+  box-shadow:0 24px 60px rgba(26,54,24,.22)}
+.oslide-frame::before,.oslide-frame::after{content:"";position:absolute;width:24px;height:24px;
+  border:1.5px solid var(--gold);z-index:3}
+.oslide-frame::before{top:12px;left:12px;border-right:none;border-bottom:none}
+.oslide-frame::after{bottom:12px;right:12px;border-left:none;border-top:none}
+.oslide-img{position:absolute;inset:0;background-size:cover;background-position:50% 20%;
+  opacity:0;transition:opacity 1.3s ease,transform 6s ease}
+.oslide-img.active{opacity:1;transform:scale(1.05)}
+.oslide-dots{display:flex;gap:7px;justify-content:center;margin-top:14px}
+.od{width:7px;height:7px;border-radius:50%;background:rgba(44,82,41,.25);transition:.3s;cursor:pointer}
+.od.on{background:var(--gold);box-shadow:0 0 6px rgba(200,160,60,.5)}
 
 /* NATUUR */
 #natuur{position:relative;z-index:10;background:var(--deep);padding:100px 5vw}
@@ -257,15 +288,6 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 #over{position:relative;z-index:10;background:var(--sage);padding:110px 6vw}
 #over .inn{max-width:1060px;margin:0 auto;
   display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:center}
-.ophotos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:12px}
-.op{background-size:cover;background-position:50% 20%;border-radius:3px;
-  box-shadow:0 16px 40px rgba(26,54,24,.2);position:relative;overflow:hidden}
-.op:first-child{aspect-ratio:3/4;grid-row:span 2}
-.op:not(:first-child){aspect-ratio:1/1}
-.op::before,.op::after{content:"";position:absolute;width:18px;height:18px;border:1.5px solid var(--gold);z-index:2}
-.op::before{top:9px;left:9px;border-right:none;border-bottom:none}
-.op::after{bottom:9px;right:9px;border-left:none;border-top:none}
-@media(max-width:760px){.ophotos{grid-template-columns:1fr}.op:first-child{aspect-ratio:16/9;grid-row:span 1}.op:not(:first-child){display:none}}
 #over h2{font:200 clamp(26px,4vw,48px)/1.06 "Helvetica Neue";color:var(--td);margin-bottom:18px}
 #over h2 em{font-style:italic;color:var(--deep3)}
 #over blockquote{font:300 italic 17px/1.55 "Helvetica Neue";
@@ -322,15 +344,16 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
 #rr{position:absolute;right:30px;bottom:28px;text-align:right;font-size:9.5px;opacity:.42}
 
 /* GOUDEN VLINDER */
-#butterfly{position:fixed;z-index:16;pointer-events:none;width:46px;height:36px;
+#butterfly{position:fixed;z-index:16;pointer-events:none;width:72px;height:50px;
   left:0;top:0;will-change:transform}
-#butterfly svg{width:100%;height:100%;display:block;filter:drop-shadow(0 4px 10px rgba(200,160,60,.35))}
-#wingL,#wingR{transform-origin:32px 25px;animation:flapL .42s ease-in-out infinite alternate}
+#butterfly svg{width:100%;height:100%;display:block;filter:drop-shadow(0 4px 12px rgba(200,160,60,.45))}
+#wingL,#wingR{transform-origin:80px 58px;animation:flapL .4s ease-in-out infinite alternate}
 #wingR{animation-name:flapR}
-@keyframes flapL{0%{transform:scaleX(1) rotate(0deg)}100%{transform:scaleX(.55) rotate(-8deg)}}
-@keyframes flapR{0%{transform:scaleX(1) rotate(0deg)}100%{transform:scaleX(.55) rotate(8deg)}}
+@keyframes flapL{0%{transform:scaleX(1) rotate(0deg)}100%{transform:scaleX(.5) rotate(-10deg)}}
+@keyframes flapR{0%{transform:scaleX(1) rotate(0deg)}100%{transform:scaleX(.5) rotate(10deg)}}
 .bdust{position:fixed;z-index:15;pointer-events:none;border-radius:50%;
-  width:6px;height:6px;opacity:.85;transition:opacity 1.2s ease,transform 1.2s ease}
+  opacity:.95;transition:opacity 1.5s ease,transform 1.5s ease;
+  box-shadow:0 0 8px 2px rgba(232,201,106,.65)}
 
 /* CAMERA-CURSOR */
 @media (hover:hover) and (pointer:fine){body.camcursor-on{cursor:none}}
@@ -374,8 +397,6 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
 .pc.in .pbg{filter:none}
 .nph{filter:grayscale(.8) blur(3px) brightness(.82);transition:filter 1.2s ease,opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
 .nph.in{filter:none}
-.ophotos .op{filter:grayscale(.8) blur(2.5px) brightness(.82);transition:filter 1.15s ease}
-.ophotos.in .op{filter:none}
 
 /* GESTAGGERDE / POLAROID FOTO-STRIP */
 .si{transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s,filter .4s}
@@ -383,8 +404,8 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
 .si:nth-child(4n+2){transform:rotate(1.4deg) translateY(7px)}
 .si:nth-child(4n+3){transform:rotate(-1deg) translateY(2px)}
 .si:nth-child(4n){transform:rotate(2deg) translateY(-3px)}
-.si:hover{transform:rotate(0deg) translateY(-10px) scale(1.045)!important;
-  box-shadow:0 22px 44px rgba(0,0,0,.4);z-index:2}
+.si:hover{transform:rotate(0deg) translateY(-16px) scale(1.22)!important;
+  box-shadow:0 30px 60px rgba(0,0,0,.5);z-index:5}
 
 /* ANOUK'S BLIK — donker bosinterieur sfeer */
 .blik-bg{position:absolute;inset:0;background-size:cover;background-position:center 35%;
@@ -396,20 +417,26 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
   mix-blend-mode:screen;animation:sunP 3.8s ease-in-out infinite}
 
 /* MAAN + SEIZOEN IN FOOTER */
-.footer-extra{display:flex;align-items:center;gap:12px}
-.moon{width:46px;height:46px;border-radius:50%;position:relative;flex-shrink:0;
+.footer-extra{display:flex;align-items:center;gap:14px;perspective:700px}
+.moon{width:60px;height:60px;border-radius:50%;position:relative;flex-shrink:0;
   background:radial-gradient(circle at 36% 34%,#fff6d8 0%,#f3dd9a 38%,#c8a03c 76%,#8a6018 100%);
-  box-shadow:0 0 20px rgba(232,201,106,.55),0 0 8px rgba(255,245,200,.5) inset;
-  animation:moonGlow 5s ease-in-out infinite}
-@keyframes moonGlow{0%,100%{box-shadow:0 0 16px rgba(232,201,106,.45),0 0 6px rgba(255,245,200,.4) inset}
-  50%{box-shadow:0 0 28px rgba(232,201,106,.7),0 0 10px rgba(255,245,200,.6) inset}}
+  box-shadow:0 0 24px rgba(232,201,106,.55),0 0 9px rgba(255,245,200,.5) inset;
+  animation:moonGlow 5s ease-in-out infinite,moonSpin 14s linear infinite;
+  transform-style:preserve-3d}
+.moon::before,.moon::after{content:"";position:absolute;border-radius:50%;
+  background:rgba(120,90,30,.32);box-shadow:inset 0 0 5px rgba(80,60,20,.4)}
+.moon::before{width:13px;height:13px;top:16px;left:37px}
+.moon::after{width:7px;height:7px;top:39px;left:16px}
+@keyframes moonGlow{0%,100%{box-shadow:0 0 18px rgba(232,201,106,.45),0 0 7px rgba(255,245,200,.4) inset}
+  50%{box-shadow:0 0 32px rgba(232,201,106,.72),0 0 11px rgba(255,245,200,.6) inset}}
+@keyframes moonSpin{0%{transform:rotateY(0deg)}100%{transform:rotateY(360deg)}}
 .season{font:600 9.5px/1 "SF Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--ml)}
 
 /* RESPONSIVE */
 @media(max-width:760px){
   .pgrid{grid-template-columns:1fr}.pc{aspect-ratio:4/3}
   #natuur .inn,#blik .inn,#over .inn{grid-template-columns:1fr}
-  .nph,#over .op{aspect-ratio:16/9}
+  .nph{aspect-ratio:16/9}
   .bk,#rail{display:none}
   .boscpy blockquote{font-size:clamp(20px,5.5vw,34px)}
   #vineWrap,#butterfly,#camCursor{display:none}
@@ -426,13 +453,20 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
 
 <div id="vineWrap"><div id="vineFill"></div></div>
 
-<div id="butterfly"><svg viewBox="0 0 64 50" xmlns="http://www.w3.org/2000/svg">
+<div id="butterfly"><svg viewBox="0 0 160 110" xmlns="http://www.w3.org/2000/svg">
   <defs><linearGradient id="bfg" x1="0%" y1="0%" x2="100%" y2="100%">
     <stop offset="0%" stop-color="#f5e69a"/><stop offset="50%" stop-color="#d8b25a"/><stop offset="100%" stop-color="#8a601a"/>
   </linearGradient></defs>
-  <g id="wingL"><path d="M32 25 C20 5 2 4 4 18 C5 28 18 30 32 25Z" fill="url(#bfg)" opacity=".92"/></g>
-  <g id="wingR"><path d="M32 25 C44 5 62 4 60 18 C59 28 46 30 32 25Z" fill="url(#bfg)" opacity=".92"/></g>
-  <ellipse cx="32" cy="25" rx="2.2" ry="7" fill="#5a4018"/>
+  <g id="wingL">
+    <path d="M80 58 C64 36 36 12 16 15 C2 17 6 42 22 53 C40 65 66 63 80 58Z" fill="url(#bfg)" opacity=".95"/>
+    <path d="M80 58 C70 50 48 40 34 43 C25 45 27 56 38 60 C54 66 70 62 80 58Z" fill="url(#bfg)" opacity=".55"/>
+  </g>
+  <g id="wingR">
+    <path d="M80 58 C96 36 124 12 144 15 C158 17 154 42 138 53 C120 65 94 63 80 58Z" fill="url(#bfg)" opacity=".95"/>
+    <path d="M80 58 C90 50 112 40 126 43 C135 45 133 56 122 60 C106 66 90 62 80 58Z" fill="url(#bfg)" opacity=".55"/>
+  </g>
+  <ellipse cx="80" cy="58" rx="2.8" ry="17" fill="#6b4a18"/>
+  <path d="M80 43 Q73 31 65 26 M80 43 Q87 31 95 26" stroke="#6b4a18" stroke-width="1.6" fill="none" stroke-linecap="round"/>
 </svg></div>
 
 <div id="camCursor">
@@ -551,6 +585,19 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
   </div>
   <div class="swp"><div class="str" id="s1"></div></div>
   <div class="swp"><div class="str r" id="s2"></div></div>
+  <div class="strip-cta">
+    <a href="https://anouk-peeters.nl/portfolio/" target="_blank" rel="noopener" class="ap-btn">
+      <span class="ap-icon"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="17" fill="none" stroke="currentColor" stroke-width="1.4"/>
+        <path class="blade" d="M20 6 L26 16 L20 20Z" fill="currentColor"/>
+        <path class="blade" d="M34 20 L24 26 L20 20Z" fill="currentColor"/>
+        <path class="blade" d="M20 34 L14 24 L20 20Z" fill="currentColor"/>
+        <path class="blade" d="M6 20 L16 14 L20 20Z" fill="currentColor"/>
+      </svg></span>
+      <span class="ap-text">Bekijk het volledige portfolio</span>
+      <span class="ap-arrow">→</span>
+    </a>
+  </div>
 </section>
 
 <!-- NATUUR FOTOGRAFIE -->
@@ -615,10 +662,15 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
 <!-- OVER ANOUK -->
 <section id="over">
   <div class="inn">
-    <div class="ophotos rl">
-      <div class="op" id="opP1"></div>
-      <div class="op" id="opP2"></div>
-      <div class="op" id="opP3"></div>
+    <div class="oslide rl" id="oslide">
+      <div class="oslide-frame">
+        <div class="oslide-img active" id="opP1"></div>
+        <div class="oslide-img" id="opP2"></div>
+        <div class="oslide-img" id="opP3"></div>
+      </div>
+      <div class="oslide-dots">
+        <span class="od on"></span><span class="od"></span><span class="od"></span>
+      </div>
     </div>
     <div>
       <div class="lbl" style="color:var(--deep3)">Over Anouk</div>
@@ -672,12 +724,12 @@ const img=(p,w)=>CDN+p+"?w="+(w||1100)+"&ssl=1";
 // Lokale foto's (uit 'foto's website' map op bureaublad — Natuur + Anouk)
 const L=p=>"fotos/"+p;
 
-// Kies je pad — mix van klanten + natuur, niet alleen Anouk
+// Kies je pad — mix van klanten + natuur, allemaal liggend zodat ze passend in beeld komen
 const PAD=[
-  img("2023/05/Floor-Geldrop-Business-1-scaled.jpg",900),   // Branding — klant
-  img("2024/02/Viola-2024-105-scaled.jpg",900),              // Fotografie — klant
-  L("waterval-eifel.jpg"),                                    // Natuur voor je ruimte
-  img("2025/11/Livedag-oktober-2025-scaled.jpg",900),        // Live dag — echte livedag-foto
+  img("2024/01/2021-Business-Businessshoot-45-scaled.jpg",900), // Branding — klant, liggend
+  img("2025/07/Annet-Zoer-2025-319-scaled.jpg",900),             // Fotografie — klant, liggend
+  L("zonsondergang-heuvels.jpg"),                                 // Natuur voor je ruimte — liggend
+  img("2025/11/Livedag-oktober-2025-scaled.jpg",900),            // Live dag — echte livedag-foto, liggend
 ];
 PAD.forEach((u,i)=>{const e=document.getElementById('pb'+(i+1));if(e)e.style.backgroundImage="url('"+u+"')";});
 
@@ -702,6 +754,10 @@ function buildStrip(urls,el){
     d.style.backgroundImage="url('"+u+"')";
     const sh=document.createElement('div');sh.className='sh';d.appendChild(sh);
     el.appendChild(d);
+    // detecteer staand/liggend zodat de kaart bij de foto past (geen gekke crops)
+    const probe=new Image();
+    probe.onload=()=>{if(probe.naturalHeight>probe.naturalWidth)d.classList.add('si-portrait');};
+    probe.src=u;
   });
 }
 const S1=["2024/07/Linda-op-de-Heide-2024-205-scaled.jpg","2025/08/Marga-Ochtend-Eifel-2025-45-scaled.jpg","2025/04/Yvonne-Duitsland-Waterval-25-scaled.jpg","2025/07/Annet-Zoer-2025-143-scaled.jpg","2025/08/Leijbra-Ochtend-2025-5-scaled.jpg","2024/07/Linda-Kasteel-2024-11-scaled.jpg","2025/08/Marga-Avond-Eifel-2025-15-scaled.jpg","2025/08/Leijbra-Avond-2025-177-scaled.jpg"].map(f=>img(f,580));
@@ -719,6 +775,24 @@ const S2=[
   img("2022/05/Roos-Akkerzicht-2022-91-scaled.jpg",580),
 ];
 buildStrip(S2,document.getElementById('s2'));
+
+// OVER ANOUK — slideshow rotatie
+(function(){
+  const imgs=[...document.querySelectorAll('#oslide .oslide-img')];
+  const dots=[...document.querySelectorAll('#oslide .od')];
+  if(!imgs.length)return;
+  let idx=0;
+  setInterval(()=>{
+    imgs[idx].classList.remove('active');dots[idx]?.classList.remove('on');
+    idx=(idx+1)%imgs.length;
+    imgs[idx].classList.add('active');dots[idx]?.classList.add('on');
+  },4200);
+  dots.forEach((d,i)=>d.addEventListener('click',()=>{
+    imgs[idx].classList.remove('active');dots[idx].classList.remove('on');
+    idx=i;
+    imgs[idx].classList.add('active');dots[idx].classList.add('on');
+  }));
+})();
 
 // HERO KEN BURNS + PARALLAX — JS-driven for video feel
 const hFEl=document.getElementById('hF');
@@ -816,14 +890,16 @@ if(bfEl){
   addEventListener('resize',()=>{bfBaseX=innerWidth*.84;bfBaseY=innerHeight*.24;});
   function spawnDust(x,y){
     const d=document.createElement('div');d.className='bdust';
+    const sz=4+Math.random()*5;
+    d.style.width=sz+"px";d.style.height=sz+"px";
     d.style.left=x+"px";d.style.top=y+"px";
     d.style.background='radial-gradient(circle,'+dustColors[Math.random()<.5?0:1]+',rgba(200,160,60,0))';
     document.body.appendChild(d);
     requestAnimationFrame(()=>{
       d.style.opacity='0';
-      d.style.transform='translate('+(Math.random()*16-8)+'px,'+(10+Math.random()*14)+'px) scale(.3)';
+      d.style.transform='translate('+(Math.random()*24-12)+'px,'+(14+Math.random()*22)+'px) scale(.15)';
     });
-    setTimeout(()=>d.remove(),1300);
+    setTimeout(()=>d.remove(),1550);
   }
   function animButterfly(now){
     requestAnimationFrame(animButterfly);
@@ -844,7 +920,7 @@ if(bfEl){
       bfX+=(flyX-bfX)*.04;bfY+=(flyY-bfY)*.04;
       bfEl.style.transform="translate("+bfX+"px,"+bfY+"px) rotate("+(Math.sin(t*.6)*6)+"deg)";
     }
-    if(bfFrame%10===0)spawnDust(bfX+22,bfY+30);
+    if(bfFrame%4===0)spawnDust(bfX+36+(Math.random()*14-7),bfY+32+(Math.random()*10-5));
   }
   requestAnimationFrame(animButterfly);
 }
@@ -870,7 +946,7 @@ if(matchMedia('(hover:hover) and (pointer:fine)').matches){
         o.start(t0);o.stop(t0+.05);
       }catch(e){}
     }
-    const hoverSel='.pc,.si,.op,.nph,.gc,.bc';
+    const hoverSel='.pc,.si,.oslide-frame,.nph,.gc,.bc';
     document.addEventListener('mouseover',e=>{
       if(e.target.closest(hoverSel)){
         cc.classList.add('shut');shutterSound();
