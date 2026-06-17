@@ -140,27 +140,32 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .pc::before{top:10px;left:10px;border-right:none;border-bottom:none}
 .pc::after{bottom:10px;right:10px;border-left:none;border-top:none}
 
-/* GALERIJ — rustig gecureerd grid, geen marquee/rotatie */
+/* GALERIJ — rustige auto-scroll (geen kanteling/stagger), goede gezicht-crop bij staand */
 #strips{position:relative;z-index:10;background:var(--sage);padding:90px 0 100px;overflow:hidden}
-#strips .gwrap{filter:grayscale(.85) blur(3px) brightness(.85);transition:filter 1.6s ease}
-#strips.dev .gwrap{filter:none}
+#strips .swp{filter:grayscale(.85) blur(3px) brightness(.85);transition:filter 1.6s ease}
+#strips.dev .swp{filter:none}
 .stit{text-align:center;padding:0 5vw;margin-bottom:48px}
 .stit h2{font:200 clamp(24px,3.5vw,44px)/1.1 "Helvetica Neue";color:var(--td)}
 .stit h2 em{font-style:italic;color:var(--deep3)}
-.gwrap{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
-  gap:20px;max-width:1180px;margin:0 auto;padding:0 5vw}
+.swp{overflow:hidden;margin-bottom:16px}
+.swp:last-of-type{margin-bottom:0}
+.str{display:flex;gap:16px;width:max-content;will-change:transform;animation:sL 46s linear infinite}
+.str.r{animation:sR 52s linear infinite}
+.str:hover{animation-play-state:paused}
+@keyframes sL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes sR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 .si{background-size:cover;background-position:center;border-radius:3px;position:relative;
-  overflow:hidden;cursor:pointer;transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s}
-.si.gi-h{width:380px;height:280px}
-.si.gi-v{width:230px;height:330px}
-.si:hover{transform:translateY(-8px) scale(1.04);box-shadow:0 24px 50px rgba(26,54,24,.28);z-index:2}
+  flex-shrink:0;overflow:hidden;cursor:pointer;transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s}
+.si.gi-h{width:340px;height:255px}
+.si.gi-v{width:215px;height:320px;background-position:center 18%}
+.si:hover{transform:translateY(-7px) scale(1.05);box-shadow:0 24px 50px rgba(26,54,24,.28);z-index:2}
 .si::before,.si::after{content:"";position:absolute;width:16px;height:16px;
   border:1px solid rgba(200,160,60,.7);z-index:2}
 .si::before{top:8px;left:8px;border-right:none;border-bottom:none}
 .si::after{bottom:8px;right:8px;border-left:none;border-top:none}
 .si .sh{position:absolute;inset:0;background:rgba(200,160,60,0);transition:background .35s}
 .si:hover .sh{background:rgba(200,160,60,.1)}
-@media(max-width:640px){.si.gi-h{width:300px;height:220px}.si.gi-v{width:200px;height:280px}}
+@media(max-width:640px){.si.gi-h{width:270px;height:200px}.si.gi-v{width:175px;height:260px}}
 
 /* PORTFOLIO CTA — camera-diafragma knop */
 .strip-cta{text-align:center;margin-top:44px;padding:0 5vw}
@@ -558,8 +563,8 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
   </div>
   <div class="pgrid">
     <a class="pc" href="#"><div class="pbg" id="pb1"></div><div class="pov"></div>
-      <div class="pi"><div class="pk">Branding</div><h3>Herkenbaar als jezelf</h3>
-      <p>Jouw verhaal zichtbaar voor de mensen die jou nodig hebben.</p><span class="arr">Ontdek meer →</span></div></a>
+      <div class="pi"><div class="pk">Branding · coachingtraject 3-6 mnd</div><h3>Samen bouwen aan je merk</h3>
+      <p>Geen losse shoot, maar een persoonlijk coachingtraject waarin we stap voor stap bouwen aan een merk dat echt bij je past.</p><span class="arr">Ontdek meer →</span></div></a>
     <a class="pc" href="#"><div class="pbg" id="pb2"></div><div class="pov"></div>
       <div class="pi"><div class="pk">Fotografie</div><h3>Beelden die jou laten zien</h3>
       <p>Authentieke portretten in de natuur — warm, eerlijk, precies jij.</p><span class="arr">Ontdek meer →</span></div></a>
@@ -578,7 +583,8 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
     <div class="lbl c">Natuur &amp; personal branding</div>
     <h2>Verhalen, <em>in beeld gebracht</em></h2>
   </div>
-  <div class="gwrap" id="gwrap"></div>
+  <div class="swp"><div class="str" id="s1"></div></div>
+  <div class="swp"><div class="str r" id="s2"></div></div>
   <div class="strip-cta">
     <a href="https://anouk-peeters.nl/portfolio/" target="_blank" rel="noopener" class="ap-btn">
       <span class="ap-icon"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
@@ -718,7 +724,7 @@ const L=p=>"fotos/"+p;
 
 // Kies je pad — mix van klanten + natuur, allemaal liggend zodat ze passend in beeld komen
 const PAD=[
-  img("2024/02/IMG_9509-scaled.jpg",900),                        // Branding — klant, liggend
+  L("anouk-camera-goldenhour.jpg"),                               // Branding — coaching, foto van Anouk zelf
   img("2024/05/Gertina-Zee-2024-73-scaled.jpg",900),              // Fotografie — klant, liggend
   L("zonsondergang-heuvels.jpg"),                                 // Natuur voor je ruimte — liggend
   img("2025/11/Livedag-oktober-2025-scaled.jpg",900),            // Live dag — echte livedag-foto, liggend
@@ -737,23 +743,25 @@ const opP1=document.getElementById('opP1');if(opP1)opP1.style.backgroundImage="u
 const opP2=document.getElementById('opP2');if(opP2)opP2.style.backgroundImage="url('"+L("anouk-schilderen-papaver.jpg")+"')";
 const opP3=document.getElementById('opP3');if(opP3)opP3.style.backgroundImage="url('"+L("anouk-paikea-steiger.jpg")+"')";
 
-// GALERIJ — rustig, gecureerd: liggend/staand/liggend, alleen klant + natuur
-function buildGallery(items,el){
+// GALERIJ — rustige auto-scroll, liggend/staand afgewisseld, alleen klant + natuur
+function buildStrip(items,el){
   if(!el)return;
-  items.forEach(([u,orient])=>{
+  [...items,...items].forEach(([u,orient])=>{
     const d=document.createElement('div');d.className='si gi-'+orient;
     d.style.backgroundImage="url('"+u+"')";
     const sh=document.createElement('div');sh.className='sh';d.appendChild(sh);
     el.appendChild(d);
   });
 }
-const GALLERY=[
+const G1=[
   [img("2024/01/2021-Business-Businessshoot-45-scaled.jpg",700),'h'],
   [img("2023/05/Floor-Geldrop-Business-1-scaled.jpg",500),'v'],
   [img("2025/07/Annet-Zoer-2025-319-scaled.jpg",700),'h'],
   [img("2024/02/Viola-2024-105-scaled.jpg",500),'v'],
   [img("2022/05/Roos-Akkerzicht-2022-91-scaled.jpg",700),'h'],
   [img("2024/07/Marinka-109-scaled.jpg",500),'v'],
+];
+const G2=[
   [L("zonsondergang-heuvels.jpg"),'h'],
   [L("waterval-eifel.jpg"),'v'],
   [img("2024/03/8-Christel-Lubse-19-scaled.jpg",700),'h'],
@@ -761,7 +769,8 @@ const GALLERY=[
   [img("2023/05/Yolande-Goed-3-scaled.jpg",700),'h'],
   [img("2022/05/Inge-Hol-117-scaled.jpg",500),'v'],
 ];
-buildGallery(GALLERY,document.getElementById('gwrap'));
+buildStrip(G1,document.getElementById('s1'));
+buildStrip(G2,document.getElementById('s2'));
 
 // ERVARINGEN — echte reviews (Google/Trustoo), geen familieshoot-ervaringen
 const pvBg=document.getElementById('pvBg');
