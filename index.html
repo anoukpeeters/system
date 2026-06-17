@@ -209,7 +209,7 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 }
 /* Pulsing sun glow (blend-mode: screen) */
 .sunglow{position:absolute;z-index:2;pointer-events:none;
-  left:50%;top:42%;width:240px;height:240px;border-radius:50%;
+  left:38%;top:48%;width:220px;height:220px;border-radius:50%;
   transform:translate(-50%,-50%);
   background:radial-gradient(circle,rgba(255,238,120,.7) 0%,rgba(255,210,50,.28) 42%,transparent 68%);
   mix-blend-mode:screen;animation:sunP 3.8s ease-in-out infinite}
@@ -463,7 +463,6 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
 
 <!-- ANIMATED FOREST QUOTE (zonlicht door bomen) -->
 <section id="bostekst">
-  <!-- TODO: vervang door URL van de 'zonlicht door bomen' foto uit WordPress Media Library -->
   <div class="bosbg" id="bosBg"></div>
   <div class="sunglow"></div>
   <div class="sunray"></div>
@@ -506,11 +505,8 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
 <section id="over">
   <div class="inn">
     <div class="ophotos rl">
-      <!-- TODO: vervang door URL van 'Anouk met camera in heide' uit WordPress -->
       <div class="op" id="opP1"></div>
-      <!-- TODO: vervang door URL van 'Anouk + Paikea in weide met uitzicht' uit WordPress -->
       <div class="op" id="opP2"></div>
-      <!-- TODO: vervang door URL van 'Anouk + Paikea op steiger bij water' uit WordPress -->
       <div class="op" id="opP3"></div>
     </div>
     <div>
@@ -558,35 +554,40 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
 const CDN="https://i0.wp.com/anouk-peeters.nl/wp-content/uploads/";
 const img=(p,w)=>CDN+p+"?w="+(w||1100)+"&ssl=1";
 
-// Photo backgrounds
-const PAD=["2025/12/Anouk-Gouden-Jas-Portret-Staand-scaled.jpg","2026/05/Anouk-Soerendonk-2026-4-scaled.jpg","2025/04/Yvonne-Duitsland-Waterval-25-scaled.jpg","2024/12/Anouk-en-paikea-herfst-2024-scaled.jpg"];
-PAD.forEach((u,i)=>{const e=document.getElementById('pb'+(i+1));if(e)e.style.backgroundImage="url('"+img(u,900)+"')";});
-// Natuur sectie: TODO: vervang waterval-URL zodra je nieuwe waterval-foto op WordPress hebt
-const nph=document.getElementById('nph');if(nph)nph.style.backgroundImage="url('"+img("2025/04/Yvonne-Duitsland-Waterval-47-scaled.jpg",900)+"')";
+// Lokale foto's (uit 'foto's website' map op bureaublad — Natuur + Anouk)
+const L=p=>"fotos/"+p;
 
-// Animated forest section: TODO: vervang door URL van 'zonlicht door bomen' foto
+// Kies je pad
+const PADLOCAL=["anouk-camera-lachend.jpg","anouk-bos-boom.jpg","paikea-weide.jpg","anouk-paikea-weide.jpg"];
+PADLOCAL.forEach((u,i)=>{const e=document.getElementById('pb'+(i+1));if(e)e.style.backgroundImage="url('"+L(u)+"')";});
+
+// Natuur sectie — waterval
+const nph=document.getElementById('nph');if(nph)nph.style.backgroundImage="url('"+L("waterval-eifel.jpg")+"')";
+
+// Animated forest section — zonsondergang met zon door boom
 const bosBg=document.getElementById('bosBg');
-if(bosBg)bosBg.style.backgroundImage="url('"+img("2024/10/Anouk-Eifel-herfst-2024-scaled.jpg",1920)+"')";
+if(bosBg)bosBg.style.backgroundImage="url('"+L("zonsondergang-heuvels.jpg")+"')";
 
-// Over Anouk: 3 foto's — TODO: vervang door nieuwe Anouk-portret URLs
-const opP1=document.getElementById('opP1');if(opP1)opP1.style.backgroundImage="url('"+img("2025/12/Anouk-Gouden-Jas-Portret-Staand-scaled.jpg",900)+"')";
-const opP2=document.getElementById('opP2');if(opP2)opP2.style.backgroundImage="url('"+img("2026/05/Anouk-Soerendonk-2026-4-scaled.jpg",600)+"')";
-const opP3=document.getElementById('opP3');if(opP3)opP3.style.backgroundImage="url('"+img("2026/05/Anouk-Soerendonk-2026-2_2-scaled.jpg",600)+"')";
+// Over Anouk: 3 foto's
+const opP1=document.getElementById('opP1');if(opP1)opP1.style.backgroundImage="url('"+L("anouk-camera-goldenhour.jpg")+"')";
+const opP2=document.getElementById('opP2');if(opP2)opP2.style.backgroundImage="url('"+L("anouk-schilderen-papaver.jpg")+"')";
+const opP3=document.getElementById('opP3');if(opP3)opP3.style.backgroundImage="url('"+L("anouk-paikea-steiger.jpg")+"')";
 
 // PHOTO STRIPS — infinite auto-scroll (duplicate for seamless loop)
+// S1 = WordPress CDN client-foto's, S2 = lokale Anouk + natuur foto's gemengd met CDN
 const S1=["2024/07/Linda-op-de-Heide-2024-205-scaled.jpg","2025/08/Marga-Ochtend-Eifel-2025-45-scaled.jpg","2025/04/Yvonne-Duitsland-Waterval-25-scaled.jpg","2025/07/Annet-Zoer-2025-143-scaled.jpg","2025/08/Leijbra-Ochtend-2025-5-scaled.jpg","2024/07/Linda-Kasteel-2024-11-scaled.jpg","2025/08/Marga-Avond-Eifel-2025-15-scaled.jpg","2025/08/Leijbra-Avond-2025-177-scaled.jpg"];
-const S2=["2024/10/Anouk-Eifel-herfst-2024-scaled.jpg","2025/12/Anouk-Gouden-Jas-Portret-Staand-scaled.jpg","2024/12/Anouk-en-paikea-herfst-2024-scaled.jpg","2025/04/Yvonne-Duitsland-Waterval-47-scaled.jpg","2026/05/Anouk-Soerendonk-2026-4-scaled.jpg","2026/05/Anouk-Soerendonk-2026-2_2-scaled.jpg","2025/07/Annet-Zoer-2025-143-scaled.jpg","2024/07/Linda-op-de-Heide-2024-205-scaled.jpg"];
-function buildStrip(photos,el){
+function buildStrip(photos,el,isLocal){
   if(!el)return;
   [...photos,...photos].forEach(f=>{
     const d=document.createElement('div');d.className='si';
-    d.style.backgroundImage="url('"+img(f,580)+"')";
+    d.style.backgroundImage="url('"+(isLocal?L(f):img(f,580))+"')";
     const sh=document.createElement('div');sh.className='sh';d.appendChild(sh);
     el.appendChild(d);
   });
 }
-buildStrip(S1,document.getElementById('s1'));
-buildStrip(S2,document.getElementById('s2'));
+buildStrip(S1,document.getElementById('s1'),false);
+const S2LOCAL=["anouk-camera-goldenhour.jpg","anouk-schilderen-papaver.jpg","anouk-bos-boom.jpg","anouk-paikea-steiger.jpg","paikea-weide.jpg","anouk-camera-lachend.jpg","zonsondergang-heuvels.jpg","anouk-paikea-weide.jpg"];
+buildStrip(S2LOCAL,document.getElementById('s2'),true);
 
 // HERO KEN BURNS + PARALLAX — JS-driven for video feel
 const hFEl=document.getElementById('hF');
