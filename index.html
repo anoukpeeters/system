@@ -145,14 +145,12 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .pc::after{bottom:10px;right:10px;border-left:none;border-top:none}
 
 /* GALERIJ — rustige auto-scroll (geen kanteling/stagger), goede gezicht-crop bij staand */
-#strips{position:relative;z-index:10;background:var(--deep2);padding:90px 0 100px;overflow:hidden}
+#strips{position:relative;z-index:10;background:#fdfcf9;padding:90px 0 100px;overflow:hidden}
 #strips .swp{filter:grayscale(.85) blur(3px) brightness(.85);transition:filter 1.6s ease}
 #strips.dev .swp{filter:none}
 .stit{text-align:center;padding:0 5vw;margin-bottom:48px}
 .stit h2{font:200 clamp(24px,3.5vw,44px)/1.1 "Helvetica Neue";color:var(--td)}
 .stit h2 em{font-style:italic;color:var(--deep3)}
-#strips .stit h2{color:var(--tl)}
-#strips .stit h2 em{color:var(--goldB)}
 .swp{overflow:hidden;margin-bottom:16px}
 .swp:last-of-type{margin-bottom:0}
 .str{display:flex;gap:16px;width:max-content;will-change:transform;animation:sL 46s linear infinite}
@@ -276,23 +274,21 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
   max-width:560px;margin-left:auto;margin-right:auto}
 
 /* BLIK DETAIL */
-#blik{position:relative;z-index:10;background:#f7f3ec;padding:100px 8vw;overflow:hidden}
-#blik .inn{max-width:1040px;margin:0 auto;
-  display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:center}
-#blik .lt{position:relative;padding:28px 30px;border-radius:4px}
-#blik .lt::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:4px;
-  background:linear-gradient(135deg,rgba(255,252,246,.86),rgba(255,252,246,.62));
-  box-shadow:0 18px 44px rgba(26,54,24,.12)}
-#blik h2{font:200 clamp(26px,4vw,48px)/1.06 "Helvetica Neue";color:var(--td);margin-bottom:16px}
-#blik h2 em{font-style:italic;color:var(--gold)}
-#blik .lt p{font:300 17px/1.78 "Helvetica Neue";color:var(--md);opacity:.95;margin-bottom:11px}
-.bc{background:rgba(24,50,22,.9);border:1px solid rgba(200,160,60,.2);
-  border-radius:3px;padding:38px 36px;box-shadow:0 16px 48px rgba(0,0,0,.25)}
-.bc h3{font:200 clamp(20px,2.8vw,32px)/1.08 "Helvetica Neue";color:var(--tl);margin-bottom:12px}
-.bc h3 em{font-style:italic;color:var(--goldB)}
-.ck{font:300 14px/1.68 "Helvetica Neue";color:var(--ml);
+#blik{position:relative;z-index:10;min-height:680px;display:flex;align-items:center;
+  padding:80px 8vw;overflow:hidden}
+.bc{position:relative;z-index:2;max-width:460px;margin-left:auto;
+  background:linear-gradient(165deg,rgba(255,253,248,.92),rgba(255,253,248,.8));
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.6);border-radius:6px;
+  padding:46px 42px;box-shadow:0 36px 80px rgba(15,30,13,.32)}
+.bc .lbl{color:var(--gold)}
+.bc h2,.bc h3{font:200 clamp(26px,3.4vw,38px)/1.08 "Helvetica Neue";color:var(--td);margin-bottom:14px}
+.bc h2 em,.bc h3 em{font-style:italic;color:var(--gold)}
+.bc>p{font:300 16.5px/1.7 "Helvetica Neue";color:var(--md);margin-bottom:11px}
+.ck{font:300 14px/1.68 "Helvetica Neue";color:var(--deep3);
   margin-bottom:7px;display:flex;align-items:flex-start;gap:8px}
-.ck::before{content:"✓";color:var(--goldB);flex-shrink:0;margin-top:1px}
+.ck::before{content:"✓";color:var(--gold);flex-shrink:0;margin-top:1px}
+.bc .albl{color:var(--md)}
 
 /* GLINE */
 .gl{height:1px;margin:20px 0;background:linear-gradient(90deg,transparent,var(--gold) 22%,var(--goldB) 50%,var(--gold) 78%,transparent)}
@@ -456,9 +452,10 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
   text-transform:uppercase}
 
 /* ANOUK'S BLIK — donker bosinterieur sfeer */
-.blik-bg{position:absolute;inset:0;background-size:cover;background-position:center 30%;
-  opacity:.85;filter:saturate(1) brightness(.95);animation:bosPan 24s ease-in-out infinite}
-.blik-ov{position:absolute;inset:0;background:linear-gradient(115deg,rgba(31,62,28,.62) 0%,rgba(31,62,28,.3) 32%,rgba(247,243,236,.4) 55%,rgba(247,243,236,.88) 78%)}
+.blik-bg{position:absolute;inset:0;background-size:cover;background-position:center 26%;
+  opacity:1;filter:saturate(1.05) brightness(1);animation:bosPan 24s ease-in-out infinite}
+.blik-ov{position:absolute;inset:0;background:linear-gradient(100deg,rgba(20,42,18,.22) 0%,rgba(20,42,18,.05) 38%,transparent 60%),
+  linear-gradient(0deg,rgba(15,30,13,.3),transparent 35%)}
 .blik-sun{position:absolute;z-index:1;pointer-events:none;left:30%;top:38%;width:160px;height:160px;
   border-radius:50%;transform:translate(-50%,-50%);
   background:radial-gradient(circle,rgba(255,238,120,.6) 0%,rgba(255,210,50,.22) 45%,transparent 70%);
@@ -483,8 +480,10 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
 /* RESPONSIVE */
 @media(max-width:760px){
   .pgrid{grid-template-columns:1fr}.pc{aspect-ratio:4/3}
-  #natuur .inn,#blik .inn,#over .inn{grid-template-columns:1fr}
+  #natuur .inn,#over .inn{grid-template-columns:1fr}
   #natuur .oslide-frame{aspect-ratio:16/9}
+  #blik{padding:60px 6vw;min-height:560px}
+  .bc{max-width:100%;margin-left:0;padding:34px 28px}
   .bk,#rail{display:none}
   .boscpy blockquote{font-size:clamp(20px,5.5vw,34px)}
   #vineWrap,#butterfly,#camCursor{display:none}
@@ -687,34 +686,6 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
   </div>
 </section>
 
-<!-- ANOUK'S BLIK DETAIL -->
-<section id="blik">
-  <div class="blik-bg" id="blikBg"></div>
-  <div class="blik-ov"></div>
-  <div class="blik-sun"></div>
-  <div class="inn" style="position:relative;z-index:2">
-    <div class="lt">
-      <div class="lbl">Start hier</div>
-      <h2>Begin met<br>Anouk's <em>Blik</em></h2>
-      <p>Ik werp vrijblijvend een blik op het totale plaatje van jouw zichtbaarheid — een soort brand scan.</p>
-      <p>In 20 minuten vertel ik je precies waar voor jou winst te behalen is.</p>
-    </div>
-    <div class="bc rv">
-      <div class="lbl">Gratis · 20 min</div>
-      <h3>Anouk's <em>Blik</em></h3>
-      <div class="gl"></div>
-      <div class="ck">Eerlijke blik op je socials en website</div>
-      <div class="ck">Duidelijkheid over welk pad bij jou past</div>
-      <div class="ck">Geen verplichtingen</div>
-      <a href="#" class="btn btg" style="display:block;text-align:center;margin-top:22px">Plan je gratis gesprek →</a>
-      <div class="avl" style="margin-top:14px;justify-content:center">
-        <div class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></div>
-        <span class="albl">Één plek nog beschikbaar deze week</span>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- OVER ANOUK -->
 <section id="over">
   <div class="inn">
@@ -750,6 +721,28 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
     <h2>Zij bewandelden het <em>pad al</em></h2>
   </div>
   <div class="pv-grid" id="pvGrid" style="position:relative;z-index:2"></div>
+</section>
+
+<!-- ANOUK'S BLIK DETAIL -->
+<section id="blik">
+  <div class="blik-bg" id="blikBg"></div>
+  <div class="blik-ov"></div>
+  <div class="blik-sun"></div>
+  <div class="bc rv">
+    <div class="lbl">Start hier · Gratis · 20 min</div>
+    <h2>Begin met<br>Anouk's <em>Blik</em></h2>
+    <p>Ik werp vrijblijvend een blik op het totale plaatje van jouw zichtbaarheid — een soort brand scan.</p>
+    <p>In 20 minuten vertel ik je precies waar voor jou winst te behalen is.</p>
+    <div class="gl"></div>
+    <div class="ck">Eerlijke blik op je socials en website</div>
+    <div class="ck">Duidelijkheid over welk pad bij jou past</div>
+    <div class="ck">Geen verplichtingen</div>
+    <a href="#" class="btn btg" style="display:block;text-align:center;margin-top:22px">Plan je gratis gesprek →</a>
+    <div class="avl" style="margin-top:14px;justify-content:center">
+      <div class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></div>
+      <span class="albl">Één plek nog beschikbaar deze week</span>
+    </div>
+  </div>
 </section>
 
 <footer>
@@ -997,7 +990,7 @@ if(sndBtn&&bosAudio){
 }
 
 // Rail nav
-const RS=[{id:'hero',n:'Start'},{id:'pad',n:'Pad'},{id:'strips',n:'Galerij'},{id:'natuur',n:'Natuur'},{id:'bostekst',n:'Bos'},{id:'blik',n:'Blik'},{id:'over',n:'Anouk'},{id:'pad-verhalen',n:'Ervaringen'}];
+const RS=[{id:'hero',n:'Start'},{id:'pad',n:'Pad'},{id:'strips',n:'Galerij'},{id:'natuur',n:'Natuur'},{id:'bostekst',n:'Bos'},{id:'over',n:'Anouk'},{id:'pad-verhalen',n:'Ervaringen'},{id:'blik',n:'Blik'}];
 const railEl=document.getElementById('rail');
 RS.forEach(r=>{
   const a=document.createElement('a');a.href='#'+r.id;
