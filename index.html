@@ -387,19 +387,22 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
   box-shadow:0 22px 44px rgba(0,0,0,.4);z-index:2}
 
 /* ANOUK'S BLIK — donker bosinterieur sfeer */
-.blik-bg{position:absolute;inset:0;background-size:cover;background-position:center;
-  opacity:.24;filter:saturate(.65) brightness(.55)}
-.blik-ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,38,16,.86),rgba(12,26,10,.95))}
+.blik-bg{position:absolute;inset:0;background-size:cover;background-position:center 35%;
+  opacity:.4;filter:saturate(.8) brightness(.7);animation:bosPan 24s ease-in-out infinite}
+.blik-ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,38,16,.6),rgba(12,26,10,.82))}
+.blik-sun{position:absolute;z-index:1;pointer-events:none;left:30%;top:38%;width:160px;height:160px;
+  border-radius:50%;transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(255,238,120,.6) 0%,rgba(255,210,50,.22) 45%,transparent 70%);
+  mix-blend-mode:screen;animation:sunP 3.8s ease-in-out infinite}
 
 /* MAAN + SEIZOEN IN FOOTER */
 .footer-extra{display:flex;align-items:center;gap:12px}
-.moon{width:30px;height:30px;border-radius:50%;position:relative;flex-shrink:0;overflow:hidden;
-  background:radial-gradient(circle at 38% 35%,rgba(245,240,232,.95),rgba(200,200,190,.5) 60%,rgba(120,120,110,.3) 100%);
-  box-shadow:0 0 14px rgba(232,201,106,.45),0 0 3px rgba(255,255,255,.6) inset;
+.moon{width:46px;height:46px;border-radius:50%;position:relative;flex-shrink:0;
+  background:radial-gradient(circle at 36% 34%,#fff6d8 0%,#f3dd9a 38%,#c8a03c 76%,#8a6018 100%);
+  box-shadow:0 0 20px rgba(232,201,106,.55),0 0 8px rgba(255,245,200,.5) inset;
   animation:moonGlow 5s ease-in-out infinite}
-@keyframes moonGlow{0%,100%{box-shadow:0 0 10px rgba(232,201,106,.35),0 0 3px rgba(255,255,255,.5) inset}
-  50%{box-shadow:0 0 18px rgba(232,201,106,.55),0 0 4px rgba(255,255,255,.7) inset}}
-.moon .shade{position:absolute;inset:-2px;border-radius:50%;background:rgba(8,18,6,.88)}
+@keyframes moonGlow{0%,100%{box-shadow:0 0 16px rgba(232,201,106,.45),0 0 6px rgba(255,245,200,.4) inset}
+  50%{box-shadow:0 0 28px rgba(232,201,106,.7),0 0 10px rgba(255,245,200,.6) inset}}
 .season{font:600 9.5px/1 "SF Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--ml)}
 
 /* RESPONSIVE */
@@ -585,6 +588,7 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
 <section id="blik">
   <div class="blik-bg" id="blikBg"></div>
   <div class="blik-ov"></div>
+  <div class="blik-sun"></div>
   <div class="inn" style="position:relative;z-index:2">
     <div class="lt">
       <div class="lbl">Start hier</div>
@@ -650,7 +654,7 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
       <a href="mailto:info@anoukpeetersfotografie.nl">info@anoukpeetersfotografie.nl</a>
     </div>
     <div class="footer-extra">
-      <div class="moon"><div class="shade" id="moonShade"></div></div>
+      <div class="moon"></div>
       <span class="season" id="seasonTag"></span>
     </div>
     <div class="fc">Anouk Peeters Fotografie · Intuïtief branding-expert &amp; fotograaf<br>Personal branding · Fotografie · Natuur · Eifel &amp; Nederland · © Anouk Peeters</div>
@@ -668,9 +672,14 @@ const img=(p,w)=>CDN+p+"?w="+(w||1100)+"&ssl=1";
 // Lokale foto's (uit 'foto's website' map op bureaublad — Natuur + Anouk)
 const L=p=>"fotos/"+p;
 
-// Kies je pad
-const PADLOCAL=["anouk-camera-lachend.jpg","anouk-bos-boom.jpg","paikea-weide.jpg","anouk-paikea-weide.jpg"];
-PADLOCAL.forEach((u,i)=>{const e=document.getElementById('pb'+(i+1));if(e)e.style.backgroundImage="url('"+L(u)+"')";});
+// Kies je pad — mix van klanten + natuur, niet alleen Anouk
+const PAD=[
+  img("2023/05/Floor-Geldrop-Business-1-scaled.jpg",900),   // Branding — klant
+  img("2024/02/Viola-2024-105-scaled.jpg",900),              // Fotografie — klant
+  L("waterval-eifel.jpg"),                                    // Natuur voor je ruimte
+  img("2025/11/Livedag-oktober-2025-scaled.jpg",900),        // Live dag — echte livedag-foto
+];
+PAD.forEach((u,i)=>{const e=document.getElementById('pb'+(i+1));if(e)e.style.backgroundImage="url('"+u+"')";});
 
 // Natuur sectie — waterval
 const nph=document.getElementById('nph');if(nph)nph.style.backgroundImage="url('"+L("waterval-eifel.jpg")+"')";
@@ -685,20 +694,31 @@ const opP2=document.getElementById('opP2');if(opP2)opP2.style.backgroundImage="u
 const opP3=document.getElementById('opP3');if(opP3)opP3.style.backgroundImage="url('"+L("anouk-paikea-steiger.jpg")+"')";
 
 // PHOTO STRIPS — infinite auto-scroll (duplicate for seamless loop)
-// S1 = WordPress CDN client-foto's, S2 = lokale Anouk + natuur foto's gemengd met CDN
-const S1=["2024/07/Linda-op-de-Heide-2024-205-scaled.jpg","2025/08/Marga-Ochtend-Eifel-2025-45-scaled.jpg","2025/04/Yvonne-Duitsland-Waterval-25-scaled.jpg","2025/07/Annet-Zoer-2025-143-scaled.jpg","2025/08/Leijbra-Ochtend-2025-5-scaled.jpg","2024/07/Linda-Kasteel-2024-11-scaled.jpg","2025/08/Marga-Avond-Eifel-2025-15-scaled.jpg","2025/08/Leijbra-Avond-2025-177-scaled.jpg"];
-function buildStrip(photos,el,isLocal){
+// Vooral klant-foto's, met natuur en een paar Anouk-momenten als accent (niet de hoofdmoot)
+function buildStrip(urls,el){
   if(!el)return;
-  [...photos,...photos].forEach(f=>{
+  [...urls,...urls].forEach(u=>{
     const d=document.createElement('div');d.className='si';
-    d.style.backgroundImage="url('"+(isLocal?L(f):img(f,580))+"')";
+    d.style.backgroundImage="url('"+u+"')";
     const sh=document.createElement('div');sh.className='sh';d.appendChild(sh);
     el.appendChild(d);
   });
 }
-buildStrip(S1,document.getElementById('s1'),false);
-const S2LOCAL=["anouk-camera-goldenhour.jpg","anouk-schilderen-papaver.jpg","anouk-bos-boom.jpg","anouk-paikea-steiger.jpg","paikea-weide.jpg","anouk-camera-lachend.jpg","zonsondergang-heuvels.jpg","anouk-paikea-weide.jpg"];
-buildStrip(S2LOCAL,document.getElementById('s2'),true);
+const S1=["2024/07/Linda-op-de-Heide-2024-205-scaled.jpg","2025/08/Marga-Ochtend-Eifel-2025-45-scaled.jpg","2025/04/Yvonne-Duitsland-Waterval-25-scaled.jpg","2025/07/Annet-Zoer-2025-143-scaled.jpg","2025/08/Leijbra-Ochtend-2025-5-scaled.jpg","2024/07/Linda-Kasteel-2024-11-scaled.jpg","2025/08/Marga-Avond-Eifel-2025-15-scaled.jpg","2025/08/Leijbra-Avond-2025-177-scaled.jpg"].map(f=>img(f,580));
+buildStrip(S1,document.getElementById('s1'));
+const S2=[
+  img("2023/05/Floor-Geldrop-Business-1-scaled.jpg",580),
+  img("2024/07/Marinka-109-scaled.jpg",580),
+  L("zonsondergang-heuvels.jpg"),
+  img("2025/12/Monique-Timmerfabriek-2025-233-scaled.jpg",580),
+  img("2023/05/Silvia-53-scaled.jpg",580),
+  L("paikea-weide.jpg"),
+  img("2024/03/Maike-Personal-Brand-2024-9-scaled.jpg",580),
+  img("2024/02/Judith-Art-67-scaled.jpg",580),
+  L("anouk-camera-goldenhour.jpg"),
+  img("2022/05/Roos-Akkerzicht-2022-91-scaled.jpg",580),
+];
+buildStrip(S2,document.getElementById('s2'));
 
 // HERO KEN BURNS + PARALLAX — JS-driven for video feel
 const hFEl=document.getElementById('hF');
@@ -773,9 +793,9 @@ const rD=[...railEl.children];
 function updR(){const vh=innerHeight*.5;let ac=0;RS.forEach((r,i)=>{const s=document.getElementById(r.id);if(s&&s.getBoundingClientRect().top<vh)ac=i;});rD.forEach((d,i)=>d.classList.toggle('on',i===ac));const ch=document.getElementById('ch');if(ch)ch.textContent=RS[ac].n.toUpperCase();}
 addEventListener('scroll',updR,{passive:true});
 
-// Blik sectie bos-sfeer
+// Blik sectie bos-sfeer — natuur-foto #3 (zon door de boom), zelfde bewegende glinster-effect
 const blikBg=document.getElementById('blikBg');
-if(blikBg)blikBg.style.backgroundImage="url('"+L("anouk-bos-boom.jpg")+"')";
+if(blikBg)blikBg.style.backgroundImage="url('"+L("zonsondergang-heuvels.jpg")+"')";
 
 // BOTANISCHE SCROLLLIJN — groeit mee terwijl je scrolt
 const vineFill=document.getElementById('vineFill');
@@ -861,20 +881,7 @@ if(matchMedia('(hover:hover) and (pointer:fine)').matches){
   }
 }
 
-// MAAN + SEIZOEN in footer
-function moonPhaseFrac(d){
-  const lp=2551443,ref=new Date(Date.UTC(2000,0,6,18,14,0)).getTime()/1000;
-  const ph=(((d.getTime()/1000)-ref)%lp+lp)%lp;
-  return ph/lp;
-}
-const moonShade=document.getElementById('moonShade');
-if(moonShade){
-  const frac=moonPhaseFrac(new Date());
-  const illum=(1-Math.cos(2*Math.PI*frac))/2;
-  const waxing=frac<0.5;
-  const off=(1-illum)*30*(waxing?1:-1);
-  moonShade.style.transform="translateX("+off+"px)";
-}
+// SEIZOEN in footer
 const seasonTag=document.getElementById('seasonTag');
 if(seasonTag){
   const mo=new Date().getMonth();
