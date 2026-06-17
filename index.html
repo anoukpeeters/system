@@ -395,6 +395,26 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
 .pc.in .pbg{filter:none}
 .nph{filter:grayscale(.8) blur(3px) brightness(.82);transition:filter 1.2s ease,opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
 .nph.in{filter:none}
+.pv-photo{filter:grayscale(.85) blur(2.5px) brightness(.8);transition:filter 1.3s ease}
+#pad-verhalen.dev .pv-photo{filter:none}
+
+/* ERVARINGEN — pad-thema met natuur en camera-accent */
+#pad-verhalen{position:relative;z-index:10;background:var(--deep2);padding:100px 0 110px;overflow:hidden}
+.pv-bg{position:absolute;inset:0;background-size:cover;background-position:center 30%;
+  opacity:.28;filter:saturate(.75) brightness(.8);animation:bosPan 26s ease-in-out infinite}
+.pv-ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,54,24,.55),rgba(20,40,18,.88))}
+.pv-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:34px;max-width:1100px;
+  margin:0 auto;padding:0 5vw}
+.pv-card{width:250px;text-align:center;position:relative}
+.pv-photo{width:88px;height:88px;border-radius:50%;margin:0 auto 18px;background-size:cover;
+  background-position:center;position:relative;border:2px solid rgba(200,160,60,.55);
+  box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.pv-photo::after{content:"";position:absolute;inset:-7px;border-radius:50%;
+  border:1px dashed rgba(200,160,60,.35)}
+.pv-icon{width:22px;height:22px;margin:0 auto 14px;color:var(--goldB);opacity:.85}
+.pv-quote{font:italic 300 15.5px/1.65 Georgia,serif;color:var(--tl);opacity:.92;margin-bottom:14px}
+.pv-name{font:600 12px/1 "SF Mono",monospace;letter-spacing:.08em;color:var(--goldB);
+  text-transform:uppercase}
 
 /* ANOUK'S BLIK — donker bosinterieur sfeer */
 .blik-bg{position:absolute;inset:0;background-size:cover;background-position:center 35%;
@@ -574,6 +594,17 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
   </div>
 </section>
 
+<!-- ERVARINGEN -->
+<section id="pad-verhalen">
+  <div class="pv-bg" id="pvBg"></div>
+  <div class="pv-ov"></div>
+  <div class="stit rv" style="position:relative;z-index:2">
+    <div class="lbl c">Ervaringen</div>
+    <h2>Zij bewandelden het <em>pad al</em></h2>
+  </div>
+  <div class="pv-grid" id="pvGrid" style="position:relative;z-index:2"></div>
+</section>
+
 <!-- NATUUR FOTOGRAFIE -->
 <section id="natuur">
   <div class="inn">
@@ -732,6 +763,41 @@ const GALLERY=[
 ];
 buildGallery(GALLERY,document.getElementById('gwrap'));
 
+// ERVARINGEN — echte reviews (Google/Trustoo), geen familieshoot-ervaringen
+const pvBg=document.getElementById('pvBg');
+if(pvBg)pvBg.style.backgroundImage="url('"+L("paikea-weide.jpg")+"')";
+const PV=[
+  {photo:img("2025/08/Leijbra-Avond-2025-177-scaled.jpg",300),name:"Leijbra Stolk",
+   quote:"Ik heb een hele bijzondere en fijne fotoshoot gehad in de Eifel in Duitsland met een prachtig resultaat! Mooie foto's voor op mijn website."},
+  {photo:img("2025/04/Yvonne-Duitsland-Waterval-25-scaled.jpg",300),name:"Yvonne Huijs",
+   quote:"Anouk is echt GOUD! Ze weet precies hoe ze je in de juiste energie kan krijgen en de foto's zijn fantastisch."},
+  {photo:img("2025/12/Ingrid-Zee-2025-151-scaled.jpg",300),name:"Ingrid Zellenrath",
+   quote:"Ik ben ontzettend blij met de foto's die Anouk voor mijn website en social media heeft gemaakt."},
+  {photo:img("2024/10/Ilse-Natuur-2024-9-scaled.jpg",300),name:"Ilse Verrijt",
+   quote:"Anouk laat je echt van je beste kant zien. Geeft ook advies en denkt mee over de beelden voor je content."},
+];
+const pvGrid=document.getElementById('pvGrid');
+if(pvGrid)PV.forEach(p=>{
+  const c=document.createElement('div');c.className='pv-card';
+  c.innerHTML=
+    '<svg class="pv-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">'+
+      '<circle cx="20" cy="20" r="17" fill="none" stroke="currentColor" stroke-width="1.4"/>'+
+      '<path d="M20 6 L26 16 L20 20Z" fill="currentColor"/><path d="M34 20 L24 26 L20 20Z" fill="currentColor"/>'+
+      '<path d="M20 34 L14 24 L20 20Z" fill="currentColor"/><path d="M6 20 L16 14 L20 20Z" fill="currentColor"/>'+
+    '</svg>'+
+    '<div class="pv-photo" style="background-image:url(\''+p.photo+'\')"></div>'+
+    '<div class="pv-quote">&ldquo;'+p.quote+'&rdquo;</div>'+
+    '<div class="pv-name">'+p.name+'</div>';
+  pvGrid.appendChild(c);
+});
+const pvEl=document.getElementById('pad-verhalen');
+if(pvEl){
+  const pvIO=new IntersectionObserver(es=>es.forEach(en=>{
+    if(en.isIntersecting){pvEl.classList.add('dev');pvIO.disconnect();}
+  }),{threshold:.2});
+  pvIO.observe(pvEl);
+}
+
 // OVER ANOUK — slideshow rotatie
 (function(){
   const imgs=[...document.querySelectorAll('#oslide .oslide-img')];
@@ -811,7 +877,7 @@ if(stripsEl){
 }
 
 // Rail nav
-const RS=[{id:'hero',n:'Start'},{id:'pad',n:'Pad'},{id:'strips',n:'Galerij'},{id:'natuur',n:'Natuur'},{id:'bostekst',n:'Bos'},{id:'blik',n:'Blik'},{id:'over',n:'Anouk'}];
+const RS=[{id:'hero',n:'Start'},{id:'pad',n:'Pad'},{id:'strips',n:'Galerij'},{id:'pad-verhalen',n:'Ervaringen'},{id:'natuur',n:'Natuur'},{id:'bostekst',n:'Bos'},{id:'blik',n:'Blik'},{id:'over',n:'Anouk'}];
 const railEl=document.getElementById('rail');
 RS.forEach(r=>{
   const a=document.createElement('a');a.href='#'+r.id;
@@ -902,7 +968,7 @@ if(matchMedia('(hover:hover) and (pointer:fine)').matches){
         o.start(t0);o.stop(t0+.05);
       }catch(e){}
     }
-    const hoverSel='.pc,.si,.oslide-frame,.nph,.gc,.bc';
+    const hoverSel='.pc,.si,.oslide-frame,.nph,.gc,.bc,.pv-photo';
     document.addEventListener('mouseover',e=>{
       if(e.target.closest(hoverSel)){
         cc.classList.add('shut');shutterSound();
