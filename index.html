@@ -237,6 +237,15 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .albl{font:600 9.5px/1.4 "SF Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--ml)}
 
 /* ANIMATED FOREST QUOTE */
+/* DOORKIJK — transparant, het vaste 3D-bos schemert hier even door */
+#forestPause{position:relative;z-index:10;min-height:46vh;background:transparent;
+  display:flex;align-items:center;justify-content:center;text-align:center;padding:0 8vw}
+.fp-txt{font:300 italic clamp(18px,2.6vw,26px)/1.4 Georgia,serif;color:var(--goldB);
+  text-shadow:0 2px 16px rgba(0,0,0,.55);letter-spacing:.01em}
+.fp-dots{display:inline-block;animation:fpBlink 2.4s ease-in-out infinite}
+@keyframes fpBlink{0%,100%{opacity:.4}50%{opacity:1}}
+@media(max-width:760px){#forestPause{min-height:30vh}}
+
 #bostekst{position:relative;z-index:10;height:100vh;min-height:600px;
   overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
 .bosbg{position:absolute;inset:0;background-size:cover;background-position:center 30%;
@@ -658,6 +667,11 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
       <a href="#blik" class="btn btg rv" style="margin-top:20px;display:inline-block">Plan een gesprek over prints</a>
     </div>
   </div>
+</section>
+
+<!-- DOORKIJK — het 3D-bos wordt hier weer even zichtbaar -->
+<section id="forestPause">
+  <div class="fp-txt rv">Verder het bos in<span class="fp-dots">...</span></div>
 </section>
 
 <!-- ANIMATED FOREST QUOTE (zonlicht door bomen) -->
