@@ -337,6 +337,22 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
   color:var(--ml);opacity:0;transition:.2s;pointer-events:none}
 #rail a:hover span{opacity:.8}
 
+/* GELUID — opt-in natuurgeluid (vogels + bries), nooit autoplay */
+#sndBtn{position:fixed;left:18px;bottom:18px;z-index:20;width:46px;height:46px;border-radius:50%;
+  background:rgba(26,54,24,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(200,160,60,.4);cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:.35s cubic-bezier(.2,.7,.2,1);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+#sndBtn:hover{border-color:var(--goldB);box-shadow:0 10px 28px rgba(200,160,60,.3)}
+#sndBtn svg{width:20px;height:20px;color:var(--goldB)}
+#sndBtn .w2,#sndBtn .w3{transition:opacity .3s}
+#sndBtn:not(.on) .w1,#sndBtn:not(.on) .w2,#sndBtn:not(.on) .w3{opacity:.25}
+#sndBtn.on .w2{animation:sndPulse 1.6s ease-in-out infinite}
+#sndBtn.on .w3{animation:sndPulse 1.6s ease-in-out infinite .25s}
+@keyframes sndPulse{0%,100%{opacity:.4}50%{opacity:1}}
+#sndBtn .xmark{display:none}
+#sndBtn:not(.on) .xmark{display:block}
+@media(max-width:640px){#sndBtn{left:14px;bottom:14px;width:42px;height:42px}}
+
 /* HUD */
 #hud{position:fixed;inset:0;z-index:8;pointer-events:none;
   font:600 10px/1.2 "SF Mono",ui-monospace,monospace;letter-spacing:.1em;
@@ -508,6 +524,19 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
 </div>
 
 <nav id="rail"></nav>
+
+<button id="sndBtn" aria-label="Natuurgeluid aan/uit" title="Natuurgeluid aan/uit">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path class="w1" d="M3 9v6h4l5 5V4L7 9H3Z" fill="currentColor"/>
+    <path class="w2" d="M16 8.5c1 .9 1.6 2.1 1.6 3.5s-.6 2.6-1.6 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+    <path class="w3" d="M18.5 5.5c1.9 1.7 3 4 3 6.5s-1.1 4.8-3 6.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+    <path class="xmark" d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  </svg>
+</button>
+<audio id="bosAudio" loop preload="none">
+  <source src="audio/bos-ambient.m4a" type="audio/mp4">
+  <source src="audio/bos-ambient.ogg" type="audio/ogg">
+</audio>
 
 <header id="hdr">
   <button class="lbtn" id="logoBtn">
@@ -894,6 +923,16 @@ if(stripsEl){
     if(en.isIntersecting){stripsEl.classList.add('dev');stripIO.disconnect();}
   }),{threshold:.15});
   stripIO.observe(stripsEl);
+}
+
+// GELUID — opt-in, nooit autoplay (browserbeleid + UX)
+const sndBtn=document.getElementById('sndBtn');
+const bosAudio=document.getElementById('bosAudio');
+if(sndBtn&&bosAudio){
+  sndBtn.addEventListener('click',()=>{
+    if(bosAudio.paused){bosAudio.volume=.38;bosAudio.play().catch(()=>{});sndBtn.classList.add('on');}
+    else{bosAudio.pause();sndBtn.classList.remove('on');}
+  });
 }
 
 // Rail nav
