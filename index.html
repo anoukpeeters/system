@@ -128,12 +128,16 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .pc:hover .pov{background:linear-gradient(155deg,rgba(8,18,6,.36) 0%,rgba(8,18,6,.16) 50%,rgba(8,18,6,.44) 100%)}
 .pi{position:relative;z-index:2;padding:24px 26px;height:100%;
   display:flex;flex-direction:column;justify-content:flex-end}
+.pi::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,transparent 28%,rgba(5,12,4,.86) 100%)}
 .pk{font:700 9.5px/1 "SF Mono",monospace;letter-spacing:.28em;text-transform:uppercase;
-  color:var(--goldB);margin-bottom:7px}
-.pc h3{font:200 clamp(18px,2.8vw,30px)/1.1 "Helvetica Neue";color:var(--cream);margin-bottom:6px}
-.pc p{font:300 13px/1.56 "Helvetica Neue";color:rgba(245,240,232,.6);margin-bottom:12px;max-width:240px}
+  color:var(--goldB);margin-bottom:7px;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.pc h3{font:200 clamp(18px,2.8vw,30px)/1.1 "Helvetica Neue";color:var(--cream);margin-bottom:6px;
+  text-shadow:0 2px 12px rgba(0,0,0,.55)}
+.pc p{font:300 13px/1.56 "Helvetica Neue";color:rgba(245,240,232,.78);margin-bottom:12px;max-width:240px;
+  text-shadow:0 1px 8px rgba(0,0,0,.5)}
 .arr{font:700 10px/1 "SF Mono",monospace;letter-spacing:.14em;color:var(--goldB);
-  display:inline-flex;align-items:center;gap:6px;transition:gap .25s}
+  display:inline-flex;align-items:center;gap:6px;transition:gap .25s;text-shadow:0 1px 8px rgba(0,0,0,.5)}
 .pc:hover .arr{gap:12px}
 .pc::before,.pc::after{content:"";position:absolute;width:18px;height:18px;
   border:1px solid var(--goldS);z-index:3;opacity:.7}
@@ -199,19 +203,19 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .od.on{background:var(--gold);box-shadow:0 0 6px rgba(200,160,60,.5)}
 
 /* NATUUR */
-#natuur{position:relative;z-index:10;background:var(--deep);padding:100px 5vw}
+#natuur{position:relative;z-index:10;background:var(--sage);padding:100px 5vw}
 #natuur .inn{max-width:1040px;margin:0 auto;
   display:grid;grid-template-columns:1.15fr 1fr;gap:70px;align-items:center}
 .nph{aspect-ratio:2/3;background-size:cover;background-position:center;border-radius:3px;
-  box-shadow:0 24px 60px rgba(0,0,0,.42);position:relative}
+  box-shadow:0 24px 60px rgba(26,54,24,.25);position:relative}
 .nph::before,.nph::after{content:"";position:absolute;width:24px;height:24px;border:1.5px solid var(--gold);z-index:2}
 .nph::before{top:12px;left:12px;border-right:none;border-bottom:none}
 .nph::after{bottom:12px;right:12px;border-left:none;border-top:none}
-#natuur h2{font:200 clamp(26px,4vw,50px)/1.06 "Helvetica Neue";color:var(--tl);margin-bottom:16px}
-#natuur h2 em{font-style:italic;color:var(--goldB)}
+#natuur h2{font:200 clamp(26px,4vw,50px)/1.06 "Helvetica Neue";color:var(--td);margin-bottom:16px}
+#natuur h2 em{font-style:italic;color:var(--gold)}
 #natuur blockquote{font:300 italic 17px/1.62 "Helvetica Neue";
-  color:var(--goldS);border-left:2px solid var(--gold);padding-left:15px;margin-bottom:16px}
-#natuur p{font:300 16px/1.78 "Helvetica Neue";color:var(--ml);margin-bottom:11px}
+  color:var(--deep3);border-left:2px solid var(--gold);padding-left:15px;margin-bottom:16px}
+#natuur p{font:300 16px/1.78 "Helvetica Neue";color:var(--md);margin-bottom:11px}
 
 /* (blikpanel verwijderd) */
 .gc{max-width:460px;padding:38px 40px;border-radius:3px;
@@ -260,8 +264,11 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
   animation:rayA 5.5s ease-in-out infinite;mix-blend-mode:overlay}
 @keyframes rayA{0%,100%{opacity:.35}50%{opacity:1}}
 .bosov{position:absolute;inset:0;z-index:3;
-  background:linear-gradient(180deg,rgba(8,18,6,.45) 0%,rgba(8,18,6,.18) 35%,rgba(8,18,6,.3) 68%,rgba(6,14,4,.82) 100%)}
+  background:linear-gradient(180deg,rgba(8,18,6,.5) 0%,rgba(8,18,6,.3) 35%,rgba(8,18,6,.42) 68%,rgba(6,14,4,.84) 100%)}
 .boscpy{position:relative;z-index:4;max-width:760px;padding:0 8vw}
+.boscpy::before{content:"";position:absolute;z-index:-1;left:50%;top:50%;
+  width:150%;height:180%;transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(ellipse,rgba(5,12,4,.74) 0%,rgba(5,12,4,.42) 50%,transparent 78%)}
 .boscpy blockquote{font:200 italic clamp(24px,4.5vw,58px)/1.22 "Helvetica Neue";
   color:var(--cream);margin-bottom:22px;text-shadow:0 2px 22px rgba(0,0,0,.5)}
 .boscpy blockquote em{font-style:italic;color:var(--goldB)}
@@ -270,12 +277,15 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
   max-width:560px;margin-left:auto;margin-right:auto}
 
 /* BLIK DETAIL */
-#blik{position:relative;z-index:10;background:var(--deep2);padding:100px 8vw;overflow:hidden}
+#blik{position:relative;z-index:10;background:var(--deep3);padding:100px 8vw;overflow:hidden}
 #blik .inn{max-width:1040px;margin:0 auto;
   display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:center}
+#blik .lt{position:relative;padding:28px 30px;border-radius:4px}
+#blik .lt::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:4px;
+  background:linear-gradient(135deg,rgba(20,42,18,.55),rgba(20,42,18,.32))}
 #blik h2{font:200 clamp(26px,4vw,48px)/1.06 "Helvetica Neue";color:var(--tl);margin-bottom:16px}
 #blik h2 em{font-style:italic;color:var(--goldB)}
-#blik .lt p{font:300 17px/1.78 "Helvetica Neue";color:var(--ml);margin-bottom:11px}
+#blik .lt p{font:300 17px/1.78 "Helvetica Neue";color:var(--tl);opacity:.85;margin-bottom:11px}
 .bc{background:rgba(24,50,22,.9);border:1px solid rgba(200,160,60,.2);
   border-radius:3px;padding:38px 36px;box-shadow:0 16px 48px rgba(0,0,0,.25)}
 .bc h3{font:200 clamp(20px,2.8vw,32px)/1.08 "Helvetica Neue";color:var(--tl);margin-bottom:12px}
@@ -423,9 +433,9 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
   text-transform:uppercase}
 
 /* ANOUK'S BLIK — donker bosinterieur sfeer */
-.blik-bg{position:absolute;inset:0;background-size:cover;background-position:center 35%;
-  opacity:.4;filter:saturate(.8) brightness(.7);animation:bosPan 24s ease-in-out infinite}
-.blik-ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,38,16,.6),rgba(12,26,10,.82))}
+.blik-bg{position:absolute;inset:0;background-size:cover;background-position:center 30%;
+  opacity:.62;filter:saturate(.9) brightness(.88);animation:bosPan 24s ease-in-out infinite}
+.blik-ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(38,72,34,.38),rgba(28,56,26,.6))}
 .blik-sun{position:absolute;z-index:1;pointer-events:none;left:30%;top:38%;width:160px;height:160px;
   border-radius:50%;transform:translate(-50%,-50%);
   background:radial-gradient(circle,rgba(255,238,120,.6) 0%,rgba(255,210,50,.22) 45%,transparent 70%);
@@ -775,7 +785,7 @@ buildStrip(G2,document.getElementById('s2'));
 
 // ERVARINGEN — echte reviews (Google/Trustoo), geen familieshoot-ervaringen
 const pvBg=document.getElementById('pvBg');
-if(pvBg)pvBg.style.backgroundImage="url('"+L("paikea-weide.jpg")+"')";
+if(pvBg)pvBg.style.backgroundImage="url('"+L("houten-brug-detail.jpg")+"')";
 const PV=[
   {photo:img("2025/08/Leijbra-Avond-2025-177-scaled.jpg",300),name:"Leijbra Stolk",
    quote:"Ik heb een hele bijzondere en fijne fotoshoot gehad in de Eifel in Duitsland met een prachtig resultaat! Mooie foto's voor op mijn website."},
@@ -901,7 +911,7 @@ addEventListener('scroll',updR,{passive:true});
 
 // Blik sectie bos-sfeer — natuur-foto #3 (zon door de boom), zelfde bewegende glinster-effect
 const blikBg=document.getElementById('blikBg');
-if(blikBg)blikBg.style.backgroundImage="url('"+L("zonsondergang-heuvels.jpg")+"')";
+if(blikBg)blikBg.style.backgroundImage="url('"+L("anouk-camera-goldenhour.jpg")+"')";
 
 // BOTANISCHE SCROLLLIJN — groeit mee terwijl je scrolt
 const vineFill=document.getElementById('vineFill');
