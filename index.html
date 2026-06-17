@@ -197,6 +197,7 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .oslide-frame::after{bottom:12px;right:12px;border-left:none;border-top:none}
 .oslide-img{position:absolute;inset:0;background-size:cover;background-position:50% 20%;
   opacity:0;transition:opacity 1.3s ease,transform 6s ease}
+#opP3{background-position:28% 25%}
 .oslide-img.active{opacity:1;transform:scale(1.05)}
 .oslide-dots{display:flex;gap:7px;justify-content:center;margin-top:14px}
 .od{width:7px;height:7px;border-radius:50%;background:rgba(44,82,41,.25);transition:.3s;cursor:pointer}
@@ -760,7 +761,7 @@ const L=p=>"fotos/"+p;
 
 // Kies je pad — mix van klanten + natuur, allemaal liggend zodat ze passend in beeld komen
 const PAD=[
-  L("anouk-paikea-steiger.jpg"),                                  // Branding — Anouk en Paikea, uitkijkend over de natuur
+  L("anouk-camera-lachend.jpg"),                                  // Branding — Anouk in het pak, professioneel
   img("2024/05/Gertina-Zee-2024-73-scaled.jpg",900),              // Fotografie — klant, liggend
   L("zonsondergang-heuvels.jpg"),                                 // Natuur voor je ruimte — liggend
   L("smartphone-groep-natuur.jpg"),                               // Live dag — smartphone + duo in de natuur
@@ -792,7 +793,7 @@ const bosBg=document.getElementById('bosBg');
 if(bosBg)bosBg.style.backgroundImage="url('"+L("bos-zonnestraal.jpg")+"')";
 
 // Over Anouk: 3 foto's
-const opP1=document.getElementById('opP1');if(opP1)opP1.style.backgroundImage="url('"+L("anouk-camera-lachend.jpg")+"')";
+const opP1=document.getElementById('opP1');if(opP1)opP1.style.backgroundImage="url('"+L("anouk-paikea-steiger.jpg")+"')";
 const opP2=document.getElementById('opP2');if(opP2)opP2.style.backgroundImage="url('"+L("anouk-schilderen-papaver.jpg")+"')";
 const opP3=document.getElementById('opP3');if(opP3)opP3.style.backgroundImage="url('"+L("anouk-bos-boom.jpg")+"')";
 
