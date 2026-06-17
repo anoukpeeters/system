@@ -140,29 +140,27 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .pc::before{top:10px;left:10px;border-right:none;border-bottom:none}
 .pc::after{bottom:10px;right:10px;border-left:none;border-top:none}
 
-/* PHOTO STRIPS */
-#strips{position:relative;z-index:10;background:var(--deep2);padding:60px 0;overflow:hidden}
-#strips .swp{filter:grayscale(.85) blur(3px) brightness(.78);transition:filter 1.6s ease}
-#strips.dev .swp{filter:none}
-.stit{text-align:center;padding:0 5vw;margin-bottom:36px}
-.stit h2{font:200 clamp(24px,3.5vw,44px)/1.1 "Helvetica Neue";color:var(--tl)}
-.stit h2 em{font-style:italic;color:var(--goldB)}
-.swp{overflow:hidden;margin-bottom:12px}
-.swp:last-of-type{margin-bottom:0}
-.str{display:flex;gap:10px;width:max-content;will-change:transform;animation:sL 42s linear infinite}
-.str.r{animation:sR 48s linear infinite}
-.str:hover{animation-play-state:paused}
-@keyframes sL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes sR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
-.si{width:260px;height:195px;background-size:cover;background-position:center;
-  flex-shrink:0;border-radius:3px;position:relative;overflow:hidden;cursor:pointer}
-.si.si-portrait{width:170px;height:255px}
-.si::before,.si::after{content:"";position:absolute;width:15px;height:15px;
-  border:1px solid rgba(200,160,60,.62);z-index:2}
-.si::before{top:7px;left:7px;border-right:none;border-bottom:none}
-.si::after{bottom:7px;right:7px;border-left:none;border-top:none}
+/* GALERIJ — rustig gecureerd grid, geen marquee/rotatie */
+#strips{position:relative;z-index:10;background:var(--sage);padding:90px 0 100px;overflow:hidden}
+#strips .gwrap{filter:grayscale(.85) blur(3px) brightness(.85);transition:filter 1.6s ease}
+#strips.dev .gwrap{filter:none}
+.stit{text-align:center;padding:0 5vw;margin-bottom:48px}
+.stit h2{font:200 clamp(24px,3.5vw,44px)/1.1 "Helvetica Neue";color:var(--td)}
+.stit h2 em{font-style:italic;color:var(--deep3)}
+.gwrap{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
+  gap:20px;max-width:1180px;margin:0 auto;padding:0 5vw}
+.si{background-size:cover;background-position:center;border-radius:3px;position:relative;
+  overflow:hidden;cursor:pointer;transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s}
+.si.gi-h{width:380px;height:280px}
+.si.gi-v{width:230px;height:330px}
+.si:hover{transform:translateY(-8px) scale(1.04);box-shadow:0 24px 50px rgba(26,54,24,.28);z-index:2}
+.si::before,.si::after{content:"";position:absolute;width:16px;height:16px;
+  border:1px solid rgba(200,160,60,.7);z-index:2}
+.si::before{top:8px;left:8px;border-right:none;border-bottom:none}
+.si::after{bottom:8px;right:8px;border-left:none;border-top:none}
 .si .sh{position:absolute;inset:0;background:rgba(200,160,60,0);transition:background .35s}
-.si:hover .sh{background:rgba(200,160,60,.07)}
+.si:hover .sh{background:rgba(200,160,60,.1)}
+@media(max-width:640px){.si.gi-h{width:300px;height:220px}.si.gi-v{width:200px;height:280px}}
 
 /* PORTFOLIO CTA — camera-diafragma knop */
 .strip-cta{text-align:center;margin-top:44px;padding:0 5vw}
@@ -398,15 +396,6 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
 .nph{filter:grayscale(.8) blur(3px) brightness(.82);transition:filter 1.2s ease,opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
 .nph.in{filter:none}
 
-/* GESTAGGERDE / POLAROID FOTO-STRIP */
-.si{transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s,filter .4s}
-.si:nth-child(4n+1){transform:rotate(-2deg) translateY(-5px)}
-.si:nth-child(4n+2){transform:rotate(1.4deg) translateY(7px)}
-.si:nth-child(4n+3){transform:rotate(-1deg) translateY(2px)}
-.si:nth-child(4n){transform:rotate(2deg) translateY(-3px)}
-.si:hover{transform:rotate(0deg) translateY(-16px) scale(1.22)!important;
-  box-shadow:0 30px 60px rgba(0,0,0,.5);z-index:5}
-
 /* ANOUK'S BLIK — donker bosinterieur sfeer */
 .blik-bg{position:absolute;inset:0;background-size:cover;background-position:center 35%;
   opacity:.4;filter:saturate(.8) brightness(.7);animation:bosPan 24s ease-in-out infinite}
@@ -443,7 +432,6 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
 }
 @media(max-width:480px){
   #hdr{padding:0 16px;height:60px}
-  .si{width:220px;height:165px}
 }
 </style>
 </head>
@@ -487,20 +475,7 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
 
 <header id="hdr">
   <button class="lbtn" id="logoBtn">
-    <svg class="lsvg" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs><linearGradient id="gl" x1="10%" y1="0%" x2="90%" y2="100%">
-        <stop offset="0%" stop-color="#e8c96a"/><stop offset="50%" stop-color="#c8a03c"/><stop offset="100%" stop-color="#8a6018"/>
-      </linearGradient></defs>
-      <circle cx="110" cy="118" r="100" stroke="rgba(200,160,60,.22)" stroke-width="1.8"/>
-      <circle cx="110" cy="118" r="93" stroke="url(#gl)" stroke-width="0.9"/>
-      <path d="M110 76 C96 63 78 49 67 29 C82 44 100 62 110 76Z" fill="url(#gl)" opacity=".9"/>
-      <path d="M110 76 C124 63 142 49 153 29 C138 44 120 62 110 76Z" fill="url(#gl)" opacity=".9"/>
-      <text x="110" y="153" font-family="Georgia,'Times New Roman',serif" font-size="82" font-style="italic" fill="url(#gl)" text-anchor="middle" letter-spacing="-6">AP</text>
-      <path id="narc" d="M 20 140 A 92 92 0 0 0 200 140" fill="none"/>
-      <text font-family="'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="rgba(200,160,60,.68)" letter-spacing="5.5">
-        <textPath href="#narc" startOffset="50%" text-anchor="middle">ANOUK PEETERS</textPath>
-      </text>
-    </svg>
+    <img class="lsvg" src="fotos/logo-ap.png" alt="Anouk Peeters logo" width="44" height="44"/>
     <span class="lw">Anouk Peeters</span>
   </button>
   <nav class="dnav">
@@ -577,14 +552,13 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
   </div>
 </section>
 
-<!-- PHOTO STRIPS -->
+<!-- GALERIJ -->
 <section id="strips">
   <div class="stit rv">
-    <div class="lbl c">De wandeling in beeld</div>
-    <h2>Echte natuur. Echte <em>mensen.</em></h2>
+    <div class="lbl c">Natuur &amp; personal branding</div>
+    <h2>Verhalen, <em>in beeld gebracht</em></h2>
   </div>
-  <div class="swp"><div class="str" id="s1"></div></div>
-  <div class="swp"><div class="str r" id="s2"></div></div>
+  <div class="gwrap" id="gwrap"></div>
   <div class="strip-cta">
     <a href="https://anouk-peeters.nl/portfolio/" target="_blank" rel="noopener" class="ap-btn">
       <span class="ap-icon"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
@@ -687,20 +661,7 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
 
 <footer>
   <div class="fi">
-    <svg viewBox="0 0 220 220" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs><linearGradient id="gl2" x1="10%" y1="0%" x2="90%" y2="100%">
-        <stop offset="0%" stop-color="#e8c96a"/><stop offset="50%" stop-color="#c8a03c"/><stop offset="100%" stop-color="#8a6018"/>
-      </linearGradient></defs>
-      <circle cx="110" cy="118" r="100" stroke="rgba(200,160,60,.18)" stroke-width="1.6"/>
-      <circle cx="110" cy="118" r="93" stroke="url(#gl2)" stroke-width="0.9"/>
-      <path d="M110 76 C96 63 78 49 67 29 C82 44 100 62 110 76Z" fill="url(#gl2)" opacity=".85"/>
-      <path d="M110 76 C124 63 142 49 153 29 C138 44 120 62 110 76Z" fill="url(#gl2)" opacity=".85"/>
-      <text x="110" y="153" font-family="Georgia,'Times New Roman',serif" font-size="82" font-style="italic" fill="url(#gl2)" text-anchor="middle" letter-spacing="-6">AP</text>
-      <path id="narc2" d="M 20 140 A 92 92 0 0 0 200 140" fill="none"/>
-      <text font-family="'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="rgba(200,160,60,.62)" letter-spacing="5.5">
-        <textPath href="#narc2" startOffset="50%" text-anchor="middle">ANOUK PEETERS</textPath>
-      </text>
-    </svg>
+    <img src="fotos/logo-ap.png" alt="Anouk Peeters logo" width="56" height="56"/>
     <div class="fl">
       <a href="https://anouk-peeters.nl" target="_blank" rel="noopener">anouk-peeters.nl</a>
       <a href="mailto:info@anoukpeetersfotografie.nl">info@anoukpeetersfotografie.nl</a>
@@ -726,8 +687,8 @@ const L=p=>"fotos/"+p;
 
 // Kies je pad — mix van klanten + natuur, allemaal liggend zodat ze passend in beeld komen
 const PAD=[
-  img("2024/01/2021-Business-Businessshoot-45-scaled.jpg",900), // Branding — klant, liggend
-  img("2025/07/Annet-Zoer-2025-319-scaled.jpg",900),             // Fotografie — klant, liggend
+  img("2024/02/IMG_9509-scaled.jpg",900),                        // Branding — klant, liggend
+  img("2024/05/Gertina-Zee-2024-73-scaled.jpg",900),              // Fotografie — klant, liggend
   L("zonsondergang-heuvels.jpg"),                                 // Natuur voor je ruimte — liggend
   img("2025/11/Livedag-oktober-2025-scaled.jpg",900),            // Live dag — echte livedag-foto, liggend
 ];
@@ -738,43 +699,38 @@ const nph=document.getElementById('nph');if(nph)nph.style.backgroundImage="url('
 
 // Animated forest section — zonsondergang met zon door boom
 const bosBg=document.getElementById('bosBg');
-if(bosBg)bosBg.style.backgroundImage="url('"+L("zonsondergang-heuvels.jpg")+"')";
+if(bosBg)bosBg.style.backgroundImage="url('"+L("bos-zonnestraal.jpg")+"')";
 
 // Over Anouk: 3 foto's
 const opP1=document.getElementById('opP1');if(opP1)opP1.style.backgroundImage="url('"+L("anouk-camera-goldenhour.jpg")+"')";
 const opP2=document.getElementById('opP2');if(opP2)opP2.style.backgroundImage="url('"+L("anouk-schilderen-papaver.jpg")+"')";
 const opP3=document.getElementById('opP3');if(opP3)opP3.style.backgroundImage="url('"+L("anouk-paikea-steiger.jpg")+"')";
 
-// PHOTO STRIPS — infinite auto-scroll (duplicate for seamless loop)
-// Vooral klant-foto's, met natuur en een paar Anouk-momenten als accent (niet de hoofdmoot)
-function buildStrip(urls,el){
+// GALERIJ — rustig, gecureerd: liggend/staand/liggend, alleen klant + natuur
+function buildGallery(items,el){
   if(!el)return;
-  [...urls,...urls].forEach(u=>{
-    const d=document.createElement('div');d.className='si';
+  items.forEach(([u,orient])=>{
+    const d=document.createElement('div');d.className='si gi-'+orient;
     d.style.backgroundImage="url('"+u+"')";
     const sh=document.createElement('div');sh.className='sh';d.appendChild(sh);
     el.appendChild(d);
-    // detecteer staand/liggend zodat de kaart bij de foto past (geen gekke crops)
-    const probe=new Image();
-    probe.onload=()=>{if(probe.naturalHeight>probe.naturalWidth)d.classList.add('si-portrait');};
-    probe.src=u;
   });
 }
-const S1=["2024/07/Linda-op-de-Heide-2024-205-scaled.jpg","2025/08/Marga-Ochtend-Eifel-2025-45-scaled.jpg","2025/04/Yvonne-Duitsland-Waterval-25-scaled.jpg","2025/07/Annet-Zoer-2025-143-scaled.jpg","2025/08/Leijbra-Ochtend-2025-5-scaled.jpg","2024/07/Linda-Kasteel-2024-11-scaled.jpg","2025/08/Marga-Avond-Eifel-2025-15-scaled.jpg","2025/08/Leijbra-Avond-2025-177-scaled.jpg"].map(f=>img(f,580));
-buildStrip(S1,document.getElementById('s1'));
-const S2=[
-  img("2023/05/Floor-Geldrop-Business-1-scaled.jpg",580),
-  img("2024/07/Marinka-109-scaled.jpg",580),
-  L("zonsondergang-heuvels.jpg"),
-  img("2025/12/Monique-Timmerfabriek-2025-233-scaled.jpg",580),
-  img("2023/05/Silvia-53-scaled.jpg",580),
-  L("paikea-weide.jpg"),
-  img("2024/03/Maike-Personal-Brand-2024-9-scaled.jpg",580),
-  img("2024/02/Judith-Art-67-scaled.jpg",580),
-  L("anouk-camera-goldenhour.jpg"),
-  img("2022/05/Roos-Akkerzicht-2022-91-scaled.jpg",580),
+const GALLERY=[
+  [img("2024/01/2021-Business-Businessshoot-45-scaled.jpg",700),'h'],
+  [img("2023/05/Floor-Geldrop-Business-1-scaled.jpg",500),'v'],
+  [img("2025/07/Annet-Zoer-2025-319-scaled.jpg",700),'h'],
+  [img("2024/02/Viola-2024-105-scaled.jpg",500),'v'],
+  [img("2022/05/Roos-Akkerzicht-2022-91-scaled.jpg",700),'h'],
+  [img("2024/07/Marinka-109-scaled.jpg",500),'v'],
+  [L("zonsondergang-heuvels.jpg"),'h'],
+  [L("waterval-eifel.jpg"),'v'],
+  [img("2024/03/8-Christel-Lubse-19-scaled.jpg",700),'h'],
+  [img("2024/02/Judith-Deel-2-87-scaled.jpg",500),'v'],
+  [img("2023/05/Yolande-Goed-3-scaled.jpg",700),'h'],
+  [img("2022/05/Inge-Hol-117-scaled.jpg",500),'v'],
 ];
-buildStrip(S2,document.getElementById('s2'));
+buildGallery(GALLERY,document.getElementById('gwrap'));
 
 // OVER ANOUK — slideshow rotatie
 (function(){
