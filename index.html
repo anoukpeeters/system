@@ -182,9 +182,9 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
   box-shadow:0 12px 32px rgba(200,160,60,.48);gap:20px}
 .ap-icon{width:28px;height:28px;flex-shrink:0;color:var(--td);
   transition:transform .55s cubic-bezier(.2,.7,.2,1)}
-.ap-btn:hover .ap-icon{transform:rotate(48deg)}
-.ap-icon .blade{transition:transform .4s ease;transform-origin:20px 20px}
-.ap-btn:hover .ap-icon .blade{transform:scale(.62)}
+.ap-btn:hover .ap-icon{transform:scale(1.08)}
+.ap-icon .blade{transition:transform .35s ease;transform-origin:20px 23px}
+.ap-btn:hover .ap-icon .blade{transform:scale(.78)}
 .ap-arrow{transition:transform .3s}
 .ap-btn:hover .ap-arrow{transform:translateX(4px)}
 
@@ -203,7 +203,7 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .od.on{background:var(--gold);box-shadow:0 0 6px rgba(200,160,60,.5)}
 
 /* NATUUR */
-#natuur{position:relative;z-index:10;background:var(--sage);padding:100px 5vw}
+#natuur{position:relative;z-index:10;background:var(--sage2);padding:100px 5vw}
 #natuur .inn{max-width:1040px;margin:0 auto;
   display:grid;grid-template-columns:1.15fr 1fr;gap:70px;align-items:center}
 .nph{aspect-ratio:2/3;background-size:cover;background-position:center;border-radius:3px;
@@ -277,15 +277,15 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
   max-width:560px;margin-left:auto;margin-right:auto}
 
 /* BLIK DETAIL */
-#blik{position:relative;z-index:10;background:var(--deep3);padding:100px 8vw;overflow:hidden}
+#blik{position:relative;z-index:10;background:#f7f3ec;padding:100px 8vw;overflow:hidden}
 #blik .inn{max-width:1040px;margin:0 auto;
   display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:center}
 #blik .lt{position:relative;padding:28px 30px;border-radius:4px}
 #blik .lt::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:4px;
-  background:linear-gradient(135deg,rgba(20,42,18,.55),rgba(20,42,18,.32))}
-#blik h2{font:200 clamp(26px,4vw,48px)/1.06 "Helvetica Neue";color:var(--tl);margin-bottom:16px}
-#blik h2 em{font-style:italic;color:var(--goldB)}
-#blik .lt p{font:300 17px/1.78 "Helvetica Neue";color:var(--tl);opacity:.85;margin-bottom:11px}
+  background:linear-gradient(135deg,rgba(255,252,246,.6),rgba(255,252,246,.32))}
+#blik h2{font:200 clamp(26px,4vw,48px)/1.06 "Helvetica Neue";color:var(--td);margin-bottom:16px}
+#blik h2 em{font-style:italic;color:var(--gold)}
+#blik .lt p{font:300 17px/1.78 "Helvetica Neue";color:var(--md);opacity:.95;margin-bottom:11px}
 .bc{background:rgba(24,50,22,.9);border:1px solid rgba(200,160,60,.2);
   border-radius:3px;padding:38px 36px;box-shadow:0 16px 48px rgba(0,0,0,.25)}
 .bc h3{font:200 clamp(20px,2.8vw,32px)/1.08 "Helvetica Neue";color:var(--tl);margin-bottom:12px}
@@ -299,7 +299,7 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .gld{height:1px;margin:18px 0;background:linear-gradient(90deg,transparent,rgba(26,54,24,.32) 30%,rgba(26,54,24,.32) 70%,transparent)}
 
 /* OVER ANOUK */
-#over{position:relative;z-index:10;background:var(--sage);padding:110px 6vw}
+#over{position:relative;z-index:10;background:var(--sage2);padding:110px 6vw}
 #over .inn{max-width:1060px;margin:0 auto;
   display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:center}
 #over h2{font:200 clamp(26px,4vw,48px)/1.06 "Helvetica Neue";color:var(--td);margin-bottom:18px}
@@ -403,6 +403,12 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
   border:1.5px solid rgba(232,201,106,.7);transform:translate(-50%,-50%) scale(1);opacity:0;
   transition:transform .35s ease,opacity .35s ease}
 
+/* SUBTIEL BLADER-MOTIEF — in hoeken van vlakke kleurvlakken, voor de 'wandeling'-sfeer */
+.leaf-deco{position:absolute;pointer-events:none;width:150px;height:150px;z-index:0;opacity:.07;color:var(--deep3)}
+.leaf-deco.tl{top:0;left:0}
+.leaf-deco.br{bottom:0;right:0;transform:rotate(180deg)}
+.leaf-deco.gold{color:var(--goldB);opacity:.09}
+
 /* BOTANISCHE SCROLLLIJN */
 #vineWrap{position:fixed;left:9px;top:96px;bottom:96px;width:3px;z-index:17;
   background:rgba(200,160,60,.14);border-radius:3px;pointer-events:none}
@@ -431,10 +437,10 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
 #pad-verhalen.dev .pv-photo{filter:none}
 
 /* ERVARINGEN — pad-thema met natuur en camera-accent, licht (vlak voor de donkere footer) */
-#pad-verhalen{position:relative;z-index:10;background:var(--cream);padding:100px 0 110px;overflow:hidden}
+#pad-verhalen{position:relative;z-index:10;background:#faf7f1;padding:100px 0 110px;overflow:hidden}
 .pv-bg{position:absolute;inset:0;background-size:cover;background-position:center 30%;
-  opacity:.18;filter:saturate(.7) brightness(1.05);animation:bosPan 26s ease-in-out infinite}
-.pv-ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(245,240,232,.55),rgba(245,240,232,.88))}
+  opacity:.1;filter:saturate(.5) brightness(1.25);animation:bosPan 26s ease-in-out infinite}
+.pv-ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(250,247,241,.75),rgba(250,247,241,.93))}
 .pv-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:34px;max-width:1100px;
   margin:0 auto;padding:0 5vw}
 .pv-card{width:250px;text-align:center;position:relative}
@@ -450,8 +456,8 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
 
 /* ANOUK'S BLIK — donker bosinterieur sfeer */
 .blik-bg{position:absolute;inset:0;background-size:cover;background-position:center 30%;
-  opacity:.62;filter:saturate(.9) brightness(.88);animation:bosPan 24s ease-in-out infinite}
-.blik-ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(38,72,34,.38),rgba(28,56,26,.6))}
+  opacity:.4;filter:saturate(.75) brightness(1.15);animation:bosPan 24s ease-in-out infinite}
+.blik-ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(247,243,236,.55),rgba(247,243,236,.8))}
 .blik-sun{position:absolute;z-index:1;pointer-events:none;left:30%;top:38%;width:160px;height:160px;
   border-radius:50%;transform:translate(-50%,-50%);
   background:radial-gradient(circle,rgba(255,238,120,.6) 0%,rgba(255,210,50,.22) 45%,transparent 70%);
@@ -627,12 +633,12 @@ footer .fc{font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-
   <div class="swp"><div class="str r" id="s2"></div></div>
   <div class="strip-cta">
     <a href="https://anouk-peeters.nl/portfolio/" target="_blank" rel="noopener" class="ap-btn">
-      <span class="ap-icon"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="17" fill="none" stroke="currentColor" stroke-width="1.4"/>
-        <path class="blade" d="M20 6 L26 16 L20 20Z" fill="currentColor"/>
-        <path class="blade" d="M34 20 L24 26 L20 20Z" fill="currentColor"/>
-        <path class="blade" d="M20 34 L14 24 L20 20Z" fill="currentColor"/>
-        <path class="blade" d="M6 20 L16 14 L20 20Z" fill="currentColor"/>
+      <span class="ap-icon"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="5" y="13" width="30" height="20" rx="3" stroke="currentColor" stroke-width="1.4"/>
+        <path class="blade" d="M14 13 L17 8 L23 8 L26 13Z" fill="currentColor"/>
+        <circle class="blade" cx="20" cy="23" r="7" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="20" cy="23" r="3" fill="currentColor"/>
+        <circle cx="30" cy="18" r="1.4" fill="currentColor"/>
       </svg></span>
       <span class="ap-text">Bekijk het volledige portfolio</span>
       <span class="ap-arrow">→</span>
@@ -924,6 +930,32 @@ if(stripsEl){
   }),{threshold:.15});
   stripIO.observe(stripsEl);
 }
+
+// SUBTIEL BLADER-MOTIEF in de hoeken van vlakke kleurvlakken (geen foto-achtergrond)
+const LEAF_SVG='<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">'+
+  '<path d="M14 188 Q62 138 50 80 Q44 38 82 12" stroke="currentColor" stroke-width="1.5"/>'+
+  '<path d="M50 122 Q28 112 13 122" stroke="currentColor" stroke-width="1.2"/>'+
+  '<path d="M55 95 Q77 84 92 95" stroke="currentColor" stroke-width="1.2"/>'+
+  '<path d="M47 68 Q26 60 12 68" stroke="currentColor" stroke-width="1.2"/>'+
+  '<ellipse cx="19" cy="120" rx="11" ry="5.5" fill="currentColor" transform="rotate(-18 19 120)"/>'+
+  '<ellipse cx="87" cy="93" rx="11" ry="5.5" fill="currentColor" transform="rotate(20 87 93)"/>'+
+  '<ellipse cx="12" cy="66" rx="9.5" ry="4.5" fill="currentColor" transform="rotate(-25 12 66)"/>'+
+  '</svg>';
+function addLeafDeco(sel,opts){
+  document.querySelectorAll(sel).forEach(el=>{
+    (opts||[{c:'tl'}]).forEach(o=>{
+      const d=document.createElement('div');
+      d.className='leaf-deco '+o.c+(o.gold?' gold':'');
+      d.innerHTML=LEAF_SVG;
+      el.insertBefore(d,el.firstChild);
+    });
+  });
+}
+addLeafDeco('#strips',[{c:'tl'},{c:'br'}]);
+addLeafDeco('#natuur',[{c:'br'}]);
+addLeafDeco('#over',[{c:'tl'}]);
+addLeafDeco('#pad-verhalen',[{c:'br'}]);
+addLeafDeco('footer',[{c:'tl',gold:true}]);
 
 // GELUID — opt-in, nooit autoplay (browserbeleid + UX)
 const sndBtn=document.getElementById('sndBtn');
