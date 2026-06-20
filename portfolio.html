@@ -745,16 +745,14 @@ function buildSlide(el){
   const frame=document.createElement('div');
   frame.className='oslide-frame';
   let idx=0;
-  // Verhouding wordt eenmalig gezet op de eerste foto en blijft daarna vast - anders verschuift
-  // de pagina-inhoud bij elke wissel van de slideshow, wat scrollen onrustig maakt.
+  // Verhouding volgt de actieve foto (juiste oriëntatie altijd), zonder animatie - een instant
+  // wissel hindert het scrollen veel minder dan een geanimeerde formaatverandering.
   const applyRatio=im=>{if(im.naturalWidth&&im.naturalHeight)frame.style.aspectRatio=im.naturalWidth+'/'+im.naturalHeight;};
   const imgs=urls.map((u,i)=>{
     const im=document.createElement('img');
     im.loading='lazy';im.alt='';im.src=u;
-    if(i===0){
-      im.classList.add('active');
-      im.addEventListener('load',()=>applyRatio(im));
-    }
+    if(i===0)im.classList.add('active');
+    im.addEventListener('load',()=>{if(im.classList.contains('active'))applyRatio(im);});
     frame.appendChild(im);
     return im;
   });
@@ -775,6 +773,7 @@ function buildSlide(el){
       imgs[idx].classList.remove('active');dotEls[idx].classList.remove('on');
       idx=n;
       imgs[idx].classList.add('active');dotEls[idx].classList.add('on');
+      if(imgs[idx].complete)applyRatio(imgs[idx]);
     };
     setInterval(()=>go((idx+1)%imgs.length),4600+Math.random()*900);
     dotEls.forEach((d,i)=>d.addEventListener('click',e=>{e.stopPropagation();go(i);}));
