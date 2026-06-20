@@ -96,7 +96,7 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .beat.rev{flex-direction:row-reverse}
 .beat+.beat::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
   width:90px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.55}
-.beat-media{flex:1 1 340px;position:relative;max-width:400px}
+.beat-media{flex:1 1 340px;position:relative;max-width:480px}
 .beat-text{flex:1 1 280px;min-width:240px}
 .beat-text .tag{font:600 10px/1 "SF Mono",monospace;letter-spacing:.2em;text-transform:uppercase;
   color:var(--goldS);opacity:.85;margin-bottom:14px;display:block}
@@ -104,20 +104,17 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .beat-text h3 em{font-style:italic;color:var(--goldB)}
 .beat-text p{font:300 italic 15px/1.65 "Helvetica Neue";color:var(--ml);max-width:360px}
 
-/* SLIDESHOW - zelfde opbouw als de homepage (oslide), vierkant zodat staand/liggend door elkaar kan */
-.oslide-frame{position:relative;border-radius:2px;overflow:hidden;cursor:zoom-in;
-  box-shadow:0 18px 44px rgba(10,24,8,.38);aspect-ratio:1/1}
-.oslide-img{position:absolute;inset:0;background-size:cover;background-position:center 26%;
-  opacity:0;transition:opacity 1.2s ease,filter .9s ease;filter:grayscale(.65) brightness(.86)}
-.oslide-img.active{opacity:1}
-.in .oslide-img{filter:none}
-.oslide-frame::before,.oslide-frame::after{content:"";position:absolute;width:20px;height:20px;
+/* BRANDING-FOTO'S - origineel formaat, geen crop: hoogte vastgezet, breedte volgt de eigen verhouding */
+.beat-media{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center}
+.bphoto{position:relative;height:380px;border-radius:2px;overflow:hidden;cursor:zoom-in;
+  box-shadow:0 18px 44px rgba(10,24,8,.38)}
+.bphoto img{display:block;height:100%;width:auto;
+  filter:grayscale(.65) brightness(.86);transition:filter .9s ease}
+.in .bphoto img{filter:none}
+.bphoto::before,.bphoto::after{content:"";position:absolute;width:18px;height:18px;
   border:1.5px solid var(--gold);z-index:3}
-.oslide-frame::before{top:9px;left:9px;border-right:none;border-bottom:none}
-.oslide-frame::after{bottom:9px;right:9px;border-left:none;border-top:none}
-.oslide-dots{display:flex;gap:7px;justify-content:center;margin-top:14px}
-.od{width:7px;height:7px;border-radius:50%;background:rgba(200,160,60,.25);transition:.3s;cursor:pointer}
-.od.on{background:var(--gold);box-shadow:0 0 6px rgba(200,160,60,.5)}
+.bphoto::before{top:8px;left:8px;border-right:none;border-bottom:none}
+.bphoto::after{bottom:8px;right:8px;border-left:none;border-top:none}
 
 /* LIGHTBOX */
 #lbox{position:fixed;inset:0;z-index:50;background:rgba(8,18,6,.94);
@@ -214,7 +211,8 @@ footer .fc a:hover{color:var(--goldB)}
 
 @media(max-width:760px){
   .beat,.beat.rev{flex-direction:column;gap:30px;padding:42px 7vw}
-  .beat-media{max-width:280px;width:100%}
+  .beat-media{max-width:100%;width:100%}
+  .bphoto{height:260px}
   .beat-text{text-align:left}
   .beat-text p{max-width:100%}
   .nrow{padding:36px 6vw 0;gap:9px}
@@ -283,7 +281,7 @@ footer .fc a:hover{color:var(--goldB)}
   <div class="beat-text">
     <span class="tag">Personal branding fotoshoot · Eifel</span>
     <h3>Leijbra <em>Stolk</em></h3>
-    <p>Praktijk Upendi</p>
+    <p>Praktijk Upendi · Energetisch ondernemerscoach</p>
   </div>
 </div>
 
@@ -291,7 +289,8 @@ footer .fc a:hover{color:var(--goldB)}
   <div class="beat-media" data-key="marga"></div>
   <div class="beat-text">
     <span class="tag">Personal branding fotoshoot · Eifel &amp; Nederland</span>
-    <h3>Marga</h3>
+    <h3>Marga <em>Klaasen Bos</em></h3>
+    <p>Mage Support</p>
   </div>
 </div>
 
@@ -325,7 +324,8 @@ footer .fc a:hover{color:var(--goldB)}
   <div class="beat-media" data-key="linda"></div>
   <div class="beat-text">
     <span class="tag">Personal branding fotoshoot</span>
-    <h3>Linda</h3>
+    <h3>Linda <em>van Mierlo</em></h3>
+    <p>Boekmarketing strateeg</p>
   </div>
 </div>
 
@@ -333,7 +333,8 @@ footer .fc a:hover{color:var(--goldB)}
   <div class="beat-media" data-key="monique"></div>
   <div class="beat-text">
     <span class="tag">Personal branding fotoshoot</span>
-    <h3>Monique</h3>
+    <h3>Monique <em>Prins</em></h3>
+    <p>MKB Businesscoach</p>
   </div>
 </div>
 
@@ -356,22 +357,15 @@ footer .fc a:hover{color:var(--goldB)}
 </div>
 
 <div class="beat rev rv" data-cat="branding">
-  <div class="beat-media" data-key="judith"></div>
+  <div class="beat-media" data-key="marinka"></div>
   <div class="beat-text">
     <span class="tag">Personal branding fotoshoot</span>
-    <h3>Judith</h3>
+    <h3>Marinka <em>Bil</em></h3>
+    <p>Trauma informed coach · Breathwork</p>
   </div>
 </div>
 
 <div class="beat rv" data-cat="branding">
-  <div class="beat-media" data-key="marinka"></div>
-  <div class="beat-text">
-    <span class="tag">Personal branding fotoshoot</span>
-    <h3>Marinka</h3>
-  </div>
-</div>
-
-<div class="beat rev rv" data-cat="branding">
   <div class="beat-media" data-key="ilse"></div>
   <div class="beat-text">
     <span class="tag">Personal branding fotoshoot</span>
@@ -513,7 +507,7 @@ lbox?.addEventListener('click',closeLbox);
 document.getElementById('lboxClose')?.addEventListener('click',e=>{e.stopPropagation();closeLbox();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLbox();});
 
-// Personal branding - elke klant een eigen mini-slideshow (vierkant, vangt staand+liggend netjes op)
+// Personal branding - elke klant zijn eigen foto's, op origineel formaat naast elkaar (geen crop)
 const PF_PHOTOS={
   ingrid:[img("2025/12/Ingrid-Zee-2025-151-scaled.jpg",900),img("2025/12/Ingrid-Zee-2025-81-scaled.jpg",900)],
   leijbra:[img("2025/08/Leijbra-Avond-2025-177-scaled.jpg",900),img("2025/08/Leijbra-Ochtend-2025-5-scaled.jpg",900)],
@@ -525,48 +519,26 @@ const PF_PHOTOS={
     img("2024/07/Linda-op-de-Heide-2024-155-scaled.jpg",900)],
   monique:[img("2025/12/Monique-Timmerfabriek-2025-95-scaled.jpg",900),img("2025/12/Monique-Timmerfabriek-2025-69-scaled.jpg",900)],
   miranda:[img("2022/07/Miranda-Coach-Atelier-7-scaled.jpg",900),img("2024/02/Miranda-Coach-Atelier-43-scaled.jpg",900)],
-  judith:[img("2024/02/Judith-Art-67-scaled.jpg",900),img("2024/02/Judith-Deel-2-87-scaled.jpg",900)],
   marinka:[img("2024/07/Marinka-109-scaled.jpg",900),img("2022/10/Marinka-Heeze-2-scaled.jpg",900),
     img("2022/05/Marinka-Akkerzicht-75-scaled.jpg",900)],
   ilse:[img("2024/10/Ilse-Natuur-2024-9-scaled.jpg",900),img("2024/11/Ilse-deel-2-2024-55-scaled.jpg",900)],
   roos:[img("2022/05/Roos-Akkerzicht-2022-91-scaled.jpg",900),img("2024/02/Roos-Akkerzicht-2022-81-scaled.jpg",900)],
   annet:[img("2025/07/Annet-Zoer-2025-143-scaled.jpg",900),img("2025/07/Annet-Zoer-2025-319-scaled.jpg",900)],
 };
-function buildSlide(el){
+function buildBeatPhotos(el){
   const urls=PF_PHOTOS[el.dataset.key];
   if(!urls||!urls.length)return;
-  const frame=document.createElement('div');
-  frame.className='oslide-frame';
-  let idx=0;
-  const imgs=urls.map((u,i)=>{
-    const d=document.createElement('div');
-    d.className='oslide-img'+(i===0?' active':'');
-    d.style.backgroundImage="url('"+u+"')";
-    frame.appendChild(d);
-    return d;
+  urls.forEach(u=>{
+    const t=document.createElement('div');
+    t.className='bphoto';
+    const im=document.createElement('img');
+    im.loading='lazy';im.alt='';im.src=u;
+    t.appendChild(im);
+    t.addEventListener('click',e=>{e.stopPropagation();openLbox(u);});
+    el.appendChild(t);
   });
-  el.appendChild(frame);
-  frame.addEventListener('click',e=>{e.stopPropagation();openLbox(urls[idx]);});
-  if(urls.length>1){
-    const dots=document.createElement('div');
-    dots.className='oslide-dots';
-    const dotEls=urls.map((_,i)=>{
-      const s=document.createElement('span');
-      s.className='od'+(i===0?' on':'');
-      dots.appendChild(s);
-      return s;
-    });
-    el.appendChild(dots);
-    const go=n=>{
-      imgs[idx].classList.remove('active');dotEls[idx].classList.remove('on');
-      idx=n;
-      imgs[idx].classList.add('active');dotEls[idx].classList.add('on');
-    };
-    setInterval(()=>go((idx+1)%imgs.length),4600+Math.random()*900);
-    dotEls.forEach((d,i)=>d.addEventListener('click',e=>{e.stopPropagation();go(i);}));
-  }
 }
-document.querySelectorAll('.beat-media[data-key]').forEach(buildSlide);
+document.querySelectorAll('.beat-media[data-key]').forEach(buildBeatPhotos);
 
 // Natuur - meerdere foto's naast elkaar over de volle breedte, elk in eigen staand/liggend formaat
 const NATURE_ROWS={
