@@ -95,8 +95,10 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
   display:flex;align-items:center;gap:64px;flex-wrap:wrap}
 .beat.rev{flex-direction:row-reverse}
 .beat+.beat::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
-  width:90px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.55}
-.beat-media{flex:1 1 340px;position:relative;max-width:480px}
+  width:180px;height:2px;background:linear-gradient(90deg,transparent,var(--goldB),transparent);opacity:.9}
+.beat+.beat::after{content:"";position:absolute;top:-4px;left:50%;transform:translateX(-50%) rotate(45deg);
+  width:9px;height:9px;background:var(--goldB);box-shadow:0 0 10px rgba(232,201,106,.7)}
+.beat-media{flex:1 1 340px;position:relative;max-width:420px}
 .beat-text{flex:1 1 280px;min-width:240px}
 .beat-text .tag{font:600 10px/1 "SF Mono",monospace;letter-spacing:.2em;text-transform:uppercase;
   color:var(--goldS);opacity:.85;margin-bottom:14px;display:block}
@@ -104,17 +106,20 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .beat-text h3 em{font-style:italic;color:var(--goldB)}
 .beat-text p{font:300 italic 15px/1.65 "Helvetica Neue";color:var(--ml);max-width:360px}
 
-/* BRANDING-FOTO'S - origineel formaat, geen crop: hoogte vastgezet, breedte volgt de eigen verhouding */
-.beat-media{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center}
-.bphoto{position:relative;height:380px;border-radius:2px;overflow:hidden;cursor:zoom-in;
-  box-shadow:0 18px 44px rgba(10,24,8,.38)}
-.bphoto img{display:block;height:100%;width:auto;
-  filter:grayscale(.65) brightness(.86);transition:filter .9s ease}
-.in .bphoto img{filter:none}
-.bphoto::before,.bphoto::after{content:"";position:absolute;width:18px;height:18px;
+/* BRANDING-SLIDESHOW - draait door de klant z'n foto's, origineel formaat (geen crop, donkere matte i.p.v. crop) */
+.oslide-frame{position:relative;border-radius:2px;overflow:hidden;cursor:zoom-in;
+  aspect-ratio:4/5;background:#10160e;box-shadow:0 18px 44px rgba(10,24,8,.38)}
+.oslide-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+  opacity:0;transition:opacity 1.2s ease,filter .9s ease;filter:grayscale(.65) brightness(.86)}
+.oslide-frame img.active{opacity:1}
+.in .oslide-frame img{filter:none}
+.oslide-frame::before,.oslide-frame::after{content:"";position:absolute;width:20px;height:20px;
   border:1.5px solid var(--gold);z-index:3}
-.bphoto::before{top:8px;left:8px;border-right:none;border-bottom:none}
-.bphoto::after{bottom:8px;right:8px;border-left:none;border-top:none}
+.oslide-frame::before{top:9px;left:9px;border-right:none;border-bottom:none}
+.oslide-frame::after{bottom:9px;right:9px;border-left:none;border-top:none}
+.oslide-dots{display:flex;gap:7px;justify-content:center;margin-top:14px}
+.od{width:7px;height:7px;border-radius:50%;background:rgba(200,160,60,.25);transition:.3s;cursor:pointer}
+.od.on{background:var(--gold);box-shadow:0 0 6px rgba(200,160,60,.5)}
 
 /* LIGHTBOX */
 #lbox{position:fixed;inset:0;z-index:50;background:rgba(8,18,6,.94);
@@ -157,6 +162,44 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .leaf-deco.tl{top:0;left:0}
 .leaf-deco.br{bottom:0;right:0;transform:rotate(180deg)}
 .leaf-deco.gold{color:var(--goldB);opacity:.065}
+
+/* GOUDEN VLINDER */
+#butterfly{position:fixed;z-index:16;pointer-events:none;width:72px;height:50px;
+  left:0;top:0;will-change:transform}
+#butterfly svg{width:100%;height:100%;display:block;filter:drop-shadow(0 4px 12px rgba(200,160,60,.45))}
+#wingL,#wingR{transform-origin:80px 58px;animation:flapL .4s ease-in-out infinite alternate}
+#wingR{animation-name:flapR}
+@keyframes flapL{0%{transform:scaleX(1) rotate(0deg)}100%{transform:scaleX(.5) rotate(-10deg)}}
+@keyframes flapR{0%{transform:scaleX(1) rotate(0deg)}100%{transform:scaleX(.5) rotate(10deg)}}
+.bdust{position:fixed;z-index:15;pointer-events:none;border-radius:50%;
+  opacity:.95;transition:opacity 1.5s ease,transform 1.5s ease;
+  box-shadow:0 0 8px 2px rgba(232,201,106,.65)}
+
+/* CAMERA-CURSOR */
+@media (hover:hover) and (pointer:fine){body.camcursor-on{cursor:none}}
+#camCursor{position:fixed;z-index:9999;pointer-events:none;width:46px;height:46px;
+  left:0;top:0;transform:translate(-50%,-50%);transition:opacity .25s;opacity:0}
+#camCursor.show{opacity:1}
+#camCursor .cc-br{position:absolute;width:14px;height:14px;border:1.5px solid var(--goldB);transition:.18s}
+#camCursor .a{top:0;left:0;border-right:none;border-bottom:none}
+#camCursor .b{top:0;right:0;border-left:none;border-bottom:none}
+#camCursor .c{bottom:0;left:0;border-right:none;border-top:none}
+#camCursor .d{bottom:0;right:0;border-left:none;border-top:none}
+#camCursor .cc-dot{position:absolute;left:50%;top:50%;width:3px;height:3px;border-radius:50%;
+  background:var(--goldB);transform:translate(-50%,-50%);opacity:.8}
+#camCursor.shut .cc-br{transform:scale(.42)}
+#camCursor.shut .cc-ring{opacity:1;transform:translate(-50%,-50%) scale(1.5)}
+#camCursor .cc-ring{position:absolute;left:50%;top:50%;width:46px;height:46px;border-radius:50%;
+  border:1.5px solid rgba(232,201,106,.7);transform:translate(-50%,-50%) scale(1);opacity:0;
+  transition:transform .35s ease,opacity .35s ease}
+
+/* SLOT-CTA */
+#pfCta{position:relative;z-index:10;text-align:center;padding:90px 8vw 100px;
+  background:radial-gradient(ellipse 70% 60% at 50% 100%,rgba(232,201,106,.08),transparent 60%)}
+#pfCta h2{font:200 clamp(26px,4vw,40px)/1.2 "Helvetica Neue";color:var(--tl);margin-bottom:16px}
+#pfCta h2 em{font-style:italic;color:var(--goldB)}
+#pfCta p{font:300 italic 16px/1.7 "Helvetica Neue";color:var(--ml);max-width:480px;margin:0 auto 32px}
+#pfCta .btn{font-size:12px;padding:15px 34px}
 
 /* REVEAL */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
@@ -211,8 +254,7 @@ footer .fc a:hover{color:var(--goldB)}
 
 @media(max-width:760px){
   .beat,.beat.rev{flex-direction:column;gap:30px;padding:42px 7vw}
-  .beat-media{max-width:100%;width:100%}
-  .bphoto{height:260px}
+  .beat-media{max-width:280px;width:100%}
   .beat-text{text-align:left}
   .beat-text p{max-width:100%}
   .nrow{padding:36px 6vw 0;gap:9px}
@@ -220,10 +262,33 @@ footer .fc a:hover{color:var(--goldB)}
   .ntile.v{width:140px;height:198px}
   .ntile.solo{width:280px;height:200px}
   .interlude-box{padding:22px 7vw 50px}
+  #camCursor{display:none}
 }
 </style>
 </head>
 <body>
+
+<div id="butterfly"><svg viewBox="0 0 160 110" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="bfg" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#f5e69a"/><stop offset="50%" stop-color="#d8b25a"/><stop offset="100%" stop-color="#8a601a"/>
+  </linearGradient></defs>
+  <g id="wingL">
+    <path d="M80 58 C64 36 36 12 16 15 C2 17 6 42 22 53 C40 65 66 63 80 58Z" fill="url(#bfg)" opacity=".95"/>
+    <path d="M80 58 C70 50 48 40 34 43 C25 45 27 56 38 60 C54 66 70 62 80 58Z" fill="url(#bfg)" opacity=".55"/>
+  </g>
+  <g id="wingR">
+    <path d="M80 58 C96 36 124 12 144 15 C158 17 154 42 138 53 C120 65 94 63 80 58Z" fill="url(#bfg)" opacity=".95"/>
+    <path d="M80 58 C90 50 112 40 126 43 C135 45 133 56 122 60 C106 66 90 62 80 58Z" fill="url(#bfg)" opacity=".55"/>
+  </g>
+  <ellipse cx="80" cy="58" rx="2.8" ry="17" fill="#6b4a18"/>
+  <path d="M80 43 Q73 31 65 26 M80 43 Q87 31 95 26" stroke="#6b4a18" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+</svg></div>
+
+<div id="camCursor">
+  <div class="cc-ring"></div>
+  <div class="cc-br a"></div><div class="cc-br b"></div><div class="cc-br c"></div><div class="cc-br d"></div>
+  <div class="cc-dot"></div>
+</div>
 
 <header id="hdr">
   <a class="lbtn" href="index.html">
@@ -411,6 +476,13 @@ footer .fc a:hover{color:var(--goldB)}
 
 </main>
 
+<section id="pfCta" class="rv">
+  <div class="lbl">Jouw verhaal</div>
+  <h2>Klaar voor <em>jouw</em> pad?</h2>
+  <p>Net als Ingrid, Leijbra en Marga: een shoot die laat zien wie je bent, niet alleen hoe je eruitziet. Plan een gratis en vrijblijvend kennismakingsgesprek.</p>
+  <a href="https://calendly.com/anoukpeetersfotografie-info/anouksblik" target="_blank" rel="noopener" class="btn btg">Plan je gratis Anouk's Blik →</a>
+</section>
+
 <footer>
   <div class="fi">
     <img src="fotos/logo-ap.png" alt="Anouk Peeters logo" width="56" height="56"/>
@@ -479,6 +551,99 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')cls();});
 const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting)en.target.classList.add('in');}),{threshold:.1});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
+// Blader-motief in de hoeken (gelijk aan homepage)
+const LEAF_SVG='<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">'+
+  '<path d="M26 188 Q46 142 40 98 Q36 60 50 24" stroke="currentColor" stroke-width="1.1"/>'+
+  '<g transform="translate(50,24)">'+
+    '<path d="M0,0 C-9,-11 -10,-26 0,-40 C10,-26 9,-11 0,0Z" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity=".18"/>'+
+    '<path d="M0,0 C-9,-11 -10,-26 0,-40 C10,-26 9,-11 0,0Z" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity=".18" transform="rotate(60)"/>'+
+    '<path d="M0,0 C-9,-11 -10,-26 0,-40 C10,-26 9,-11 0,0Z" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity=".18" transform="rotate(120)"/>'+
+    '<path d="M0,0 C-9,-11 -10,-26 0,-40 C10,-26 9,-11 0,0Z" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity=".18" transform="rotate(180)"/>'+
+    '<path d="M0,0 C-9,-11 -10,-26 0,-40 C10,-26 9,-11 0,0Z" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity=".18" transform="rotate(240)"/>'+
+    '<path d="M0,0 C-9,-11 -10,-26 0,-40 C10,-26 9,-11 0,0Z" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity=".18" transform="rotate(300)"/>'+
+    '<circle cx="0" cy="0" r="3" fill="currentColor" opacity=".6"/>'+
+  '</g>'+
+  '<path d="M0,0 C-6,-7 -6,-16 0,-24 C6,-16 6,-7 0,0Z" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity=".15" transform="translate(34,108) rotate(-30)"/>'+
+  '</svg>';
+function addLeafDeco(sel,opts){
+  document.querySelectorAll(sel).forEach(el=>{
+    (opts||[{c:'tl'}]).forEach(o=>{
+      const d=document.createElement('div');
+      d.className='leaf-deco '+o.c+(o.gold?' gold':'');
+      d.innerHTML=LEAF_SVG;
+      el.insertBefore(d,el.firstChild);
+    });
+  });
+}
+addLeafDeco('#pfHero',[{c:'tl',gold:true},{c:'br',gold:true}]);
+addLeafDeco('#pfCta',[{c:'tl',gold:true},{c:'br',gold:true}]);
+addLeafDeco('footer',[{c:'tl',gold:true}]);
+
+// Gouden vlinder - vliegt los rond, geen vast doel op deze pagina
+const bfEl=document.getElementById('butterfly');
+if(bfEl){
+  const dustColors=['rgba(232,201,106,.9)','rgba(216,178,90,.85)'];
+  let bfBaseX=innerWidth*.84,bfBaseY=innerHeight*.24;
+  let bfX=bfBaseX,bfY=bfBaseY,bfFrame=0;
+  addEventListener('resize',()=>{bfBaseX=innerWidth*.84;bfBaseY=innerHeight*.24;});
+  function spawnDust(x,y){
+    const d=document.createElement('div');d.className='bdust';
+    const sz=4+Math.random()*5;
+    d.style.width=sz+"px";d.style.height=sz+"px";
+    d.style.left=x+"px";d.style.top=y+"px";
+    d.style.background='radial-gradient(circle,'+dustColors[Math.random()<.5?0:1]+',rgba(200,160,60,0))';
+    document.body.appendChild(d);
+    requestAnimationFrame(()=>{
+      d.style.opacity='0';
+      d.style.transform='translate('+(Math.random()*24-12)+'px,'+(14+Math.random()*22)+'px) scale(.15)';
+    });
+    setTimeout(()=>d.remove(),1550);
+  }
+  function animButterfly(now){
+    requestAnimationFrame(animButterfly);
+    bfFrame++;
+    const t=now*.001;
+    const flyX=bfBaseX+Math.sin(t*.5)*40+Math.sin(t*.13)*60;
+    const flyY=bfBaseY+Math.cos(t*.4)*30;
+    bfX+=(flyX-bfX)*.04;bfY+=(flyY-bfY)*.04;
+    bfEl.style.transform="translate("+bfX+"px,"+bfY+"px) rotate("+(Math.sin(t*.6)*6)+"deg)";
+    if(bfFrame%4===0)spawnDust(bfX+36+(Math.random()*14-7),bfY+32+(Math.random()*10-5));
+  }
+  requestAnimationFrame(animButterfly);
+}
+
+// Camera-cursor - alleen op desktop met muis
+if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+  document.body.classList.add('camcursor-on');
+  const cc=document.getElementById('camCursor');
+  if(cc){
+    cc.classList.add('show');
+    addEventListener('mousemove',e=>{cc.style.left=e.clientX+"px";cc.style.top=e.clientY+"px";});
+    let actx;
+    function shutterSound(){
+      try{
+        actx=actx||new (window.AudioContext||window.webkitAudioContext)();
+        const t0=actx.currentTime;
+        const o=actx.createOscillator(),g=actx.createGain();
+        o.type='square';o.frequency.setValueAtTime(1200,t0);
+        g.gain.setValueAtTime(.0001,t0);
+        g.gain.exponentialRampToValueAtTime(.05,t0+.004);
+        g.gain.exponentialRampToValueAtTime(.0001,t0+.045);
+        o.connect(g);g.connect(actx.destination);
+        o.start(t0);o.stop(t0+.05);
+      }catch(e){}
+    }
+    const hoverSel='.oslide-frame,.ntile';
+    document.addEventListener('mouseover',e=>{
+      if(e.target.closest(hoverSel)){
+        cc.classList.add('shut');shutterSound();
+        clearTimeout(cc._t);
+        cc._t=setTimeout(()=>cc.classList.remove('shut'),180);
+      }
+    });
+  }
+}
+
 // Seizoen in footer
 const seasonTag=document.getElementById('seasonTag');
 if(seasonTag){
@@ -535,20 +700,41 @@ const PF_PHOTOS={
   annet:[img("2025/07/Annet-Zoer-2025-143-scaled.jpg",900),img("2025/07/Annet-Zoer-2025-319-scaled.jpg",900)],
   ingrid2:[img("2025/12/Ingrid-2025-159-scaled.jpg",900),img("2025/12/Ingrid-2025-119-scaled.jpg",900)],
 };
-function buildBeatPhotos(el){
+function buildSlide(el){
   const urls=PF_PHOTOS[el.dataset.key];
   if(!urls||!urls.length)return;
-  urls.forEach(u=>{
-    const t=document.createElement('div');
-    t.className='bphoto';
+  const frame=document.createElement('div');
+  frame.className='oslide-frame';
+  let idx=0;
+  const imgs=urls.map((u,i)=>{
     const im=document.createElement('img');
     im.loading='lazy';im.alt='';im.src=u;
-    t.appendChild(im);
-    t.addEventListener('click',e=>{e.stopPropagation();openLbox(u);});
-    el.appendChild(t);
+    if(i===0)im.classList.add('active');
+    frame.appendChild(im);
+    return im;
   });
+  el.appendChild(frame);
+  frame.addEventListener('click',e=>{e.stopPropagation();openLbox(urls[idx]);});
+  if(urls.length>1){
+    const dots=document.createElement('div');
+    dots.className='oslide-dots';
+    const dotEls=urls.map((_,i)=>{
+      const s=document.createElement('span');
+      s.className='od'+(i===0?' on':'');
+      dots.appendChild(s);
+      return s;
+    });
+    el.appendChild(dots);
+    const go=n=>{
+      imgs[idx].classList.remove('active');dotEls[idx].classList.remove('on');
+      idx=n;
+      imgs[idx].classList.add('active');dotEls[idx].classList.add('on');
+    };
+    setInterval(()=>go((idx+1)%imgs.length),4600+Math.random()*900);
+    dotEls.forEach((d,i)=>d.addEventListener('click',e=>{e.stopPropagation();go(i);}));
+  }
 }
-document.querySelectorAll('.beat-media[data-key]').forEach(buildBeatPhotos);
+document.querySelectorAll('.beat-media[data-key]').forEach(buildSlide);
 
 // Natuur - meerdere foto's naast elkaar over de volle breedte, elk in eigen staand/liggend formaat
 const NATURE_ROWS={
