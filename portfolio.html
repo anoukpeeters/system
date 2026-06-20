@@ -91,10 +91,10 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .pf-filter button.on{background:var(--gold);color:var(--deep);border-color:var(--gold)}
 
 /* VERHAAL - branding en natuur lopen door elkaar */
-.beat{position:relative;z-index:10;max-width:1180px;margin:0 auto;padding:60px 8vw;
+.beat{position:relative;z-index:10;max-width:1180px;margin:0 auto;padding:54px 8vw;
   display:flex;align-items:center;gap:64px;flex-wrap:wrap}
 .beat.rev{flex-direction:row-reverse}
-.beat-media{flex:1 1 380px;position:relative;max-width:480px}
+.beat-media{flex:1 1 340px;position:relative;max-width:400px}
 .beat-text{flex:1 1 280px;min-width:240px}
 .beat-text .tag{font:600 10px/1 "SF Mono",monospace;letter-spacing:.2em;text-transform:uppercase;
   color:var(--goldS);opacity:.85;margin-bottom:14px;display:block}
@@ -102,11 +102,10 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .beat-text h3 em{font-style:italic;color:var(--goldB)}
 .beat-text p{font:300 italic 15px/1.65 "Helvetica Neue";color:var(--ml);max-width:360px}
 
-/* SLIDESHOW - zelfde opbouw als de homepage (oslide), met gouden lijst */
+/* SLIDESHOW - zelfde opbouw als de homepage (oslide), vierkant zodat staand/liggend door elkaar kan */
 .oslide-frame{position:relative;border-radius:2px;overflow:hidden;cursor:zoom-in;
-  box-shadow:0 18px 44px rgba(10,24,8,.38)}
-.beat-media .oslide-frame{aspect-ratio:4/5}
-.oslide-img{position:absolute;inset:0;background-size:cover;background-position:center 22%;
+  box-shadow:0 18px 44px rgba(10,24,8,.38);aspect-ratio:1/1}
+.oslide-img{position:absolute;inset:0;background-size:cover;background-position:center 26%;
   opacity:0;transition:opacity 1.2s ease,filter .9s ease;filter:grayscale(.65) brightness(.86)}
 .oslide-img.active{opacity:1}
 .in .oslide-img{filter:none}
@@ -130,16 +129,29 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
   display:flex;align-items:center;justify-content:center;cursor:pointer;font:300 22px/1 "Helvetica Neue"}
 #lboxClose:hover{border-color:var(--goldB)}
 
-/* NATUUR-INTERLUDE - lichte sectie, ademruimte tussen de shoots */
+/* NATUUR-INTERLUDE - lichte sectie, foto's over de volle breedte naast elkaar */
 .interlude{position:relative;z-index:10;width:100%;background:#faf7f1}
-.interlude-box{max-width:880px;margin:0 auto;padding:50px 8vw 70px;text-align:center}
-.interlude .oslide-frame{aspect-ratio:16/9;margin:0 auto 20px;max-width:820px;box-shadow:0 18px 44px rgba(26,54,24,.18)}
+.nrow{display:flex;gap:12px;justify-content:center;align-items:flex-end;flex-wrap:wrap;
+  padding:46px 5vw 0;max-width:1180px;margin:0 auto}
+.ntile{position:relative;border-radius:2px;overflow:hidden;cursor:zoom-in;flex-shrink:0;
+  box-shadow:0 18px 40px rgba(26,54,24,.2)}
+.ntile img{display:block;width:100%;height:100%;object-fit:cover;
+  filter:grayscale(.55) brightness(.92);transition:filter .9s ease,transform .6s ease}
+.in .ntile img{filter:none}
+.ntile:hover img{transform:scale(1.045)}
+.ntile.h{width:360px;height:250px}
+.ntile.v{width:225px;height:320px}
+.ntile.solo{width:560px;height:370px}
+.ntile::before,.ntile::after{content:"";position:absolute;width:18px;height:18px;
+  border:1.5px solid var(--gold);z-index:3}
+.ntile::before{top:8px;left:8px;border-right:none;border-bottom:none}
+.ntile::after{bottom:8px;right:8px;border-left:none;border-top:none}
+.interlude-box{max-width:680px;margin:0 auto;padding:26px 8vw 64px;text-align:center}
 .interlude .tag{font:600 10px/1 "SF Mono",monospace;letter-spacing:.2em;text-transform:uppercase;
   color:var(--gold);opacity:.9;margin-bottom:10px;display:block}
 .interlude h3{font:300 italic clamp(19px,2.4vw,25px)/1.3 "Helvetica Neue";color:var(--td);margin-bottom:8px}
 .interlude h3 em{font-style:italic;color:var(--gold)}
 .interlude p{font:300 italic 14px/1.6 "Helvetica Neue";color:var(--md)}
-.interlude .od{background:rgba(44,82,41,.2)}
 
 /* DECO */
 .leaf-deco{position:absolute;pointer-events:none;width:150px;height:150px;z-index:0;opacity:.05;color:var(--deep3)}
@@ -199,11 +211,15 @@ footer .fc a:hover{color:var(--goldB)}
 @media(max-width:640px){#sndBtn{left:14px;bottom:14px;width:42px;height:42px}}
 
 @media(max-width:760px){
-  .beat,.beat.rev{flex-direction:column;gap:30px;padding:46px 7vw}
-  .beat-media{max-width:100%;width:100%}
+  .beat,.beat.rev{flex-direction:column;gap:30px;padding:42px 7vw}
+  .beat-media{max-width:280px;width:100%}
   .beat-text{text-align:left}
   .beat-text p{max-width:100%}
-  .interlude-box{padding:40px 7vw 56px}
+  .nrow{padding:36px 6vw 0;gap:9px}
+  .ntile.h{width:220px;height:155px}
+  .ntile.v{width:140px;height:198px}
+  .ntile.solo{width:280px;height:200px}
+  .interlude-box{padding:22px 7vw 50px}
 }
 </style>
 </head>
@@ -243,80 +259,129 @@ footer .fc a:hover{color:var(--goldB)}
 <section id="pfHero">
   <div class="lbl">Portfolio</div>
   <h1>Anderen gingen <em>het pad</em> je voor</h1>
-  <p class="sub">Een inkijkje in het bos: branding-shoots en natuurmomenten, in Nederland en de Eifel. Door elkaar, zoals het hoort, want het ene voedt het andere.</p>
+  <p class="sub">Een inkijkje in het bos: personal branding-shoots en natuurmomenten, in Nederland en de Eifel. Door elkaar, zoals het hoort, want het ene voedt het andere.</p>
   <div class="pf-filter">
     <button class="on" data-cat="all">Alles</button>
-    <button data-cat="branding">Branding</button>
-    <button data-cat="fotografie">Fotografie</button>
+    <button data-cat="branding">Personal branding</button>
+    <button data-cat="natuur">Natuur</button>
   </div>
 </section>
 
 <div class="beat rv" data-cat="branding">
   <div class="beat-media" data-key="ingrid"></div>
   <div class="beat-text">
-    <span class="tag">Branding fotoshoot</span>
+    <span class="tag">Personal branding fotoshoot</span>
     <h3>Ingrid <em>Zellenrath</em></h3>
     <p>Praktijk Raatg</p>
-  </div>
-</div>
-
-<div class="interlude rv" data-cat="fotografie">
-  <div class="interlude-box">
-    <div class="beat-media" data-key="klaprozen"></div>
-    <span class="tag">Fotografie · Klaprozen · Nederland</span>
-    <h3>Even <em>stilstaan</em></h3>
-    <p>Een veld in volle bloei, in het gouden uur.</p>
   </div>
 </div>
 
 <div class="beat rev rv" data-cat="branding">
   <div class="beat-media" data-key="leijbra"></div>
   <div class="beat-text">
-    <span class="tag">Branding fotoshoot · Eifel</span>
+    <span class="tag">Personal branding fotoshoot · Eifel</span>
     <h3>Leijbra <em>Stolk</em></h3>
     <p>Praktijk Upendi</p>
   </div>
 </div>
 
-<div class="interlude rv" data-cat="fotografie">
+<div class="beat rv" data-cat="branding">
+  <div class="beat-media" data-key="marga"></div>
+  <div class="beat-text">
+    <span class="tag">Personal branding fotoshoot · Eifel &amp; Nederland</span>
+    <h3>Marga</h3>
+  </div>
+</div>
+
+<div class="interlude rv" data-cat="natuur">
+  <div class="nrow" data-nkey="waterval"></div>
   <div class="interlude-box">
-    <div class="beat-media" data-key="waterval"></div>
-    <span class="tag">Fotografie · Waterval · Eifel</span>
+    <span class="tag">Natuur · Waterval · Eifel</span>
     <h3>Verder het <em>bos</em> in</h3>
     <p>Los te bekijken, of hangend in jouw praktijkruimte.</p>
   </div>
 </div>
 
-<div class="beat rv" data-cat="branding">
+<div class="beat rev rv" data-cat="branding">
   <div class="beat-media" data-key="yvonne"></div>
   <div class="beat-text">
-    <span class="tag">Branding fotoshoot · Eifel</span>
+    <span class="tag">Personal branding fotoshoot · Eifel</span>
     <h3>Yvonne <em>Huijs</em></h3>
   </div>
 </div>
 
-<div class="interlude rv" data-cat="fotografie">
+<div class="interlude rv" data-cat="natuur">
+  <div class="nrow" data-nkey="bos"></div>
   <div class="interlude-box">
-    <div class="beat-media" data-key="bos"></div>
-    <span class="tag">Fotografie · Bos &amp; zonlicht · Eifel</span>
+    <span class="tag">Natuur · Bos &amp; zonlicht · Eifel</span>
     <h3>Het pad <em>gaat verder</em></h3>
     <p>Het bos waar ik het liefst loop, met Paikea naast me.</p>
+  </div>
+</div>
+
+<div class="beat rv" data-cat="branding">
+  <div class="beat-media" data-key="linda"></div>
+  <div class="beat-text">
+    <span class="tag">Personal branding fotoshoot</span>
+    <h3>Linda</h3>
+  </div>
+</div>
+
+<div class="beat rev rv" data-cat="branding">
+  <div class="beat-media" data-key="monique"></div>
+  <div class="beat-text">
+    <span class="tag">Personal branding fotoshoot</span>
+    <h3>Monique</h3>
+  </div>
+</div>
+
+<div class="beat rv" data-cat="branding">
+  <div class="beat-media" data-key="miranda"></div>
+  <div class="beat-text">
+    <span class="tag">Personal branding fotoshoot</span>
+    <h3>Miranda <em>de Jongh</em></h3>
+    <p>Coach-Atelier</p>
+  </div>
+</div>
+
+<div class="interlude rv" data-cat="natuur">
+  <div class="nrow" data-nkey="klaprozen"></div>
+  <div class="interlude-box">
+    <span class="tag">Natuur · Klaprozen · Nederland</span>
+    <h3>Even <em>stilstaan</em></h3>
+    <p>Een veld in volle bloei, in het gouden uur.</p>
+  </div>
+</div>
+
+<div class="beat rev rv" data-cat="branding">
+  <div class="beat-media" data-key="judith"></div>
+  <div class="beat-text">
+    <span class="tag">Personal branding fotoshoot</span>
+    <h3>Judith</h3>
+  </div>
+</div>
+
+<div class="beat rv" data-cat="branding">
+  <div class="beat-media" data-key="marinka"></div>
+  <div class="beat-text">
+    <span class="tag">Personal branding fotoshoot</span>
+    <h3>Marinka</h3>
   </div>
 </div>
 
 <div class="beat rev rv" data-cat="branding">
   <div class="beat-media" data-key="ilse"></div>
   <div class="beat-text">
-    <span class="tag">Branding fotoshoot</span>
+    <span class="tag">Personal branding fotoshoot</span>
     <h3>Ilse <em>Verrijt</em></h3>
     <p>Leefstijlstudio Balans</p>
   </div>
 </div>
 
-<div class="interlude rv" data-cat="fotografie">
+<div class="interlude rv" data-cat="natuur">
+  <div class="nrow" data-nkey="heuvels"></div>
   <div class="interlude-box">
-    <div class="beat-media" data-key="heuvels"></div>
-    <span class="tag">Fotografie · Heuvels &amp; zonsondergang · Nederland</span>
+    <span class="tag">Natuur · Heuvels &amp; zonsondergang · Nederland</span>
     <h3>Bijna <em>thuis</em></h3>
     <p>Rust en bezieling, in de avond.</p>
   </div>
@@ -325,7 +390,7 @@ footer .fc a:hover{color:var(--goldB)}
 <div class="beat rv" data-cat="branding">
   <div class="beat-media" data-key="roos"></div>
   <div class="beat-text">
-    <span class="tag">Branding fotoshoot</span>
+    <span class="tag">Personal branding fotoshoot</span>
     <h3>Roos</h3>
   </div>
 </div>
@@ -333,7 +398,7 @@ footer .fc a:hover{color:var(--goldB)}
 <div class="beat rev rv" data-cat="branding">
   <div class="beat-media" data-key="annet"></div>
   <div class="beat-text">
-    <span class="tag">Branding fotoshoot</span>
+    <span class="tag">Personal branding fotoshoot</span>
     <h3>Annet <em>Zoer</em></h3>
     <p>Winstadviseur</p>
   </div>
@@ -427,7 +492,7 @@ if(sndBtn&&bosAudio){
   });
 }
 
-// Filter - branding / fotografie / alles, beats en interludes lopen door elkaar
+// Filter - personal branding / natuur / alles
 const filterBtns=[...document.querySelectorAll('.pf-filter button')];
 const blocks=[...document.querySelectorAll('.beat,.interlude')];
 filterBtns.forEach(b=>b.addEventListener('click',()=>{
@@ -437,23 +502,34 @@ filterBtns.forEach(b=>b.addEventListener('click',()=>{
   blocks.forEach(el=>{el.style.display=(cat==='all'||el.dataset.cat===cat)?'':'none';});
 }));
 
-// Foto's per onderdeel - elk onderdeel wordt een eigen kleine slideshow
+// Lightbox - klik op een foto vergroot 'm
+const lbox=document.getElementById('lbox');
+const lboxImg=document.getElementById('lboxImg');
+function openLbox(url){lboxImg.src=url;lbox.classList.add('on');}
+function closeLbox(){lbox.classList.remove('on');}
+lbox?.addEventListener('click',closeLbox);
+document.getElementById('lboxClose')?.addEventListener('click',e=>{e.stopPropagation();closeLbox();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLbox();});
+
+// Personal branding - elke klant een eigen mini-slideshow (vierkant, vangt staand+liggend netjes op)
 const PF_PHOTOS={
   ingrid:[img("2025/12/Ingrid-Zee-2025-151-scaled.jpg",900),img("2025/12/Ingrid-Zee-2025-81-scaled.jpg",900)],
-  leijbra:[img("2025/08/Leijbra-Avond-2025-177-scaled.jpg",900)],
-  yvonne:[img("2025/04/Yvonne-Duitsland-Waterval-95-scaled.jpg",900),img("2025/04/Yvonne-Duitsland-Avond-53-scaled.jpg",900),
-    img("2025/04/Yvonne-Duitsland-Waterval-47-scaled.jpg",900)],
-  ilse:[img("2024/10/Ilse-Natuur-2024-9-scaled.jpg",900),img("2024/11/Ilse-deel-2-2024-13-scaled.jpg",900),
-    img("2024/10/Ilse-Natuur-2024-41-scaled.jpg",900)],
-  roos:[img("2022/05/Roos-Akkerzicht-2022-91-scaled.jpg",900),img("2022/05/Roos-Akkerzicht-2022-95-scaled.jpg",900),
-    img("2022/06/Roos-Akkerzicht-2022-59-scaled.jpg",900)],
+  leijbra:[img("2025/08/Leijbra-Avond-2025-177-scaled.jpg",900),img("2025/08/Leijbra-Ochtend-2025-5-scaled.jpg",900)],
+  marga:[img("2025/07/Marga-Efteling-2024-11-scaled.jpg",900),img("2025/08/Marga-Avond-Eifel-2025-43-scaled.jpg",900),
+    img("2025/08/Marga-Ochtend-Eifel-2025-45-scaled.jpg",900)],
+  yvonne:[img("2025/04/Yvonne-Duitsland-Avond-3-scaled.jpg",900),img("2025/04/Yvonne-Duitsland-Waterval-47-scaled.jpg",900),
+    img("2025/04/Yvonne-Duitsland-Waterval-25-scaled.jpg",900)],
+  linda:[img("2024/07/Linda-Kasteel-2024-51-scaled.jpg",900),img("2024/07/Linda-Kasteel-2024-63-scaled.jpg",900),
+    img("2024/07/Linda-op-de-Heide-2024-155-scaled.jpg",900)],
+  monique:[img("2025/12/Monique-Timmerfabriek-2025-95-scaled.jpg",900),img("2025/12/Monique-Timmerfabriek-2025-69-scaled.jpg",900)],
+  miranda:[img("2022/07/Miranda-Coach-Atelier-7-scaled.jpg",900),img("2024/02/Miranda-Coach-Atelier-43-scaled.jpg",900)],
+  judith:[img("2024/02/Judith-Art-67-scaled.jpg",900),img("2024/02/Judith-Deel-2-87-scaled.jpg",900)],
+  marinka:[img("2024/07/Marinka-109-scaled.jpg",900),img("2022/10/Marinka-Heeze-2-scaled.jpg",900),
+    img("2022/05/Marinka-Akkerzicht-75-scaled.jpg",900)],
+  ilse:[img("2024/10/Ilse-Natuur-2024-9-scaled.jpg",900),img("2024/11/Ilse-deel-2-2024-55-scaled.jpg",900)],
+  roos:[img("2022/05/Roos-Akkerzicht-2022-91-scaled.jpg",900),img("2024/02/Roos-Akkerzicht-2022-81-scaled.jpg",900)],
   annet:[img("2025/07/Annet-Zoer-2025-143-scaled.jpg",900),img("2025/07/Annet-Zoer-2025-319-scaled.jpg",900)],
-  klaprozen:[img("2023/05/Klaproos-veld-2023-scaled.jpg",1300),L("bloem-papaver.jpg"),L("bloemenveld-goudenuur.jpg")],
-  waterval:[L("waterval-eifel.jpg"),L("waterval-in-praktijkruimte.jpg")],
-  bos:[L("bos-zonnestraal.jpg")],
-  heuvels:[L("zonsondergang-heuvels.jpg")],
 };
-
 function buildSlide(el){
   const urls=PF_PHOTOS[el.dataset.key];
   if(!urls||!urls.length)return;
@@ -490,17 +566,28 @@ function buildSlide(el){
 }
 document.querySelectorAll('.beat-media[data-key]').forEach(buildSlide);
 
-// Lightbox - klik op een foto vergroot 'm
-const lbox=document.getElementById('lbox');
-const lboxImg=document.getElementById('lboxImg');
-function openLbox(url){
-  lboxImg.src=url;
-  lbox.classList.add('on');
+// Natuur - meerdere foto's naast elkaar over de volle breedte, elk in eigen staand/liggend formaat
+const NATURE_ROWS={
+  klaprozen:[[img("2023/05/Klaproos-veld-2023-scaled.jpg",700),'h'],[L("bloem-papaver.jpg"),'v'],[L("bloemenveld-goudenuur.jpg"),'h']],
+  waterval:[[L("waterval-eifel.jpg"),'v'],[L("waterval-in-praktijkruimte.jpg"),'v']],
+  bos:[[L("bos-zonnestraal.jpg"),'v']],
+  heuvels:[[L("zonsondergang-heuvels.jpg"),'h']],
+};
+function buildRow(el){
+  const items=NATURE_ROWS[el.dataset.nkey];
+  if(!items||!items.length)return;
+  const solo=items.length===1;
+  items.forEach(([u,o])=>{
+    const t=document.createElement('div');
+    t.className='ntile '+(solo?'solo':o);
+    const im=document.createElement('img');
+    im.loading='lazy';im.alt='';im.src=u;
+    t.appendChild(im);
+    t.addEventListener('click',e=>{e.stopPropagation();openLbox(u);});
+    el.appendChild(t);
+  });
 }
-function closeLbox(){lbox.classList.remove('on');}
-lbox?.addEventListener('click',closeLbox);
-document.getElementById('lboxClose')?.addEventListener('click',e=>{e.stopPropagation();closeLbox();});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLbox();});
+document.querySelectorAll('.nrow[data-nkey]').forEach(buildRow);
 })();
 </script>
 </body>
