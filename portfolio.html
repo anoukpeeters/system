@@ -193,19 +193,21 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
   border:1.5px solid rgba(232,201,106,.7);transform:translate(-50%,-50%) scale(1);opacity:0;
   transition:transform .35s ease,opacity .35s ease}
 
-/* SLOT-CTA - met foto van Anouk als achtergrond, duidelijke gouden scheiding van het portfolio */
-#pfCta{position:relative;z-index:10;text-align:center;overflow:hidden;
-  min-height:520px;display:flex;align-items:center;justify-content:center}
+/* SLOT-CTA - foto van Anouk (gezicht links) over volle breedte, tekst ernaast rechts */
+#pfCta{position:relative;z-index:10;overflow:hidden;
+  min-height:560px;display:flex;align-items:center;justify-content:flex-end}
 #pfCta::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;z-index:4;
   background:linear-gradient(90deg,transparent,var(--goldB) 25%,var(--goldB) 75%,transparent);
   box-shadow:0 0 14px rgba(232,201,106,.6)}
-.pfcta-bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center 24%}
+.pfcta-bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:28% 30%}
 .pfcta-ov{position:absolute;inset:0;z-index:1;
-  background:linear-gradient(180deg,rgba(14,30,12,.55) 0%,rgba(13,27,11,.75) 55%,rgba(10,22,9,.92) 100%)}
-.pfcta-in{position:relative;z-index:2;padding:90px 8vw}
+  background:linear-gradient(100deg,rgba(10,22,9,.2) 0%,rgba(11,24,10,.45) 38%,rgba(11,24,10,.88) 68%,rgba(10,22,9,.95) 100%)}
+.pfcta-in{position:relative;z-index:2;text-align:left;max-width:460px;padding:90px 8vw}
+#pfCta .lbl{justify-content:flex-start}
+#pfCta .lbl::before{display:none}
 #pfCta h2{font:200 clamp(26px,4vw,40px)/1.2 "Helvetica Neue";color:var(--tl);margin-bottom:16px}
 #pfCta h2 em{font-style:italic;color:var(--goldB)}
-#pfCta p{font:300 italic 16px/1.7 "Helvetica Neue";color:var(--tl);opacity:.88;max-width:480px;margin:0 auto 32px}
+#pfCta p{font:300 italic 16px/1.7 "Helvetica Neue";color:var(--tl);opacity:.88;margin:0 0 32px}
 #pfCta .btn{font-size:12px;padding:15px 34px}
 
 /* REVEAL */
@@ -270,6 +272,13 @@ footer .fc a:hover{color:var(--goldB)}
   .ntile.solo{width:280px;height:200px}
   .interlude-box{padding:22px 7vw 50px}
   #camCursor{display:none}
+  #pfCta{justify-content:center;min-height:480px}
+  .pfcta-bg{background-position:center 26%}
+  .pfcta-ov{background:linear-gradient(180deg,rgba(11,24,10,.35) 0%,rgba(11,24,10,.7) 50%,rgba(10,22,9,.95) 100%)}
+  .pfcta-in{text-align:center;max-width:100%}
+  #pfCta .lbl{justify-content:center}
+  #pfCta .lbl::before{display:flex}
+  #pfCta p{margin:0 auto 32px}
 }
 </style>
 </head>
@@ -380,6 +389,7 @@ footer .fc a:hover{color:var(--goldB)}
   <div class="beat-text">
     <span class="tag">Personal branding fotoshoot · Eifel</span>
     <h3>Yvonne <em>Huijs</em></h3>
+    <p>Oersterk · Afvalcoach</p>
   </div>
 </div>
 
