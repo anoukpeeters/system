@@ -193,12 +193,19 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
   border:1.5px solid rgba(232,201,106,.7);transform:translate(-50%,-50%) scale(1);opacity:0;
   transition:transform .35s ease,opacity .35s ease}
 
-/* SLOT-CTA */
-#pfCta{position:relative;z-index:10;text-align:center;padding:90px 8vw 100px;
-  background:radial-gradient(ellipse 70% 60% at 50% 100%,rgba(232,201,106,.08),transparent 60%)}
+/* SLOT-CTA - met foto van Anouk als achtergrond, duidelijke gouden scheiding van het portfolio */
+#pfCta{position:relative;z-index:10;text-align:center;overflow:hidden;
+  min-height:520px;display:flex;align-items:center;justify-content:center}
+#pfCta::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;z-index:4;
+  background:linear-gradient(90deg,transparent,var(--goldB) 25%,var(--goldB) 75%,transparent);
+  box-shadow:0 0 14px rgba(232,201,106,.6)}
+.pfcta-bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center 24%}
+.pfcta-ov{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(14,30,12,.55) 0%,rgba(13,27,11,.75) 55%,rgba(10,22,9,.92) 100%)}
+.pfcta-in{position:relative;z-index:2;padding:90px 8vw}
 #pfCta h2{font:200 clamp(26px,4vw,40px)/1.2 "Helvetica Neue";color:var(--tl);margin-bottom:16px}
 #pfCta h2 em{font-style:italic;color:var(--goldB)}
-#pfCta p{font:300 italic 16px/1.7 "Helvetica Neue";color:var(--ml);max-width:480px;margin:0 auto 32px}
+#pfCta p{font:300 italic 16px/1.7 "Helvetica Neue";color:var(--tl);opacity:.88;max-width:480px;margin:0 auto 32px}
 #pfCta .btn{font-size:12px;padding:15px 34px}
 
 /* REVEAL */
@@ -477,10 +484,14 @@ footer .fc a:hover{color:var(--goldB)}
 </main>
 
 <section id="pfCta" class="rv">
-  <div class="lbl">Jouw verhaal</div>
-  <h2>Klaar voor <em>jouw</em> pad?</h2>
-  <p>Net als deze ondernemers: een shoot die laat zien wie je bent, niet alleen hoe je eruitziet. Eerst kijken of we een klik hebben, en dan samen op pad.</p>
-  <a href="https://calendly.com/anoukpeetersfotografie-info/klik-en-connect" target="_blank" rel="noopener" class="btn btg">Plan een Klik &amp; Connect-gesprek →</a>
+  <div class="pfcta-bg" id="pfCtaBg"></div>
+  <div class="pfcta-ov"></div>
+  <div class="pfcta-in">
+    <div class="lbl">Jouw verhaal</div>
+    <h2>Klaar voor <em>jouw</em> pad?</h2>
+    <p>Net als deze ondernemers: een shoot die laat zien wie je bent, niet alleen hoe je eruitziet. Eerst kijken of we een klik hebben, en dan samen op pad.</p>
+    <a href="https://calendly.com/anoukpeetersfotografie-info/klik-en-connect" target="_blank" rel="noopener" class="btn btg">Plan een Klik &amp; Connect-gesprek →</a>
+  </div>
 </section>
 
 <footer>
@@ -551,6 +562,10 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')cls();});
 const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting)en.target.classList.add('in');}),{threshold:.1});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
+// CTA-achtergrond - foto van Anouk zelf
+const pfCtaBg=document.getElementById('pfCtaBg');
+if(pfCtaBg)pfCtaBg.style.backgroundImage="url('"+L("anouk-camera-goldenhour.jpg")+"')";
+
 // Blader-motief in de hoeken (gelijk aan homepage)
 const LEAF_SVG='<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">'+
   '<path d="M26 188 Q46 142 40 98 Q36 60 50 24" stroke="currentColor" stroke-width="1.1"/>'+
@@ -576,7 +591,7 @@ function addLeafDeco(sel,opts){
   });
 }
 addLeafDeco('#pfHero',[{c:'tl',gold:true},{c:'br',gold:true}]);
-addLeafDeco('#pfCta',[{c:'tl',gold:true},{c:'br',gold:true}]);
+addLeafDeco('.pfcta-in',[{c:'tl',gold:true},{c:'br',gold:true}]);
 addLeafDeco('footer',[{c:'tl',gold:true}]);
 
 // Gouden vlinder - vliegt los rond, geen vast doel op deze pagina
