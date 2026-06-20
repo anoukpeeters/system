@@ -94,6 +94,8 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .beat{position:relative;z-index:10;max-width:1180px;margin:0 auto;padding:54px 8vw;
   display:flex;align-items:center;gap:64px;flex-wrap:wrap}
 .beat.rev{flex-direction:row-reverse}
+.beat+.beat::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:90px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.55}
 .beat-media{flex:1 1 340px;position:relative;max-width:400px}
 .beat-text{flex:1 1 280px;min-width:240px}
 .beat-text .tag{font:600 10px/1 "SF Mono",monospace;letter-spacing:.2em;text-transform:uppercase;
