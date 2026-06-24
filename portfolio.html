@@ -769,7 +769,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLbox();});
 // Personal branding - elke klant zijn eigen foto's, op origineel formaat naast elkaar (geen crop)
 const PF_PHOTOS={
   linda2:[L("linda-filiafleur-boom.jpg"),L("linda-filiafleur-portret.jpg"),L("linda-filiafleur-connectie.jpg"),
-    L("linda-filiafleur-mediteren.jpg"),L("linda-filiafleur-pad.jpg")],
+    L("linda-filiafleur-edelsteen.jpg"),L("linda-filiafleur-mediteren.jpg"),L("linda-filiafleur-pad.jpg")],
   ingrid:[img("2025/12/Ingrid-Zee-2025-151-scaled.jpg",900),img("2025/12/Ingrid-Zee-2025-81-scaled.jpg",900)],
   leijbra:[img("2025/08/Leijbra-Avond-2025-177-scaled.jpg",900),img("2025/08/Leijbra-Ochtend-2025-5-scaled.jpg",900)],
   marga:[img("2025/07/Marga-Efteling-2024-11-scaled.jpg",900),img("2025/08/Marga-Avond-Eifel-2025-43-scaled.jpg",900),
@@ -793,19 +793,16 @@ function buildSlide(el){
   const frame=document.createElement('div');
   frame.className='oslide-frame';
   let idx=0;
-  // Verhouding volgt de actieve foto (juiste oriëntatie altijd), zonder animatie - een instant
-  // wissel hindert het scrollen veel minder dan een geanimeerde formaatverandering.
-  const applyRatio=im=>{if(im.naturalWidth&&im.naturalHeight)frame.style.aspectRatio=im.naturalWidth+'/'+im.naturalHeight;};
+  // Kader heeft een vaste verhouding (zie CSS, aspect-ratio:4/5) die nooit verandert tijdens
+  // het wisselen - dat voorkomt dat de pagina onder de scrollpositie blijft schuiven.
   const imgs=urls.map((u,i)=>{
     const im=document.createElement('img');
     im.loading='lazy';im.alt='';im.src=u;
     if(i===0)im.classList.add('active');
-    im.addEventListener('load',()=>{if(im.classList.contains('active'))applyRatio(im);});
     frame.appendChild(im);
     return im;
   });
   el.appendChild(frame);
-  if(imgs[0].complete)applyRatio(imgs[0]);
   frame.addEventListener('click',e=>{e.stopPropagation();openLbox(urls[idx]);});
   if(urls.length>1){
     const dots=document.createElement('div');
@@ -821,7 +818,6 @@ function buildSlide(el){
       imgs[idx].classList.remove('active');dotEls[idx].classList.remove('on');
       idx=n;
       imgs[idx].classList.add('active');dotEls[idx].classList.add('on');
-      if(imgs[idx].complete)applyRatio(imgs[idx]);
     };
     setInterval(()=>go((idx+1)%imgs.length),4600+Math.random()*900);
     dotEls.forEach((d,i)=>d.addEventListener('click',e=>{e.stopPropagation();go(i);}));
@@ -836,7 +832,7 @@ const ROW_PHOTOS={
   bos:[[L("bos-zonnestraal.jpg"),'v']],
   heuvels:[[L("zonsondergang-heuvels.jpg"),'h']],
   bwnl:[[L("event-bwnl-spreker.jpg"),'v'],[L("event-bwnl-foto.jpg"),'h'],[L("event-bwnl-lobe2.jpg"),'v'],
-    [L("event-bwnl-veronique.jpg"),'v'],[L("event-bwnl-veronique2.jpg"),'h'],[L("event-bwnl-zaal.jpg"),'h']],
+    [L("event-bwnl-veronique.jpg"),'v'],[L("event-bwnl-veronique3.jpg"),'v'],[L("event-bwnl-zaal.jpg"),'h']],
   leila:[[L("event-leila-spreker.jpg"),'v'],[L("event-leila-portret.jpg"),'h'],[L("event-leila-notities.jpg"),'v'],
     [L("event-leila-groep.jpg"),'v'],[L("event-leila-publiek.jpg"),'v']],
   hart:[[L("event-hart-cirkel.jpg"),'h'],[L("event-hart-grond.jpg"),'h'],[L("event-hart-detail.jpg"),'v']],
