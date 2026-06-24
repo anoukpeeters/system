@@ -359,6 +359,7 @@ footer .fc a:hover{color:var(--goldB)}
   <div class="beat-text">
     <span class="tag">Personal branding fotoshoot</span>
     <h3>Linda <em>Filia Fleur</em></h3>
+    <p>Holistisch kindertherapeut</p>
   </div>
 </div>
 
@@ -394,7 +395,7 @@ footer .fc a:hover{color:var(--goldB)}
   <div class="interlude-box">
     <span class="tag">Event fotografie · BWNL</span>
     <h3>Netwerken &amp; <em>verbinden</em></h3>
-    <p>Sprekers, gesprekken en de momenten ertussen.</p>
+    <p>Met o.a. Lotte Lobe en Veronique Prins, en de zaal vol gesprekken.</p>
   </div>
 </div>
 
@@ -437,9 +438,9 @@ footer .fc a:hover{color:var(--goldB)}
 <div class="interlude rv" data-cat="events">
   <div class="nrow" data-rkey="leila"></div>
   <div class="interlude-box">
-    <span class="tag">Event fotografie · Livedag Leila</span>
+    <span class="tag">Event fotografie · Manifestatie Live Dag</span>
     <h3>Het podium <em>op</em></h3>
-    <p>Spreken, stralen, en het verhaal vertellen.</p>
+    <p>Leila Claassens en haar publiek, in verbinding.</p>
   </div>
 </div>
 
@@ -767,7 +768,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLbox();});
 
 // Personal branding - elke klant zijn eigen foto's, op origineel formaat naast elkaar (geen crop)
 const PF_PHOTOS={
-  linda2:[L("linda-filiafleur-boom.jpg"),L("linda-filiafleur-portret.jpg"),L("linda-filiafleur-hek.jpg"),
+  linda2:[L("linda-filiafleur-boom.jpg"),L("linda-filiafleur-portret.jpg"),L("linda-filiafleur-connectie.jpg"),
     L("linda-filiafleur-mediteren.jpg"),L("linda-filiafleur-pad.jpg")],
   ingrid:[img("2025/12/Ingrid-Zee-2025-151-scaled.jpg",900),img("2025/12/Ingrid-Zee-2025-81-scaled.jpg",900)],
   leijbra:[img("2025/08/Leijbra-Avond-2025-177-scaled.jpg",900),img("2025/08/Leijbra-Ochtend-2025-5-scaled.jpg",900)],
@@ -834,10 +835,12 @@ const ROW_PHOTOS={
   waterval:[[L("waterval-eifel.jpg"),'v'],[L("waterval-in-praktijkruimte.jpg"),'v']],
   bos:[[L("bos-zonnestraal.jpg"),'v']],
   heuvels:[[L("zonsondergang-heuvels.jpg"),'h']],
-  bwnl:[[L("event-bwnl-spreker.jpg"),'v'],[L("event-bwnl-foto.jpg"),'h'],[L("event-bwnl-dansen.jpg"),'v'],[L("event-bwnl-veronique.jpg"),'v']],
-  leila:[[L("event-leila-spreker.jpg"),'v'],[L("event-leila-portret.jpg"),'h'],[L("event-leila-notities.jpg"),'v']],
+  bwnl:[[L("event-bwnl-spreker.jpg"),'v'],[L("event-bwnl-foto.jpg"),'h'],[L("event-bwnl-lobe2.jpg"),'v'],
+    [L("event-bwnl-veronique.jpg"),'v'],[L("event-bwnl-veronique2.jpg"),'h'],[L("event-bwnl-zaal.jpg"),'h']],
+  leila:[[L("event-leila-spreker.jpg"),'v'],[L("event-leila-portret.jpg"),'h'],[L("event-leila-notities.jpg"),'v'],
+    [L("event-leila-groep.jpg"),'v'],[L("event-leila-publiek.jpg"),'v']],
   hart:[[L("event-hart-cirkel.jpg"),'h'],[L("event-hart-grond.jpg"),'h'],[L("event-hart-detail.jpg"),'v']],
-  rianne:[[L("event-rianne-spreker.jpg"),'h'],[L("event-rianne-publiek.jpg"),'h']],
+  rianne:[[L("event-rianne-spreker.jpg"),'h'],[L("event-rianne-publiek.jpg"),'h'],[L("event-rianne-kracht.jpg"),'v']],
 };
 function buildRow(el){
   const items=ROW_PHOTOS[el.dataset.rkey];
