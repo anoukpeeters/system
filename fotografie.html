@@ -92,12 +92,12 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
   width:180px;height:2px;background:linear-gradient(90deg,transparent,var(--goldB),transparent);opacity:.9}
 #fgPad+.beat::after{content:"";position:absolute;top:-4px;left:50%;transform:translateX(-50%) rotate(45deg);
   width:9px;height:9px;background:var(--goldB);box-shadow:0 0 10px rgba(232,201,106,.7)}
-.og-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1180px;margin:0 auto}
+.og-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:1180px;margin:0 auto}
 .og-card{display:block;text-decoration:none;position:relative;overflow:hidden;
   aspect-ratio:4/5;border-radius:4px;cursor:pointer;
   opacity:0;transform:translateY(22px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.7,.2,1)}
 .og-card.in{opacity:1;transform:none}
-.og-card:nth-child(2){transition-delay:.08s}.og-card:nth-child(3){transition-delay:.16s}
+.og-card:nth-child(2){transition-delay:.08s}.og-card:nth-child(3){transition-delay:.16s}.og-card:nth-child(4){transition-delay:.24s}
 .og-bg{position:absolute;inset:0;background-size:cover;background-position:center;
   transform:scale(1.06);transition:transform 1.1s cubic-bezier(.2,.7,.2,1),filter .9s ease;
   filter:grayscale(.4) brightness(.92)}
@@ -275,6 +275,10 @@ footer .fc a:hover{color:var(--goldB)}
 #sndBtn:not(.on) .xmark{display:block}
 @media(max-width:640px){#sndBtn{left:14px;bottom:14px;width:42px;height:42px}}
 
+@media(max-width:980px){
+  .og-grid{grid-template-columns:repeat(2,1fr);max-width:600px}
+}
+
 @media(max-width:760px){
   .og-grid{grid-template-columns:1fr;max-width:380px}
   .beat,.beat.rev{flex-direction:column;gap:30px;padding:42px 7vw}
@@ -344,8 +348,8 @@ footer .fc a:hover{color:var(--goldB)}
 
 <section id="fgHero">
   <div class="lbl">Fotografie</div>
-  <h1>Drie paden, <em>één lens</em></h1>
-  <p class="sub">Personal branding, een onvergetelijk event, of een hele dag samen de Eifel in. Kies het pad dat bij je past, en ontdek wat erbij hoort.</p>
+  <h1>Vier paden, <em>één lens</em></h1>
+  <p class="sub">Personal branding, een Eifel Experience, een onvergetelijk event, of natuurfotografie voor je ruimte. Kies het pad dat bij je past, en ontdek wat erbij hoort.</p>
 </section>
 
 <section id="fgPad">
@@ -353,13 +357,16 @@ footer .fc a:hover{color:var(--goldB)}
   <div class="og-grid">
     <a class="og-card rv" href="#branding"><div class="og-bg" id="ogBg1"></div><div class="og-ov"></div>
       <div class="og-in"><div class="og-kicker">Coaches &amp; therapeuten</div><h3>Personal branding fotografie</h3>
-      <p>Portretten die laten zien wie je echt bent, niet hoe je denkt dat je moet overkomen.</p><span class="arr">Ontdek meer →</span></div></a>
+      <p>Eindelijk foto's waar je trots op bent, die laten zien wie je bent en waar klanten zich in herkennen.</p><span class="arr">Ontdek meer →</span></div></a>
+    <a class="og-card rv" href="#eifel"><div class="og-bg" id="ogBg3"></div><div class="og-ov"></div>
+      <div class="og-in"><div class="og-kicker">Een tweedaagse fotoreis</div><h3>Eifel Experience</h3>
+      <p>Twee dagen weg uit de drukte, op pad in een omgeving die je adem laat inhouden, en thuiskomen met een ervaring om nooit te vergeten.</p><span class="arr">Ontdek meer →</span></div></a>
     <a class="og-card rv" href="#events"><div class="og-bg" id="ogBg2"></div><div class="og-ov"></div>
       <div class="og-in"><div class="og-kicker">Voor jouw bedrijf of community</div><h3>Event fotografie</h3>
-      <p>De energie van de zaal en de verbinding tussen mensen, vastgelegd om terug te zien.</p><span class="arr">Ontdek meer →</span></div></a>
-    <a class="og-card rv" href="#eifel"><div class="og-bg" id="ogBg3"></div><div class="og-ov"></div>
-      <div class="og-in"><div class="og-kicker">Een hele dag samen op pad</div><h3>Eifel Experience</h3>
-      <p>Wandelen, fotograferen en zichtbaar worden, middenin de natuur die mij zelf tot rust brengt.</p><span class="arr">Ontdek meer →</span></div></a>
+      <p>Je event is voorbij, maar de sfeer en de verbinding blijven leven in beelden die je nog jaren gebruikt.</p><span class="arr">Ontdek meer →</span></div></a>
+    <a class="og-card rv" href="#natuur"><div class="og-bg" id="ogBg4"></div><div class="og-ov"></div>
+      <div class="og-in"><div class="og-kicker">Voor je praktijk of thuis</div><h3>Natuurfotografie</h3>
+      <p>Een wand die rust uitstraalt zodra je binnenstapt, en je klanten laat ademen voor het gesprek begint.</p><span class="arr">Ontdek meer →</span></div></a>
   </div>
 </section>
 
@@ -368,8 +375,8 @@ footer .fc a:hover{color:var(--goldB)}
   <div class="beat-text">
     <span class="tag">Personal branding fotoshoot</span>
     <h3>Zichtbaar worden, <em>op jouw manier</em></h3>
-    <p>Geen geposeerde stockfoto's, maar beelden die kloppen met wie je bent en wat je doet. We zoeken samen de plekken en momenten op die jouw verhaal vertellen, in de natuur of in jouw praktijkruimte.</p>
-    <p>Het resultaat: foto's waarmee je trots online en op je website kunt staan, omdat ze er net zo eerlijk uitzien als jij bent.</p>
+    <p>Geen geposeerde stockfoto's, maar beelden die kloppen met wie je bent en wat je doet. We zoeken samen de plekken en momenten op die jouw verhaal vertellen.</p>
+    <p>Het resultaat: foto's waarmee je met een trots gevoel online en op je website staat, omdat je jezelf er eindelijk in herkent. Geen onzekerheid meer over welke foto je moet plaatsen, maar rust en zelfvertrouwen elke keer dat iemand je profiel bekijkt.</p>
     <div class="bts">
       <a href="portfolio.html?cat=branding" class="btn bto">Bekijk de portfolio →</a>
       <a href="https://calendly.com/anoukpeetersfotografie-info/klik-en-connect" target="_blank" rel="noopener" class="btn btg">Plan een Klik &amp; Connect-gesprek →</a>
@@ -377,13 +384,27 @@ footer .fc a:hover{color:var(--goldB)}
   </div>
 </div>
 
-<div class="beat rev rv" id="events">
+<div class="beat rev rv" id="eifel">
+  <div class="beat-media" data-key="offEifel"></div>
+  <div class="beat-text">
+    <span class="tag">Eifel Experience · Tweedaagse fotoreis</span>
+    <h3>Twee dagen, <em>helemaal op pad</em></h3>
+    <p>Een tweedaagse fotoreis door de Eifel: één shoot bij zonsondergang, één in de ochtend. We zoeken samen de plekken op die bij jou passen, en gaan op pad in deze fantastische omgeving.</p>
+    <p>Twee keer het mooiste licht, twee keer de tijd om te landen. Je komt niet alleen thuis met beelden waar je trots op bent, maar ook met een ervaring die je nog lang met je meedraagt.</p>
+    <div class="bts">
+      <a href="https://calendly.com/anoukpeetersfotografie-info/klik-en-connect" target="_blank" rel="noopener" class="btn btg">Eifel Experience →</a>
+      <a href="portfolio.html?cat=natuur" class="btn bto">Bekijk sfeerbeelden →</a>
+    </div>
+  </div>
+</div>
+
+<div class="beat rv" id="events">
   <div class="beat-media" data-key="offEvents"></div>
   <div class="beat-text">
     <span class="tag">Event fotografie</span>
     <h3>Jouw event, <em>in beeld gebracht</em></h3>
     <p>Van de spreker op het podium tot de gesprekken in de wandelgangen: ik leg de sfeer van jouw dag vast, zodat je 'm kunt laten herleven en kunt inzetten voor je eigen marketing.</p>
-    <p>Onopvallend aanwezig, alert op het juiste moment. Zo blijft de aandacht bij jouw event, niet bij de fotograaf.</p>
+    <p>Onopvallend aanwezig, alert op het juiste moment. Zo blijft de aandacht bij jouw event, niet bij de fotograaf, en houd je achteraf beelden over die de sfeer van die dag precies vastleggen, alsof je het opnieuw beleeft.</p>
     <div class="bts">
       <a href="portfolio.html?cat=events" class="btn bto">Bekijk eventfoto's →</a>
       <a href="mailto:info@anoukpeetersfotografie.nl?subject=Offerte%20eventfotografie" class="btn btg">Vraag een offerte aan →</a>
@@ -391,16 +412,16 @@ footer .fc a:hover{color:var(--goldB)}
   </div>
 </div>
 
-<div class="beat rv" id="eifel">
-  <div class="beat-media" data-key="offEifel"></div>
+<div class="beat rev rv" id="natuur">
+  <div class="beat-media" data-key="offNatuur"></div>
   <div class="beat-text">
-    <span class="tag">Eifel Experience · Tweedaagse fotoreis</span>
-    <h3>Twee dagen, <em>helemaal op pad</em></h3>
-    <p>Een tweedaagse fotoreis door de Eifel: één shoot bij zonsondergang, één in de ochtend. We zoeken samen de plekken op die bij jou passen, en gaan op pad in deze fantastische omgeving.</p>
-    <p>Twee keer het mooiste licht, twee keer de tijd om te landen en jezelf te laten zien zoals je echt bent, ver van de drukte.</p>
+    <span class="tag">Natuurfotografie</span>
+    <h3>Breng de <em>natuur</em> naar binnen</h3>
+    <p>Grote natuur-prints van de Eifel, de heide en de bossen, gefotografeerd onderweg. Als drukwerk voor je praktijk, als statement aan je muur.</p>
+    <p>Elke foto is een uitnodiging om te ademen, te landen, en thuis te komen bij jezelf, en geeft iedereen die jouw ruimte binnenstapt precies dat gevoel.</p>
     <div class="bts">
-      <a href="https://calendly.com/anoukpeetersfotografie-info/klik-en-connect" target="_blank" rel="noopener" class="btn btg">Plan jouw Eifel-dag →</a>
-      <a href="portfolio.html?cat=natuur" class="btn bto">Bekijk sfeerbeelden →</a>
+      <a href="portfolio.html?cat=natuur" class="btn bto">Bekijk natuurfoto's →</a>
+      <a href="https://calendly.com/anoukpeetersfotografie-info/klik-en-connect" target="_blank" rel="noopener" class="btn btg">Plan een gesprek over prints →</a>
     </div>
   </div>
 </div>
@@ -502,6 +523,8 @@ const ogBg2=document.getElementById('ogBg2');
 if(ogBg2)ogBg2.style.backgroundImage="url('"+L("event-leila-groep.jpg")+"')";
 const ogBg3=document.getElementById('ogBg3');
 if(ogBg3)ogBg3.style.backgroundImage="url('"+img("2025/08/Leijbra-Ochtend-2025-5-scaled.jpg",900)+"')";
+const ogBg4=document.getElementById('ogBg4');
+if(ogBg4)ogBg4.style.backgroundImage="url('"+L("bos-zonnestraal.jpg")+"')";
 
 // Slot-CTA achtergrond
 const fgCtaBg=document.getElementById('fgCtaBg');
@@ -629,10 +652,11 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLbox();});
 
 // Drie aanbod-slideshows
 const OFFER_PHOTOS={
-  offBranding:[L("linda-filiafleur-boom.jpg"),img("2025/12/Ingrid-Zee-2025-151-scaled.jpg",900),
+  offBranding:[L("linda-filiafleur-boom.jpg"),img("2025/12/Ingrid-Zee-2025-81-scaled.jpg",900),
     img("2025/12/Ingrid-2025-159-scaled.jpg",900),img("2024/07/Linda-Kasteel-2024-51-scaled.jpg",900)],
-  offEvents:[L("event-bwnl-veronique3.jpg"),L("event-leila-groep.jpg"),L("event-hart-cirkel.jpg")],
-  offEifel:[L("waterval-eifel.jpg"),img("2025/08/Leijbra-Ochtend-2025-5-scaled.jpg",900),img("2025/08/Marga-Avond-Eifel-2025-15-scaled.jpg",900)],
+  offEifel:[img("2025/08/Leijbra-Ochtend-2025-5-scaled.jpg",900),img("2025/08/Marga-Avond-Eifel-2025-15-scaled.jpg",900),L("waterval-eifel.jpg")],
+  offEvents:[L("event-bwnl-veronique3.jpg"),L("event-leila-groep.jpg"),L("event-hart-detail.jpg")],
+  offNatuur:[L("bos-zonnestraal.jpg"),L("bloem-papaver.jpg"),L("waterval-in-praktijkruimte.jpg")],
 };
 function buildSlide(el){
   const urls=OFFER_PHOTOS[el.dataset.key];
