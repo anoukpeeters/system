@@ -84,7 +84,14 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
   max-width:580px;margin:0 auto}
 
 /* AANBOD - drie kaarten om door te klikken */
-#fgPad{position:relative;z-index:10;padding:24px 8vw 110px}
+#fgPad{position:relative;z-index:10;padding:46px 8vw 70px;margin-top:14px;
+  background:var(--deep2);border-top:1px solid rgba(200,160,60,.16);border-bottom:1px solid rgba(200,160,60,.16)}
+#fgPad .lbl{margin-bottom:30px}
+#fgPad+.beat{padding-top:74px}
+#fgPad+.beat::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:180px;height:2px;background:linear-gradient(90deg,transparent,var(--goldB),transparent);opacity:.9}
+#fgPad+.beat::after{content:"";position:absolute;top:-4px;left:50%;transform:translateX(-50%) rotate(45deg);
+  width:9px;height:9px;background:var(--goldB);box-shadow:0 0 10px rgba(232,201,106,.7)}
 .og-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1180px;margin:0 auto}
 .og-card{display:block;text-decoration:none;position:relative;overflow:hidden;
   aspect-ratio:4/5;border-radius:4px;cursor:pointer;
@@ -342,6 +349,7 @@ footer .fc a:hover{color:var(--goldB)}
 </section>
 
 <section id="fgPad">
+  <div class="lbl">Kies jouw aanbod</div>
   <div class="og-grid">
     <a class="og-card rv" href="#branding"><div class="og-bg" id="ogBg1"></div><div class="og-ov"></div>
       <div class="og-in"><div class="og-kicker">Coaches &amp; therapeuten</div><h3>Personal branding fotografie</h3>
@@ -386,10 +394,10 @@ footer .fc a:hover{color:var(--goldB)}
 <div class="beat rv" id="eifel">
   <div class="beat-media" data-key="offEifel"></div>
   <div class="beat-text">
-    <span class="tag">Eifel Experience · Live dag</span>
-    <h3>Een dag <em>in het bos</em></h3>
-    <p>Samen de Eifel in: wandelen tussen de bomen, stilstaan bij wat zich aandient, en fotograferen vanuit verbinding in plaats van perfectie.</p>
-    <p>Een hele dag om echt zichtbaar te worden, ver van de drukte, met foto's die laten zien wie je bent als je niet meer hoeft te performen.</p>
+    <span class="tag">Eifel Experience · Tweedaagse fotoreis</span>
+    <h3>Twee dagen, <em>helemaal op pad</em></h3>
+    <p>Een tweedaagse fotoreis door de Eifel: één shoot bij zonsondergang, één in de ochtend. We zoeken samen de plekken op die bij jou passen, en gaan op pad in deze fantastische omgeving.</p>
+    <p>Twee keer het mooiste licht, twee keer de tijd om te landen en jezelf te laten zien zoals je echt bent, ver van de drukte.</p>
     <div class="bts">
       <a href="https://calendly.com/anoukpeetersfotografie-info/klik-en-connect" target="_blank" rel="noopener" class="btn btg">Plan jouw Eifel-dag →</a>
       <a href="portfolio.html?cat=natuur" class="btn bto">Bekijk sfeerbeelden →</a>
@@ -493,7 +501,7 @@ if(ogBg1)ogBg1.style.backgroundImage="url('"+L("linda-filiafleur-boom.jpg")+"')"
 const ogBg2=document.getElementById('ogBg2');
 if(ogBg2)ogBg2.style.backgroundImage="url('"+L("event-leila-groep.jpg")+"')";
 const ogBg3=document.getElementById('ogBg3');
-if(ogBg3)ogBg3.style.backgroundImage="url('"+img("2025/08/Leijbra-Avond-2025-177-scaled.jpg",1200)+"')";
+if(ogBg3)ogBg3.style.backgroundImage="url('"+img("2025/08/Leijbra-Ochtend-2025-5-scaled.jpg",900)+"')";
 
 // Slot-CTA achtergrond
 const fgCtaBg=document.getElementById('fgCtaBg');
@@ -621,10 +629,10 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLbox();});
 
 // Drie aanbod-slideshows
 const OFFER_PHOTOS={
-  offBranding:[img("2025/08/Leijbra-Ochtend-2025-5-scaled.jpg",900),img("2025/08/Marga-Avond-Eifel-2025-43-scaled.jpg",900),
-    img("2025/04/Yvonne-Duitsland-Waterval-25-scaled.jpg",900)],
-  offEvents:[L("event-bwnl-foto.jpg"),L("event-leila-groep.jpg"),L("event-hart-cirkel.jpg")],
-  offEifel:[L("waterval-eifel.jpg"),img("2025/08/Leijbra-Avond-2025-177-scaled.jpg",900),img("2025/08/Marga-Avond-Eifel-2025-15-scaled.jpg",900)],
+  offBranding:[L("linda-filiafleur-boom.jpg"),img("2025/12/Ingrid-Zee-2025-151-scaled.jpg",900),
+    img("2025/12/Ingrid-2025-159-scaled.jpg",900),img("2024/07/Linda-Kasteel-2024-51-scaled.jpg",900)],
+  offEvents:[L("event-bwnl-veronique3.jpg"),L("event-leila-groep.jpg"),L("event-hart-cirkel.jpg")],
+  offEifel:[L("waterval-eifel.jpg"),img("2025/08/Leijbra-Ochtend-2025-5-scaled.jpg",900),img("2025/08/Marga-Avond-Eifel-2025-15-scaled.jpg",900)],
 };
 function buildSlide(el){
   const urls=OFFER_PHOTOS[el.dataset.key];
