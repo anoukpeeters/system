@@ -121,10 +121,19 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .pb-copy h3 em{font-style:italic;color:var(--goldB)}
 .pb-copy p{font:300 italic 15px/1.7 "Helvetica Neue";color:var(--ml);max-width:380px}
 
-/* PROCES - kort en visueel */
+/* WAAROM MET MIJ - ecru blok, emotie en bewijs voor de prijzen */
+.pb-why{position:relative;z-index:10;background:#faf7f1;padding:14px 0}
+.pb-why .pb-copy .tag{color:var(--gold)}
+.pb-why .pb-copy h3{color:var(--td)}
+.pb-why .pb-copy h3 em{color:var(--gold)}
+.pb-why .pb-copy p{color:var(--md);opacity:1}
+.pb-why .pbh-list li{color:var(--md)}
+
+/* PROCES (Werkwijze) - kort en visueel */
 #pbProces{position:relative;z-index:10;background:var(--deep2);
   border-top:1px solid rgba(200,160,60,.14);border-bottom:1px solid rgba(200,160,60,.14);
   padding:64px 8vw}
+#pbProces .lbl{justify-content:center;margin-bottom:34px}
 .pp-grid{max-width:980px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
 .pp-step{text-align:center;position:relative}
 .pp-num{font:200 38px/1 "Helvetica Neue";color:var(--goldB);opacity:.8;margin-bottom:10px}
@@ -199,20 +208,28 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .pb-qb.photobg .qbin{position:relative;z-index:2;padding:60px 8vw;max-width:680px}
 
 /* TESTIMONIAL */
-#pbQuote{position:relative;z-index:10;max-width:680px;margin:80px auto 0;padding:0 8vw;text-align:center}
+#pbQuote{position:relative;z-index:10;background:#faf7f1;max-width:100%;
+  padding:80px 8vw;text-align:center}
+#pbQuote .lbl{color:var(--gold)}
+#pbQuote .lbl::before{background:linear-gradient(90deg,transparent,var(--gold))}
+#pbQuote .lbl::after{background:linear-gradient(270deg,transparent,var(--gold))}
+#pbQuote .pbq-inner{max-width:680px;margin:0 auto}
 .pbq-photo{width:84px;height:84px;border-radius:50%;object-fit:cover;margin:0 auto 22px;
   border:2px solid var(--goldB);box-shadow:0 8px 24px rgba(0,0,0,.3)}
-#pbQuote blockquote{font:300 italic clamp(17px,2.2vw,22px)/1.6 "Helvetica Neue";color:var(--tl);margin-bottom:14px}
-#pbQuote .pbq-name{font:600 11px/1 "SF Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--goldS)}
+#pbQuote blockquote{font:300 italic clamp(17px,2.2vw,22px)/1.6 "Helvetica Neue";color:var(--td);margin-bottom:14px}
+#pbQuote .pbq-name{font:600 11px/1 "SF Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--md)}
 
 /* FAQ */
-#pbFaq{position:relative;z-index:10;max-width:720px;margin:80px auto 0;padding:0 8vw}
-#pbFaq .lbl{justify-content:center}
-#pbFaq h2{text-align:center;font:200 clamp(24px,3.4vw,36px)/1.2 "Helvetica Neue";color:var(--tl);margin-bottom:40px}
-#pbFaq h2 em{font-style:italic;color:var(--goldB)}
-.faq-item{border-top:1px solid rgba(200,160,60,.14);padding:22px 0}
-.faq-item h4{font:300 17px/1.4 "Helvetica Neue";color:var(--tl);margin-bottom:10px}
-.faq-item p{font:300 14px/1.7 "Helvetica Neue";color:var(--ml)}
+#pbFaq{position:relative;z-index:10;background:#faf7f1;max-width:100%;padding:80px 8vw}
+#pbFaq .fq-inner{max-width:720px;margin:0 auto}
+#pbFaq .lbl{justify-content:center;color:var(--gold)}
+#pbFaq .lbl::before{background:linear-gradient(90deg,transparent,var(--gold))}
+#pbFaq .lbl::after{background:linear-gradient(270deg,transparent,var(--gold))}
+#pbFaq h2{text-align:center;font:200 clamp(24px,3.4vw,36px)/1.2 "Helvetica Neue";color:var(--td);margin-bottom:40px}
+#pbFaq h2 em{font-style:italic;color:var(--gold)}
+.faq-item{border-top:1px solid rgba(26,54,24,.12);padding:22px 0}
+.faq-item h4{font:300 17px/1.4 "Helvetica Neue";color:var(--td);margin-bottom:10px}
+.faq-item p{font:300 14px/1.7 "Helvetica Neue";color:var(--md)}
 
 /* DECO */
 .leaf-deco{position:absolute;pointer-events:none;width:150px;height:150px;z-index:0;opacity:.05;color:var(--deep3)}
@@ -407,8 +424,8 @@ footer .fc a:hover{color:var(--goldB)}
   <div class="pbh-ov"></div>
   <div class="pbh-in rv">
     <div class="lbl">Personal Branding Fotoshoot</div>
-    <h1>Zichtbaarheid is geen trucje.<br><em>Het is thuiskomen.</em></h1>
-    <p>Echte zichtbaarheid komt van binnenuit. Deze fotoshoot legt vast wie je al bent, in de natuur, in jouw praktijk, of op een toffe locatie die bij je past.</p>
+    <h1>Beelden die <em>jou ademen</em></h1>
+    <p>Geen foto's die iets voorstellen, maar beelden die voelen als jij. Vastgelegd in de natuur, in jouw praktijk, of op een toffe locatie die bij je past.</p>
     <div class="pbh-btns">
       <a href="#prijzen" class="btn btg">Bekijk de pakketten →</a>
       <a href="https://calendly.com/anoukpeetersfotografie-info/klik-en-connect" target="_blank" rel="noopener" class="btn bto">Plan een Klik &amp; Connect-gesprek</a>
@@ -428,7 +445,7 @@ footer .fc a:hover{color:var(--goldB)}
     <li>Je merk en je werk zijn gegroeid, maar je beeldmateriaal is blijven hangen in het verleden.</li>
     <li>Je deelt liever een quote dan een foto, omdat je geen beeld hebt waar je echt trots op bent.</li>
   </ul>
-  <p class="pbh-close">Als je jezelf hierin herkent: dit is precies waarom deze fotoshoot bestaat. Niet om een rol te spelen voor de camera, maar om zichtbaar te worden van binnenuit.</p>
+  <p class="pbh-close">Als je jezelf hierin herkent: dit is precies waarom deze fotoshoot bestaat. Niet om een rol te spelen voor de camera, maar om beelden te krijgen die echt jou ademen.</p>
 </section>
 
 <section id="pbVerhaal">
@@ -486,22 +503,18 @@ footer .fc a:hover{color:var(--goldB)}
   </div>
 </section>
 
-<section id="pbProces">
-  <div class="pp-grid">
-    <div class="pp-step rv">
-      <div class="pp-num">01</div>
-      <h4>Strategiegesprek</h4>
-      <p>We bepalen samen je verhaal, je doelgroep en de sfeer die bij je past.</p>
-    </div>
-    <div class="pp-step rv">
-      <div class="pp-num">02</div>
-      <h4>De fotoshoot</h4>
-      <p>In de natuur, in jouw praktijk, of op een toffe locatie die bij je past, met ruimte voor wat zich aandient.</p>
-    </div>
-    <div class="pp-step rv">
-      <div class="pp-num">03</div>
-      <h4>Jouw beeldbank</h4>
-      <p>Je kiest je favorieten uit een persoonlijke online galerij.</p>
+<section class="pb-why">
+  <div class="pb-row">
+    <div class="pb-photo" data-src="phWhy"></div>
+    <div class="pb-copy">
+      <span class="tag">Waarom met mij</span>
+      <h3>Waarom <em>dit pad</em>, en waarom met mij</h3>
+      <p>Ik ben geen fotograaf die je een setje foto's verkoopt en weer verdwijnt. Ik werk al jaren met coaches en therapeuten die, net als jij, zich willen laten zien zonder zichzelf te verliezen. Dat vraagt om iemand die niet alleen weet hoe ze moet fotograferen, maar ook hoe het voelt om bang te zijn voor de camera.</p>
+      <ul class="pbh-list" style="margin-top:18px">
+        <li>Een beeldbank die meegroeit met jou, in plaats van een eenmalige set die binnen een jaar verouderd is.</li>
+        <li>Het zelfvertrouwen om je gezicht te laten zien, niet alleen je tekst.</li>
+        <li>Klanten die zich al herkennen in jouw beeld, voordat het gesprek begint.</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -561,34 +574,60 @@ footer .fc a:hover{color:var(--goldB)}
     <div>Jij kiest zelf je favorieten uit je eigen galerij</div>
   </div>
   <div class="pb-coach rv">
-    <p>Wil je verder dan het beeld alleen? Bij elk pakket kun je uitbreiden met een persoonlijk <a href="https://anouk-peeters.nl/branding/" target="_blank" rel="noopener">coachingtraject</a>, voor wie niet alleen op de foto zichtbaar wil worden, maar ook van binnenuit.</p>
+    <p>Wil je verder dan het beeld alleen? Bij elk pakket kun je uitbreiden met een persoonlijk <a href="https://anouk-peeters.nl/branding/" target="_blank" rel="noopener">coachingtraject</a>, voor wie niet alleen mooie beelden wil, maar ook van binnenuit wil groeien naar wat die beelden uitstralen.</p>
   </div>
 </section>
 
 <section id="pbQuote" class="rv">
-  <img class="pbq-photo" id="pbqPhoto" alt="Ilse Verrijt"/>
-  <blockquote>&ldquo;Anouk laat je echt van je beste kant zien. Geeft ook advies en denkt mee over de beelden voor je content.&rdquo;</blockquote>
-  <div class="pbq-name">Ilse Verrijt &middot; Leefstijlstudio Balans</div>
+  <div class="pbq-inner">
+    <div class="lbl">Ervaringen</div>
+    <img class="pbq-photo" id="pbqPhoto" alt="Ilse Verrijt"/>
+    <blockquote>&ldquo;Anouk laat je echt van je beste kant zien. Geeft ook advies en denkt mee over de beelden voor je content.&rdquo;</blockquote>
+    <div class="pbq-name">Ilse Verrijt &middot; Leefstijlstudio Balans</div>
+  </div>
+</section>
+
+<section id="pbProces">
+  <div class="lbl">Werkwijze</div>
+  <div class="pp-grid">
+    <div class="pp-step rv">
+      <div class="pp-num">01</div>
+      <h4>Strategiegesprek</h4>
+      <p>We bepalen samen je verhaal, je doelgroep en de sfeer die bij je past.</p>
+    </div>
+    <div class="pp-step rv">
+      <div class="pp-num">02</div>
+      <h4>De fotoshoot</h4>
+      <p>In de natuur, in jouw praktijk, of op een toffe locatie die bij je past, met ruimte voor wat zich aandient.</p>
+    </div>
+    <div class="pp-step rv">
+      <div class="pp-num">03</div>
+      <h4>Jouw beeldbank</h4>
+      <p>Je kiest je favorieten uit een persoonlijke online galerij.</p>
+    </div>
+  </div>
 </section>
 
 <section id="pbFaq">
-  <div class="lbl">Veelgestelde vragen</div>
-  <h2>Nog even <em>twijfelen</em>?</h2>
-  <div class="faq-item rv">
-    <h4>Ik ben niet goed voor de camera, is dat een probleem?</h4>
-    <p>Helemaal niet, dat zijn de meeste mensen die ik fotografeer. We bouwen rustig op, met ruimte om te wennen, tot je vergeet dat er een camera bij is.</p>
-  </div>
-  <div class="faq-item rv">
-    <h4>Kan ik in termijnen betalen?</h4>
-    <p>Ja, alle pakketten kun je in termijnen betalen. Vraag ernaar tijdens het Klik &amp; Connect-gesprek.</p>
-  </div>
-  <div class="faq-item rv">
-    <h4>Welk pakket past bij mij?</h4>
-    <p>Heb je nu even een goed moment nodig, kies Eerste Stap. Wil je in één keer het volledige verhaal, dan is Goud mijn persoonlijke favoriet. En wil je het hele jaar door zichtbaar blijven en meegroeien, dan is het Jaartraject de slimste keuze, en veruit het populairst.</p>
-  </div>
-  <div class="faq-item rv">
-    <h4>Waar shooten we?</h4>
-    <p>In de natuur, in jouw praktijkruimte, of op een toffe locatie die bij je past. We bepalen dit samen tijdens het strategiegesprek, niets ligt vooraf vast.</p>
+  <div class="fq-inner">
+    <div class="lbl">Veelgestelde vragen</div>
+    <h2>Nog even <em>twijfelen</em>?</h2>
+    <div class="faq-item rv">
+      <h4>Ik ben niet goed voor de camera, is dat een probleem?</h4>
+      <p>Helemaal niet, dat zijn de meeste mensen die ik fotografeer. We bouwen rustig op, met ruimte om te wennen, tot je vergeet dat er een camera bij is.</p>
+    </div>
+    <div class="faq-item rv">
+      <h4>Kan ik in termijnen betalen?</h4>
+      <p>Ja, alle pakketten kun je in termijnen betalen. Vraag ernaar tijdens het Klik &amp; Connect-gesprek.</p>
+    </div>
+    <div class="faq-item rv">
+      <h4>Welk pakket past bij mij?</h4>
+      <p>Heb je nu even een goed moment nodig, kies Eerste Stap. Wil je in één keer het volledige verhaal, dan is Goud mijn persoonlijke favoriet. En wil je het hele jaar door zichtbaar blijven en meegroeien, dan is het Jaartraject de slimste keuze, en veruit het populairst.</p>
+    </div>
+    <div class="faq-item rv">
+      <h4>Waar shooten we?</h4>
+      <p>In de natuur, in jouw praktijkruimte, of op een toffe locatie die bij je past. We bepalen dit samen tijdens het strategiegesprek, niets ligt vooraf vast.</p>
+    </div>
   </div>
 </section>
 
@@ -705,6 +744,7 @@ const PB_PHOTOS={
   ph1:img("2025/08/Marga-Avond-Eifel-2025-43-scaled.jpg",1100),
   ph2:img("2024/02/Miranda-Coach-Atelier-43-scaled.jpg",1100),
   ph3:img("2025/07/Annet-Zoer-2025-143-scaled.jpg",1100),
+  phWhy:img("2025/12/Anouk-Gouden-Jas-Portret-Staand-scaled.jpg",1100),
 };
 document.querySelectorAll('.pb-photo[data-src]').forEach(el=>{
   const url=PB_PHOTOS[el.dataset.src];
