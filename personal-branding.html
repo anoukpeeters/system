@@ -162,6 +162,41 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .pb-coach{max-width:680px;margin:50px auto 0;text-align:center;padding:30px 8vw 0}
 .pb-coach p{font:300 italic 15px/1.7 "Helvetica Neue";color:var(--ml)}
 .pb-coach a{color:var(--goldB);text-decoration:underline}
+.pr-trust{max-width:880px;margin:44px auto 0;display:flex;justify-content:center;gap:34px;
+  flex-wrap:wrap;padding:0 8vw}
+.pr-trust div{font:300 13px/1.5 "Helvetica Neue";color:var(--ml);max-width:220px;
+  padding-left:24px;position:relative;text-align:left}
+.pr-trust div::before{content:"✓";position:absolute;left:0;color:var(--goldB);font-weight:700}
+
+/* HERKEN JE DIT - ecru blok, identificatie */
+.pb-herken{position:relative;z-index:10;background:#faf7f1;color:var(--td);
+  padding:74px 8vw;text-align:center}
+.pb-herken .lbl{color:var(--gold)}
+.pb-herken .lbl::before{background:linear-gradient(90deg,transparent,var(--gold))}
+.pb-herken .lbl::after{background:linear-gradient(270deg,transparent,var(--gold))}
+.pb-herken h2{font:200 clamp(26px,4vw,40px)/1.25 "Helvetica Neue";color:var(--td);
+  margin:0 auto 36px;max-width:640px}
+.pb-herken h2 em{font-style:italic;color:var(--gold)}
+.pbh-list{max-width:600px;margin:0 auto 32px;text-align:left;list-style:none;padding:0}
+.pbh-list li{font:300 italic 16px/1.7 "Helvetica Neue";color:var(--md);padding:12px 0 12px 30px;
+  position:relative;border-bottom:1px solid rgba(26,54,24,.08)}
+.pbh-list li:last-child{border-bottom:none}
+.pbh-list li::before{content:"→";position:absolute;left:0;color:var(--gold);font-weight:700}
+.pbh-close{font:300 italic 17px/1.7 "Helvetica Neue";color:var(--td);max-width:560px;margin:0 auto}
+
+/* QUOTE-BLOKKEN tussen het verhaal */
+.pb-qb{position:relative;z-index:10;padding:60px 8vw;text-align:center}
+.pb-qb blockquote{font:300 italic clamp(17px,2.2vw,22px)/1.6 "Helvetica Neue";color:var(--tl);
+  max-width:640px;margin:0 auto 14px}
+.pb-qb .pbq-name{font:600 11px/1 "SF Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--goldS)}
+.pb-qb.cream{background:#faf7f1}
+.pb-qb.cream blockquote{color:var(--td)}
+.pb-qb.cream .pbq-name{color:var(--md)}
+.pb-qb.cream .pbq-photo{border-color:var(--gold)}
+.pb-qb.photobg{padding:0;min-height:380px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.pb-qb.photobg .qbbg{position:absolute;inset:0;background-size:cover;background-position:center 26%}
+.pb-qb.photobg .qbov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,22,9,.5),rgba(8,18,6,.8))}
+.pb-qb.photobg .qbin{position:relative;z-index:2;padding:60px 8vw;max-width:680px}
 
 /* TESTIMONIAL */
 #pbQuote{position:relative;z-index:10;max-width:680px;margin:80px auto 0;padding:0 8vw;text-align:center}
@@ -373,7 +408,7 @@ footer .fc a:hover{color:var(--goldB)}
   <div class="pbh-in rv">
     <div class="lbl">Personal Branding Fotoshoot</div>
     <h1>Zichtbaarheid is geen trucje.<br><em>Het is thuiskomen.</em></h1>
-    <p>Voor coaches en therapeuten die zich laten zien zoals ze werkelijk zijn, niet zoals ze denken dat het moet.</p>
+    <p>Echte zichtbaarheid komt van binnenuit. Deze fotoshoot legt vast wie je al bent, in de natuur, in jouw praktijk, of op een toffe locatie die bij je past.</p>
     <div class="pbh-btns">
       <a href="#prijzen" class="btn btg">Bekijk de pakketten →</a>
       <a href="https://calendly.com/anoukpeetersfotografie-info/klik-en-connect" target="_blank" rel="noopener" class="btn bto">Plan een Klik &amp; Connect-gesprek</a>
@@ -382,6 +417,18 @@ footer .fc a:hover{color:var(--goldB)}
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v15M12 19l-6-6M12 19l6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
   </div>
+</section>
+
+<section class="pb-herken">
+  <div class="lbl">Herken je dit?</div>
+  <h2>Misschien is dit <em>precies</em> waarom je hier bent</h2>
+  <ul class="pbh-list">
+    <li>Je website-foto is alweer een paar jaar oud, en hij klopt eigenlijk niet meer met wie je nu bent.</li>
+    <li>Je vermijdt de camera het liefst, want je voelt je nooit zo zelfverzekerd als je eruitziet.</li>
+    <li>Je merk en je werk zijn gegroeid, maar je beeldmateriaal is blijven hangen in het verleden.</li>
+    <li>Je deelt liever een quote dan een foto, omdat je geen beeld hebt waar je echt trots op bent.</li>
+  </ul>
+  <p class="pbh-close">Als je jezelf hierin herkent: dit is precies waarom deze fotoshoot bestaat. Niet om een rol te spelen voor de camera, maar om zichtbaar te worden van binnenuit.</p>
 </section>
 
 <section id="pbVerhaal">
@@ -395,8 +442,14 @@ footer .fc a:hover{color:var(--goldB)}
     <div class="pb-copy">
       <span class="tag">Vooraf</span>
       <h3>We beginnen met <em>een gesprek</em>, niet met een camera</h3>
-      <p>Voordat er ook maar één foto valt, praten we over wie je bent, voor wie je werkt en wat je wilt uitstralen. Die strategie bepaalt de plekken, de kleding en de sfeer, niet andersom.</p>
+      <p>Voordat er ook maar één foto valt, praten we over wie je bent, voor wie je werkt en wat je wilt uitstralen. Die strategie bepaalt de plekken (in de natuur, in jouw praktijk, of op een toffe locatie), de kleding en de sfeer, niet andersom.</p>
     </div>
+  </div>
+
+  <div class="pb-qb cream rv">
+    <img class="pbq-photo" id="pbqPhotoYvonne" alt="Yvonne Huijs"/>
+    <blockquote>&ldquo;Anouk is echt GOUD! Ze weet precies hoe ze je in de juiste energie kan krijgen en de foto's zijn fantastisch.&rdquo;</blockquote>
+    <div class="pbq-name">Yvonne Huijs &middot; Oersterk</div>
   </div>
 
   <div class="pb-row rev rv">
@@ -404,7 +457,16 @@ footer .fc a:hover{color:var(--goldB)}
     <div class="pb-copy">
       <span class="tag">Tijdens de shoot</span>
       <h3>Ontspannen, ook als je <em>doodzenuwachtig</em> bent voor de camera</h3>
-      <p>De meeste mensen die ik fotografeer houden niet van op de foto. Dat is precies waarom ik de tijd neem om je op je gemak te laten voelen, tot je vergeet dat er een camera op je gericht staat.</p>
+      <p>De meeste mensen die ik fotografeer houden niet van op de foto. Dat is precies waarom ik de tijd neem om je op je gemak te laten voelen, tot je vergeet dat er een camera op je gericht staat, en je gewoon weer jezelf bent.</p>
+    </div>
+  </div>
+
+  <div class="pb-qb photobg rv">
+    <div class="qbbg" id="qbBgLeijbra"></div>
+    <div class="qbov"></div>
+    <div class="qbin">
+      <blockquote>&ldquo;Ik heb een hele bijzondere en fijne fotoshoot gehad met een prachtig resultaat! Mooie foto's voor op mijn website.&rdquo;</blockquote>
+      <div class="pbq-name">Leijbra Stolk &middot; Praktijk Upendi</div>
     </div>
   </div>
 
@@ -415,6 +477,12 @@ footer .fc a:hover{color:var(--goldB)}
       <h3>Foto's waar je <em>trots</em> op bent, geen excuus meer</h3>
       <p>Geen onzekerheid meer over welke foto je moet plaatsen. Je krijgt een eigen beeldbank waar je telkens uit kunt putten, voor je website, je social media en alles daartussenin.</p>
     </div>
+  </div>
+
+  <div class="pb-qb cream rv">
+    <img class="pbq-photo" id="pbqPhotoIngrid" alt="Ingrid Zellenrath"/>
+    <blockquote>&ldquo;Ik ben ontzettend blij met de foto's die Anouk voor mijn website en social media heeft gemaakt.&rdquo;</blockquote>
+    <div class="pbq-name">Ingrid Zellenrath &middot; Praktijk Raath</div>
   </div>
 </section>
 
@@ -428,7 +496,7 @@ footer .fc a:hover{color:var(--goldB)}
     <div class="pp-step rv">
       <div class="pp-num">02</div>
       <h4>De fotoshoot</h4>
-      <p>Op locatie, in beweging, met ruimte voor wat zich aandient.</p>
+      <p>In de natuur, in jouw praktijk, of op een toffe locatie die bij je past, met ruimte voor wat zich aandient.</p>
     </div>
     <div class="pp-step rv">
       <div class="pp-num">03</div>
@@ -442,50 +510,55 @@ footer .fc a:hover{color:var(--goldB)}
   <div class="sh rv">
     <div class="lbl c">Pakketten</div>
     <h2>Kies <em>minder</em>, kies <em>sneller</em></h2>
-    <p>Drie opties, geen ellenlange vergelijkingstabel. Voor wie nu een goed moment wil, en voor wie het hele jaar zichtbaar wil blijven.</p>
+    <p>Drie opties, geen ellenlange vergelijkingstabel. Je kiest hier niet alleen een pakket, je kiest voor een fotograaf die precies weet hoe ze de spanning wegneemt bij mensen die zich het liefst verstoppen voor een camera.</p>
   </div>
   <div class="pr-grid">
     <div class="pr-card rv">
       <div class="pr-kicker">Eén moment</div>
       <h3>Eerste Stap</h3>
-      <div class="pr-price">&euro;950<span> excl. btw</span></div>
-      <div class="pr-sub">Eén fotoshoot, twee uur, en foto's waar je weer trots op bent.</div>
-      <p class="pr-desc">Voor wie nu een frisse set beelden nodig heeft voor website en social media. Eén goed gesprek, één shoot, en een selectie om uit te kiezen.</p>
+      <div class="pr-price">&euro;1.297<span> excl. btw</span></div>
+      <div class="pr-sub">Voor het moment dat je beseft: zo kan het niet langer.</div>
+      <p class="pr-desc">Je website-foto is een selfie van drie jaar terug, of een pasfoto die niemand laat zien wie je echt bent. In twee uur tijd gaan we van "ik moet er nog eens iets aan doen" naar een set beelden waar je zelf weer enthousiast van wordt, en die je met plezier deelt in plaats van wegklikt.</p>
       <ul class="pr-incl">
         <li>Strategiegesprek vooraf</li>
         <li>2 uur fotoshoot, 1 locatie</li>
         <li>20 bewerkte beelden</li>
       </ul>
-      <a href="https://calendly.com/anoukpeetersfotografie-info/klik-en-connect" target="_blank" rel="noopener" class="btn bto">Plan dit moment →</a>
+      <a href="https://calendly.com/anoukpeetersfotografie-info/klik-en-connect" target="_blank" rel="noopener" class="btn bto">Ontdek of we klikken! →</a>
     </div>
     <div class="pr-card feat rv">
       <div class="pr-badge">Meest gekozen</div>
       <div class="pr-kicker">Het hele jaar</div>
       <h3>Het <em>Jaartraject</em></h3>
-      <div class="pr-price">&euro;247<span>/maand, 12 mnd, excl. btw</span></div>
-      <div class="pr-sub">Vier seizoenen, jouw hele verhaal, altijd actuele beelden.</div>
-      <p class="pr-desc">Jij verandert, je werk groeit. Daarom volgen we je een heel jaar: shoots verspreid over de seizoenen, zodat je beelden altijd kloppen met wie je nu bent, niet wie je een jaar geleden was.</p>
+      <div class="pr-price">&euro;297<span>/maand, 12 mnd, excl. btw</span></div>
+      <div class="pr-sub">Vier seizoenen, jouw hele verhaal, altijd een kloppend beeld.</div>
+      <p class="pr-desc">Jij groeit het hele jaar door, dus waarom zou je beeldmateriaal blijven stilstaan? Vier keer per jaar gaan we samen op pad, door alle seizoenen heen, zodat je nooit meer met een verouderde foto zit. Geen losse shoot, maar een jaar lang samen bouwen aan hoe de wereld je ziet.</p>
       <ul class="pr-incl">
         <li>4 shoots verspreid over het jaar</li>
         <li>Ieder seizoen nieuwe beelden</li>
         <li>Doorlopend strategisch advies</li>
         <li>Voorrang in mijn planning</li>
       </ul>
-      <a href="https://calendly.com/anoukpeetersfotografie-info/klik-en-connect" target="_blank" rel="noopener" class="btn btg">Begin je jaar →</a>
+      <a href="https://calendly.com/anoukpeetersfotografie-info/klik-en-connect" target="_blank" rel="noopener" class="btn btg">Yes, dit gun ik mezelf →</a>
     </div>
     <div class="pr-card rv">
-      <div class="pr-kicker">Alles in één dag</div>
-      <h3>Volledige Ervaring</h3>
-      <div class="pr-price">&euro;1.950<span> excl. btw</span></div>
-      <div class="pr-sub">Eén intensieve dag, twee locaties, maximale opbrengst.</div>
-      <p class="pr-desc">Voor wie in één keer alles wil: een volledige dag waarin we niets overslaan, met een uitgebreide beeldbank waar je jarenlang mee vooruit kan.</p>
+      <div class="pr-kicker">Mijn persoonlijke favoriet</div>
+      <h3>Goud</h3>
+      <div class="pr-price">&euro;1.797<span> excl. btw</span></div>
+      <div class="pr-sub">Niet zomaar een paar foto's, maar je hele verhaal in beeld.</div>
+      <p class="pr-desc">Dit is het pakket waar ik zelf het meest van houd. Drie uur de tijd, een uitgebreide strategiesessie op locatie, ruimte voor meerdere outfits: genoeg om voor het eerst het gevoel te hebben dat je precies zo in beeld komt als je vanbinnen al wist dat je was.</p>
       <ul class="pr-incl">
-        <li>Hele dag, 2 locaties</li>
-        <li>Onbeperkt stylingmomenten</li>
-        <li>60 bewerkte beelden</li>
+        <li>3 uur fotoshoot, 1 locatie</li>
+        <li>Strategiesessie van 2 uur</li>
+        <li>40 bewerkte beelden</li>
       </ul>
-      <a href="https://calendly.com/anoukpeetersfotografie-info/klik-en-connect" target="_blank" rel="noopener" class="btn bto">Boek deze dag →</a>
+      <a href="https://calendly.com/anoukpeetersfotografie-info/klik-en-connect" target="_blank" rel="noopener" class="btn bto">Dit wordt 'm! →</a>
     </div>
+  </div>
+  <div class="pr-trust rv">
+    <div>Persoonlijk gesprek vooraf, geen verrassingen achteraf</div>
+    <div>Gespreid betalen mogelijk bij elk pakket</div>
+    <div>Jij kiest zelf je favorieten uit je eigen galerij</div>
   </div>
   <div class="pb-coach rv">
     <p>Wil je verder dan het beeld alleen? Bij elk pakket kun je uitbreiden met een persoonlijk <a href="https://anouk-peeters.nl/branding/" target="_blank" rel="noopener">coachingtraject</a>, voor wie niet alleen op de foto zichtbaar wil worden, maar ook van binnenuit.</p>
@@ -493,9 +566,9 @@ footer .fc a:hover{color:var(--goldB)}
 </section>
 
 <section id="pbQuote" class="rv">
-  <img class="pbq-photo" id="pbqPhoto" alt="Leijbra Stolk"/>
-  <blockquote>&ldquo;Ik heb een hele bijzondere en fijne fotoshoot gehad met een prachtig resultaat! Mooie foto's voor op mijn website.&rdquo;</blockquote>
-  <div class="pbq-name">Leijbra Stolk &middot; Praktijk Upendi</div>
+  <img class="pbq-photo" id="pbqPhoto" alt="Ilse Verrijt"/>
+  <blockquote>&ldquo;Anouk laat je echt van je beste kant zien. Geeft ook advies en denkt mee over de beelden voor je content.&rdquo;</blockquote>
+  <div class="pbq-name">Ilse Verrijt &middot; Leefstijlstudio Balans</div>
 </section>
 
 <section id="pbFaq">
@@ -511,11 +584,11 @@ footer .fc a:hover{color:var(--goldB)}
   </div>
   <div class="faq-item rv">
     <h4>Welk pakket past bij mij?</h4>
-    <p>Heb je nu even een goed moment nodig, kies Eerste Stap. Wil je het hele jaar door zichtbaar blijven en meegroeien, dan is het Jaartraject de slimste keuze, en veruit het populairst.</p>
+    <p>Heb je nu even een goed moment nodig, kies Eerste Stap. Wil je in één keer het volledige verhaal, dan is Goud mijn persoonlijke favoriet. En wil je het hele jaar door zichtbaar blijven en meegroeien, dan is het Jaartraject de slimste keuze, en veruit het populairst.</p>
   </div>
   <div class="faq-item rv">
     <h4>Waar shooten we?</h4>
-    <p>In de natuur, op een locatie die bij je past, of in jouw praktijkruimte. We bepalen dit samen tijdens het strategiegesprek.</p>
+    <p>In de natuur, in jouw praktijkruimte, of op een toffe locatie die bij je past. We bepalen dit samen tijdens het strategiegesprek, niets ligt vooraf vast.</p>
   </div>
 </section>
 
@@ -617,9 +690,15 @@ if(pbHeroBg)pbHeroBg.style.backgroundImage="url('"+img("2025/08/Leijbra-Avond-20
 const pbCtaBg=document.getElementById('pbCtaBg');
 if(pbCtaBg)pbCtaBg.style.backgroundImage="url('"+L("anouk-camera-goldenhour.jpg")+"')";
 
-// Testimonial-foto - Leijbra Stolk
+// Testimonial-foto's - klantreviews verspreid door de pagina
 const pbqPhoto=document.getElementById('pbqPhoto');
-if(pbqPhoto)pbqPhoto.src=img("2025/08/Leijbra-Avond-2025-177-scaled.jpg",200);
+if(pbqPhoto)pbqPhoto.src=img("2024/10/Ilse-Natuur-2024-9-scaled.jpg",200);
+const pbqPhotoYvonne=document.getElementById('pbqPhotoYvonne');
+if(pbqPhotoYvonne)pbqPhotoYvonne.src=img("2025/04/Yvonne-Duitsland-Waterval-25-scaled.jpg",200);
+const pbqPhotoIngrid=document.getElementById('pbqPhotoIngrid');
+if(pbqPhotoIngrid)pbqPhotoIngrid.src=img("2025/12/Ingrid-Zee-2025-151-scaled.jpg",200);
+const qbBgLeijbra=document.getElementById('qbBgLeijbra');
+if(qbBgLeijbra)qbBgLeijbra.style.backgroundImage="url('"+img("2025/08/Leijbra-Avond-2025-177-scaled.jpg",1400)+"')";
 
 // Grote verhaal-foto's - laten de foto's spreken, geen slideshow nodig
 const PB_PHOTOS={
