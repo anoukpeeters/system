@@ -319,7 +319,7 @@ footer .fc a:hover{color:var(--goldB)}
   <nav class="dnav">
     <a href="https://anouk-peeters.nl/starthier/" target="_blank" rel="noopener">Start hier</a>
     <a href="https://anouk-peeters.nl/branding/" target="_blank" rel="noopener">Branding</a>
-    <a href="https://anouk-peeters.nl/fotografie/" target="_blank" rel="noopener">Fotografie</a>
+    <a href="fotografie.html">Fotografie</a>
     <a href="portfolio.html" class="cur">Portfolio</a>
     <a href="index.html#over">Over Anouk</a>
     <a href="contact.html">Contact</a>
@@ -332,7 +332,7 @@ footer .fc a:hover{color:var(--goldB)}
   <nav>
     <a href="https://anouk-peeters.nl/starthier/" target="_blank" rel="noopener">Start hier</a>
     <a href="https://anouk-peeters.nl/branding/" target="_blank" rel="noopener">Branding</a>
-    <a href="https://anouk-peeters.nl/fotografie/" target="_blank" rel="noopener">Fotografie</a>
+    <a href="fotografie.html">Fotografie</a>
     <a href="portfolio.html" class="cur">Portfolio</a>
     <a href="index.html#over">Over Anouk</a>
     <a href="contact.html">Contact</a>
@@ -582,7 +582,7 @@ footer .fc a:hover{color:var(--goldB)}
   <nav class="ffnav">
     <a href="https://anouk-peeters.nl/starthier/" target="_blank" rel="noopener">Start hier</a>
     <a href="https://anouk-peeters.nl/branding/" target="_blank" rel="noopener">Branding</a>
-    <a href="https://anouk-peeters.nl/fotografie/" target="_blank" rel="noopener">Fotografie</a>
+    <a href="fotografie.html">Fotografie</a>
     <a href="portfolio.html" class="cur">Portfolio</a>
     <a href="index.html#over">Over Anouk</a>
     <a href="contact.html">Contact</a>
@@ -747,15 +747,17 @@ if(sndBtn&&bosAudio){
   });
 }
 
-// Filter - personal branding / natuur / alles
+// Filter - personal branding / natuur / events / alles
 const filterBtns=[...document.querySelectorAll('.pf-filter button')];
 const blocks=[...document.querySelectorAll('.beat,.interlude')];
-filterBtns.forEach(b=>b.addEventListener('click',()=>{
-  filterBtns.forEach(x=>x.classList.remove('on'));
-  b.classList.add('on');
-  const cat=b.dataset.cat;
+function applyFilter(cat){
+  filterBtns.forEach(x=>x.classList.toggle('on',x.dataset.cat===cat));
   blocks.forEach(el=>{el.style.display=(cat==='all'||el.dataset.cat===cat)?'':'none';});
-}));
+}
+filterBtns.forEach(b=>b.addEventListener('click',()=>applyFilter(b.dataset.cat)));
+// Diepe link vanaf fotografie.html (bv. portfolio.html?cat=branding) selecteert direct het juiste filter
+const urlCat=new URLSearchParams(location.search).get('cat');
+applyFilter(filterBtns.some(b=>b.dataset.cat===urlCat)?urlCat:'all');
 
 // Lightbox - klik op een foto vergroot 'm
 const lbox=document.getElementById('lbox');
