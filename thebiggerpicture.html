@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>The Bigger Picture · 1-op-1 Traject · Anouk Peeters</title>
+<meta name="description" content="Geen losse tips of een eenmalige shoot, maar een strategisch én intuïtief 1-op-1 traject dat jou en je merk van binnenuit sterker maakt. Bekijk Basis Frame, Full Frame en Inner Frame."/>
+<link rel="preconnect" href="https://i0.wp.com"/>
+<style>
+:root{
+  --sage:#dce8d8;--sage2:#c8d8c3;--sage3:#b4c8ae;
+  --deep:#1a3618;--deep2:#243e21;--deep3:#2f5229;
+  --gold:#c8a03c;--goldB:#e8c96a;--goldS:#d4b04e;
+  --cream:#f5f0e8;--tl:#e8f0e4;--td:#1a2d18;
+  --ml:#9ab89a;--md:#4a6248;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--deep);
+  color:var(--tl);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* HEADER (gelijk aan de andere pagina's) */
+#hdr{position:fixed;top:0;left:0;right:0;z-index:30;height:68px;
+  display:flex;align-items:center;justify-content:space-between;padding:0 28px;
+  background:rgba(22,50,20,.93);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 rgba(200,160,60,.18);transition:background .42s,box-shadow .42s}
+.lbtn{background:none;border:none;cursor:pointer;padding:0;text-decoration:none;
+  display:flex;align-items:center;gap:9px}
+.lsvg{width:44px;height:44px;flex-shrink:0}
+.lw{font:600 11px/1 "SF Mono",monospace;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--goldS)}
+.dnav{display:flex;align-items:center;gap:2px}
+.dnav a{font:300 14px/1 "Helvetica Neue";color:var(--tl);text-decoration:none;
+  padding:8px 14px;border-radius:20px;transition:.22s;white-space:nowrap;opacity:.82}
+.dnav a:hover{background:rgba(200,160,60,.15);color:var(--goldB);opacity:1}
+.dnav a.cur{color:var(--goldB);opacity:1}
+.dcta{background:var(--gold)!important;color:var(--deep)!important;font-weight:700;
+  opacity:1!important;padding:9px 20px!important;
+  box-shadow:0 4px 16px rgba(200,160,60,.35)}
+.dcta:hover{background:var(--goldB)!important;box-shadow:0 8px 24px rgba(200,160,60,.48)!important}
+.hbtn{display:none;background:none;border:none;cursor:pointer;
+  width:38px;height:38px;flex-direction:column;align-items:center;
+  justify-content:center;gap:5px}
+.hbtn span{width:21px;height:1.5px;background:var(--goldS);border-radius:1px;
+  display:block;transition:.3s cubic-bezier(.4,0,.2,1)}
+.menu-open .hbtn span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.menu-open .hbtn span:nth-child(2){opacity:0}
+.menu-open .hbtn span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+@media(max-width:820px){.dnav{display:none}.hbtn{display:flex}}
+
+/* MOBILE MENU */
+#mob{position:fixed;inset:0;z-index:29;
+  background:rgba(18,38,16,.97);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  opacity:0;pointer-events:none;transition:opacity .35s}
+.menu-open #mob{opacity:1;pointer-events:auto}
+#mob nav a{display:block;font:200 clamp(28px,7vw,56px)/1.1 "Helvetica Neue";
+  color:var(--tl);text-decoration:none;padding:5px 22px;transition:color .2s}
+#mob nav a:hover,#mob nav a.cur{color:var(--goldB)}
+#mob .mc{margin-top:28px;padding:13px 36px;background:var(--gold);color:var(--deep);
+  font:700 11px/1 "SF Mono",monospace;letter-spacing:.18em;text-transform:uppercase;
+  text-decoration:none;border-radius:2px;box-shadow:0 8px 24px rgba(200,160,60,.35)}
+
+.btn{display:inline-block;padding:12px 26px;text-decoration:none;border-radius:2px;
+  font:700 11px/1 "SF Mono",monospace;letter-spacing:.15em;text-transform:uppercase;
+  border:none;cursor:pointer;transition:.3s}
+.btg{background:linear-gradient(120deg,var(--goldB),var(--gold));color:var(--deep);
+  box-shadow:0 6px 22px rgba(200,160,60,.32)}
+.btg:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(200,160,60,.46)}
+.bto{background:transparent;color:var(--tl);border:1px solid rgba(200,160,60,.38)}
+.bto:hover{background:rgba(200,160,60,.1);border-color:var(--goldB)}
+
+.lbl{font:600 10px/1 "SF Mono",monospace;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--goldS);margin-bottom:18px;display:flex;align-items:center;justify-content:center;
+  gap:11px;opacity:.88}
+.lbl::before{content:"";width:28px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.lbl::after{content:"";width:28px;height:1px;background:linear-gradient(270deg,transparent,var(--gold))}
+
+/* HERO - grote foto overheerst, weinig tekst */
+#pbHero{position:relative;z-index:10;overflow:hidden;min-height:92vh;
+  display:flex;align-items:center;justify-content:center;text-align:center}
+.pbh-bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center 26%}
+.pbh-ov{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(10,22,9,.35) 0%,rgba(10,22,9,.32) 40%,rgba(8,18,6,.86) 100%)}
+.pbh-in{position:relative;z-index:2;padding:148px 8vw 64px;max-width:720px}
+.pbh-in h1{font:200 clamp(32px,5.4vw,60px)/1.16 "Helvetica Neue";color:var(--tl);margin-bottom:20px}
+.pbh-in h1 em{font-style:italic;color:var(--goldB)}
+.pbh-in p{font:300 italic clamp(15px,1.8vw,19px)/1.7 "Helvetica Neue";color:var(--ml);
+  max-width:480px;margin:0 auto 32px}
+.pbh-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.scue{display:inline-flex;align-items:center;gap:10px;font:600 10px/1 "SF Mono",monospace;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--goldS);opacity:.85;text-decoration:none;
+  margin-top:30px}
+.scue svg{width:14px;height:14px;animation:bounceDown 1.8s ease-in-out infinite}
+@keyframes bounceDown{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+
+/* VERHAAL - grote foto's overheersen, tekst ondergeschikt */
+#pbVerhaal{position:relative;z-index:10;padding:90px 0 40px}
+.pb-intro{max-width:680px;margin:0 auto 70px;text-align:center;padding:0 8vw}
+.pb-intro h2{font:200 clamp(26px,4vw,42px)/1.2 "Helvetica Neue";color:var(--tl);margin-bottom:18px}
+.pb-intro h2 em{font-style:italic;color:var(--goldB)}
+.pb-intro p{font:300 italic 17px/1.75 "Helvetica Neue";color:var(--ml)}
+.pb-row{max-width:1240px;margin:0 auto;padding:36px 6vw;
+  display:flex;align-items:center;gap:54px;flex-wrap:wrap}
+.pb-row.rev{flex-direction:row-reverse}
+.pb-photo{flex:1.35 1 420px;position:relative;border-radius:2px;overflow:hidden;cursor:zoom-in;
+  height:clamp(360px,58vh,620px);box-shadow:0 24px 60px rgba(10,24,8,.4)}
+.pb-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity 1.3s ease,filter 1s ease,transform .7s ease;
+  filter:grayscale(.6) brightness(.88)}
+.pb-photo img.in{opacity:1;filter:none}
+.pb-photo:hover img{transform:scale(1.04)}
+.pb-photo::before,.pb-photo::after{content:"";position:absolute;width:22px;height:22px;
+  border:1.5px solid var(--gold);z-index:3}
+.pb-photo::before{top:10px;left:10px;border-right:none;border-bottom:none}
+.pb-photo::after{bottom:10px;right:10px;border-left:none;border-top:none}
+.pb-copy{flex:1 1 280px;min-width:240px}
+.pb-copy .tag{font:600 10px/1 "SF Mono",monospace;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--goldS);opacity:.85;margin-bottom:14px;display:block}
+.pb-copy h3{font:300 clamp(21px,2.6vw,28px)/1.25 "Helvetica Neue";color:var(--tl);margin-bottom:14px}
+.pb-copy h3 em{font-style:italic;color:var(--goldB)}
+.pb-copy p{font:300 italic 15px/1.7 "Helvetica Neue";color:var(--ml);max-width:380px}
+
+/* WAAROM MET MIJ - ecru blok, emotie en bewijs voor de prijzen */
+.pb-why{position:relative;z-index:10;background:#faf7f1;padding:14px 0}
+.pb-why .pb-copy .tag{color:var(--gold)}
+.pb-why .pb-copy h3{color:var(--td)}
+.pb-why .pb-copy h3 em{color:var(--gold)}
+.pb-why .pb-copy p{color:var(--md);opacity:1}
+.pb-why .pbh-list li{color:var(--md)}
+
+/* PROCES (Werkwijze) - kort en visueel */
+#pbProces{position:relative;z-index:10;background:var(--deep2);
+  border-top:1px solid rgba(200,160,60,.14);border-bottom:1px solid rgba(200,160,60,.14);
+  padding:64px 8vw}
+#pbProces .lbl{justify-content:center;margin-bottom:34px}
+.pp-grid{max-width:980px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.pp-step{text-align:center;position:relative}
+.pp-num{font:200 38px/1 "Helvetica Neue";color:var(--goldB);opacity:.8;margin-bottom:10px}
+.pp-step h4{font:300 18px/1.3 "Helvetica Neue";color:var(--tl);margin-bottom:8px}
+.pp-step p{font:300 13px/1.6 "Helvetica Neue";color:var(--ml)}
+
+/* PRIJZEN - drie kaarten, middelste uitgelicht, gevoel boven feature-lijst */
+#pbPrijzen{position:relative;z-index:10;padding:90px 8vw 50px;text-align:center}
+#pbPrijzen .sh{max-width:600px;margin:0 auto 54px}
+#pbPrijzen .sh h2{font:200 clamp(26px,4vw,42px)/1.2 "Helvetica Neue";color:var(--tl);margin-bottom:14px}
+#pbPrijzen .sh h2 em{font-style:italic;color:var(--goldB)}
+#pbPrijzen .sh p{font:300 italic 16px/1.7 "Helvetica Neue";color:var(--ml)}
+.pr-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);
+  gap:20px;align-items:stretch}
+.pr-card{background:rgba(255,255,255,.03);border:1px solid rgba(200,160,60,.18);border-radius:6px;
+  padding:36px 26px;text-align:left;display:flex;flex-direction:column;position:relative;
+  transition:transform .3s,box-shadow .3s}
+.pr-card.feat{background:rgba(232,201,106,.07);border-color:var(--goldB);
+  box-shadow:0 26px 60px rgba(10,24,8,.4);transform:translateY(-10px)}
+.pr-badge{position:absolute;top:-13px;left:26px;background:var(--gold);color:var(--deep);
+  font:700 9.5px/1 "SF Mono",monospace;letter-spacing:.16em;text-transform:uppercase;
+  padding:6px 14px;border-radius:20px;box-shadow:0 6px 16px rgba(200,160,60,.4)}
+.pr-kicker{font:600 10px/1 "SF Mono",monospace;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--goldS);opacity:.85;margin-bottom:14px}
+.pr-card h3{font:300 clamp(20px,2.4vw,25px)/1.2 "Helvetica Neue";color:var(--tl);margin-bottom:10px}
+.pr-card h3 em{font-style:italic;color:var(--goldB)}
+.pr-price{font:200 clamp(26px,3vw,32px)/1 "Helvetica Neue";color:var(--goldB);margin-bottom:4px}
+.pr-price span{font:300 12px "Helvetica Neue";color:var(--ml)}
+.pr-future{font:300 italic 12px/1.5 "Helvetica Neue";color:var(--goldS);opacity:.85;margin-bottom:14px}
+.pr-sub{font:300 italic 14px/1.6 "Helvetica Neue";color:var(--ml);margin-bottom:18px}
+.pr-card p.pr-desc{font:300 14px/1.65 "Helvetica Neue";color:var(--tl);opacity:.86;margin-bottom:18px;flex:1}
+.pr-incl{list-style:none;margin:0 0 24px;padding:0;font:300 13px/1.8 "Helvetica Neue";color:var(--ml)}
+.pr-incl li{padding-left:18px;position:relative}
+.pr-incl li::before{content:"·";position:absolute;left:0;color:var(--goldB);font-weight:700}
+.pr-note{font:300 italic 12px/1.5 "Helvetica Neue";color:var(--ml);opacity:.8;margin:-8px 0 16px}
+.pr-card .btn{text-align:center;width:100%}
+.pb-coach{max-width:680px;margin:50px auto 0;text-align:center;padding:30px 8vw 0}
+.pb-coach p{font:300 italic 15px/1.7 "Helvetica Neue";color:var(--ml)}
+.pb-coach a{color:var(--goldB);text-decoration:underline}
+.pr-trust{max-width:880px;margin:44px auto 0;display:flex;justify-content:center;gap:34px;
+  flex-wrap:wrap;padding:0 8vw}
+.pr-trust div{font:300 13px/1.5 "Helvetica Neue";color:var(--ml);max-width:220px;
+  padding-left:24px;position:relative;text-align:left}
+.pr-trust div::before{content:"✓";position:absolute;left:0;color:var(--goldB);font-weight:700}
+.pr-notice{max-width:640px;margin:0 auto 44px;padding:14px 22px;border:1px solid rgba(200,160,60,.3);
+  border-radius:30px;font:300 italic 13px/1.5 "Helvetica Neue";color:var(--goldB);
+  background:rgba(232,201,106,.06)}
+.pr-foot{max-width:680px;margin:30px auto 0;text-align:center;font:300 12px/1.6 "Helvetica Neue";
+  color:var(--ml);opacity:.7}
+
+/* HERKEN JE DIT - ecru blok, identificatie */
+.pb-herken{position:relative;z-index:10;background:#faf7f1;color:var(--td);
+  padding:74px 8vw;text-align:center}
+.pb-herken .lbl{color:var(--gold)}
+.pb-herken .lbl::before{background:linear-gradient(90deg,transparent,var(--gold))}
+.pb-herken .lbl::after{background:linear-gradient(270deg,transparent,var(--gold))}
+.pb-herken h2{font:200 clamp(26px,4vw,40px)/1.25 "Helvetica Neue";color:var(--td);
+  margin:0 auto 28px;max-width:640px}
+.pb-herken h2 em{font-style:italic;color:var(--gold)}
+.pbh-welcome{font:300 italic 17px/1.75 "Helvetica Neue";color:var(--md);max-width:620px;margin:0 auto 18px}
+.pbh-welcome.ask{color:var(--td);font-weight:300}
+.pbh-sub{font:300 21px/1.3 "Helvetica Neue";color:var(--td);max-width:600px;margin:46px auto 18px}
+.pb-meet{position:relative;z-index:10;max-width:620px;margin:0 auto;padding:50px 8vw 10px;text-align:center}
+.pb-meet .pbh-welcome{color:var(--ml)}
+.pbmeet-photo{max-width:480px;margin:0 auto 30px;border-radius:3px;overflow:hidden;
+  box-shadow:0 24px 60px rgba(10,24,8,.4)}
+.pbmeet-photo img{width:100%;display:block}
+.pbh-list{max-width:600px;margin:0 auto 32px;text-align:left;list-style:none;padding:0}
+.pbh-list li{font:300 italic 16px/1.7 "Helvetica Neue";color:var(--md);padding:12px 0 12px 30px;
+  position:relative;border-bottom:1px solid rgba(26,54,24,.08)}
+.pbh-list li:last-child{border-bottom:none}
+.pbh-list li::before{content:"→";position:absolute;left:0;color:var(--gold);font-weight:700}
+.pbh-close{font:300 italic 17px/1.7 "Helvetica Neue";color:var(--td);max-width:560px;margin:0 auto}
+
+/* QUOTE-BLOKKEN tussen het verhaal */
+.pb-qb{position:relative;z-index:10;padding:60px 8vw;text-align:center}
+.pb-qb blockquote{font:300 italic clamp(17px,2.2vw,22px)/1.6 "Helvetica Neue";color:var(--tl);
+  max-width:640px;margin:0 auto 14px}
+.pb-qb .pbq-name{font:600 11px/1 "SF Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--goldS)}
+.pb-qb.cream{background:#faf7f1}
+.pb-qb.cream blockquote{color:var(--td)}
+.pb-qb.cream .pbq-name{color:var(--md)}
+.pb-qb.cream .pbq-photo{border-color:var(--gold)}
+.pbq-photo{width:84px;height:84px;border-radius:50%;object-fit:cover;margin:0 auto 22px;
+  border:2px solid var(--goldB);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.pb-qb.photobg{padding:0;min-height:380px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.pb-qb.photobg .qbbg{position:absolute;inset:0;background-size:cover;background-position:center 26%}
+.pb-qb.photobg .qbov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,22,9,.5),rgba(8,18,6,.8))}
+.pb-qb.photobg .qbin{position:relative;z-index:2;padding:60px 8vw;max-width:680px}
+.pb-qb.photobg .qbin p{font:300 italic 15px/1.7 "Helvetica Neue";color:var(--ml);max-width:520px;margin:18px auto 0}
+
+/* FAQ */
+#pbFaq{position:relative;z-index:10;background:#faf7f1;max-width:100%;padding:80px 8vw}
+#pbFaq .fq-inner{max-width:720px;margin:0 auto}
+#pbFaq .lbl{justify-content:center;color:var(--gold)}
+#pbFaq .lbl::before{background:linear-gradient(90deg,transparent,var(--gold))}
+#pbFaq .lbl::after{background:linear-gradient(270deg,transparent,var(--gold))}
+#pbFaq h2{text-align:center;font:200 clamp(24px,3.4vw,36px)/1.2 "Helvetica Neue";color:var(--td);margin-bottom:40px}
+#pbFaq h2 em{font-style:italic;color:var(--gold)}
+.faq-item{border-top:1px solid rgba(26,54,24,.12);padding:22px 0}
+.faq-item h4{font:300 17px/1.4 "Helvetica Neue";color:var(--td);margin-bottom:10px}
+.faq-item p{font:300 14px/1.7 "Helvetica Neue";color:var(--md)}
+
+/* DECO */
+.leaf-deco{position:absolute;pointer-events:none;width:150px;height:150px;z-index:0;opacity:.05;color:var(--deep3)}
+.leaf-deco.tl{top:0;left:0}
+.leaf-deco.br{bottom:0;right:0;transform:rotate(180deg)}
+.leaf-deco.gold{color:var(--goldB);opacity:.065}
+
+/* LIGHTBOX */
+#lbox{position:fixed;inset:0;z-index:50;background:rgba(8,18,6,.94);
+  display:flex;align-items:center;justify-content:center;padding:6vh 5vw;
+  opacity:0;pointer-events:none;transition:opacity .3s;cursor:zoom-out}
+#lbox.on{opacity:1;pointer-events:auto}
+#lbox img{max-width:100%;max-height:88vh;object-fit:contain;border-radius:2px;
+  box-shadow:0 30px 80px rgba(0,0,0,.5)}
+#lboxClose{position:absolute;top:22px;right:28px;width:40px;height:40px;border-radius:50%;
+  border:1px solid rgba(200,160,60,.4);background:rgba(255,255,255,.05);color:var(--goldB);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;font:300 22px/1 "Helvetica Neue"}
+#lboxClose:hover{border-color:var(--goldB)}
+
+/* GOUDEN VLINDER */
+#butterfly{position:fixed;z-index:16;pointer-events:none;width:72px;height:50px;
+  left:0;top:0;will-change:transform}
+#butterfly svg{width:100%;height:100%;display:block;filter:drop-shadow(0 4px 12px rgba(200,160,60,.45))}
+#wingL,#wingR{transform-origin:80px 58px;animation:flapL .4s ease-in-out infinite alternate}
+#wingR{animation-name:flapR}
+@keyframes flapL{0%{transform:scaleX(1) rotate(0deg)}100%{transform:scaleX(.5) rotate(-10deg)}}
+@keyframes flapR{0%{transform:scaleX(1) rotate(0deg)}100%{transform:scaleX(.5) rotate(10deg)}}
+.bdust{position:fixed;z-index:15;pointer-events:none;border-radius:50%;
+  opacity:.95;transition:opacity 1.5s ease,transform 1.5s ease;
+  box-shadow:0 0 8px 2px rgba(232,201,106,.65)}
+
+/* CAMERA-CURSOR */
+@media (hover:hover) and (pointer:fine){body.camcursor-on{cursor:none}}
+#camCursor{position:fixed;z-index:9999;pointer-events:none;width:46px;height:46px;
+  left:0;top:0;transform:translate(-50%,-50%);transition:opacity .25s;opacity:0}
+#camCursor.show{opacity:1}
+#camCursor .cc-br{position:absolute;width:14px;height:14px;border:1.5px solid var(--goldB);transition:.18s}
+#camCursor .a{top:0;left:0;border-right:none;border-bottom:none}
+#camCursor .b{top:0;right:0;border-left:none;border-bottom:none}
+#camCursor .c{bottom:0;left:0;border-right:none;border-top:none}
+#camCursor .d{bottom:0;right:0;border-left:none;border-top:none}
+#camCursor .cc-dot{position:absolute;left:50%;top:50%;width:3px;height:3px;border-radius:50%;
+  background:var(--goldB);transform:translate(-50%,-50%);opacity:.8}
+#camCursor.shut .cc-br{transform:scale(.42)}
+#camCursor.shut .cc-ring{opacity:1;transform:translate(-50%,-50%) scale(1.5)}
+#camCursor .cc-ring{position:absolute;left:50%;top:50%;width:46px;height:46px;border-radius:50%;
+  border:1.5px solid rgba(232,201,106,.7);transform:translate(-50%,-50%) scale(1);opacity:0;
+  transition:transform .35s ease,opacity .35s ease}
+
+/* SLOT-CTA */
+#pbCta{position:relative;z-index:10;overflow:hidden;margin-top:90px;
+  min-height:480px;display:flex;align-items:center;justify-content:center;text-align:center}
+#pbCta::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;z-index:4;
+  background:linear-gradient(90deg,transparent,var(--goldB) 25%,var(--goldB) 75%,transparent);
+  box-shadow:0 0 14px rgba(232,201,106,.6)}
+.pbcta-bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center 30%}
+.pbcta-ov{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(10,22,9,.55) 0%,rgba(11,24,10,.74) 55%,rgba(10,22,9,.93) 100%)}
+.pbcta-in{position:relative;z-index:2;max-width:560px;padding:90px 8vw}
+#pbCta h2{font:200 clamp(26px,4vw,40px)/1.2 "Helvetica Neue";color:var(--tl);margin-bottom:16px}
+#pbCta h2 em{font-style:italic;color:var(--goldB)}
+#pbCta p{font:300 italic 16px/1.7 "Helvetica Neue";color:var(--tl);opacity:.88;margin:0 0 32px}
+#pbCta .btn{font-size:12px;padding:15px 34px}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+/* FOOTER (gelijk aan de andere pagina's) */
+footer{position:relative;z-index:10;background:var(--deep);
+  border-top:1px solid rgba(200,160,60,.12);padding:80px 8vw 40px;margin-top:20px}
+footer .fi{max-width:1040px;margin:0 auto;
+  display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;align-items:center}
+footer .fl{display:flex;flex-direction:column;gap:7px;font:300 13px/1.5 "Helvetica Neue"}
+footer .fl a,footer .fl span{color:var(--ml);text-decoration:none;transition:color .2s}
+footer .fl a:hover{color:var(--goldB)}
+.fsocial{display:flex;gap:14px}
+.fsocial a{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(200,160,60,.28);color:var(--ml);transition:.3s}
+.fsocial a:hover{color:var(--goldB);border-color:var(--goldB);background:rgba(200,160,60,.08)}
+.fsocial svg{width:16px;height:16px}
+.footer-extra{display:flex;align-items:center;gap:14px;perspective:700px}
+.moon{width:60px;height:60px;border-radius:50%;position:relative;flex-shrink:0;
+  background:radial-gradient(circle at 36% 34%,#fff6d8 0%,#f3dd9a 38%,#c8a03c 76%,#8a6018 100%);
+  box-shadow:0 0 24px rgba(232,201,106,.55),0 0 9px rgba(255,245,200,.5) inset;
+  animation:moonGlow 5s ease-in-out infinite,moonSpin 14s linear infinite;
+  transform-style:preserve-3d}
+.moon::before,.moon::after{content:"";position:absolute;border-radius:50%;
+  background:rgba(120,90,30,.32);box-shadow:inset 0 0 5px rgba(80,60,20,.4)}
+.moon::before{width:13px;height:13px;top:16px;left:37px}
+.moon::after{width:7px;height:7px;top:39px;left:16px}
+@keyframes moonGlow{0%,100%{box-shadow:0 0 18px rgba(232,201,106,.45),0 0 7px rgba(255,245,200,.4) inset}
+  50%{box-shadow:0 0 32px rgba(232,201,106,.72),0 0 11px rgba(255,245,200,.6) inset}}
+@keyframes moonSpin{0%{transform:rotateY(0deg)}100%{transform:rotateY(360deg)}}
+.season{font:600 9.5px/1 "SF Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--ml)}
+.ffnav{max-width:1040px;margin:34px auto 0;display:flex;flex-wrap:wrap;justify-content:center;
+  gap:6px 22px;border-top:1px solid rgba(200,160,60,.1);padding-top:24px}
+.ffnav a{font:300 12px/1 "Helvetica Neue";color:var(--ml);text-decoration:none;opacity:.75;transition:.2s}
+.ffnav a:hover{color:var(--goldB);opacity:1}
+.ffnav a.cur{color:var(--goldS);opacity:1}
+footer .fc{max-width:1040px;margin:18px auto 0;padding-top:0;
+  font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-spacing:.04em}
+footer .fc a{color:var(--ml);text-decoration:underline;opacity:.85}
+footer .fc a:hover{color:var(--goldB)}
+
+/* GELUID */
+#sndBtn{position:fixed;left:18px;bottom:18px;z-index:20;width:46px;height:46px;border-radius:50%;
+  background:rgba(22,50,20,.85);backdrop-filter:blur(10px);border:1px solid rgba(200,160,60,.3);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.3s}
+#sndBtn:hover{border-color:var(--goldB);box-shadow:0 10px 28px rgba(200,160,60,.3)}
+#sndBtn svg{width:20px;height:20px;color:var(--goldB)}
+#sndBtn .w2,#sndBtn .w3{transition:opacity .3s}
+#sndBtn:not(.on) .w1,#sndBtn:not(.on) .w2,#sndBtn:not(.on) .w3{opacity:.25}
+#sndBtn.on .w2{animation:sndPulse 1.6s ease-in-out infinite}
+#sndBtn.on .w3{animation:sndPulse 1.6s ease-in-out infinite .25s}
+@keyframes sndPulse{0%,100%{opacity:.25}50%{opacity:1}}
+#sndBtn .xmark{display:none}
+#sndBtn:not(.on) .xmark{display:block}
+@media(max-width:640px){#sndBtn{left:14px;bottom:14px;width:42px;height:42px}}
+
+@media(max-width:900px){
+  .pr-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto}
+  .pr-card.feat{transform:none;order:-1}
+  .pp-grid{grid-template-columns:1fr;gap:36px}
+}
+@media(max-width:760px){
+  .pb-row,.pb-row.rev{flex-direction:column;gap:26px;padding:30px 7vw}
+  .pb-photo{height:340px;flex-basis:auto;width:100%}
+  #camCursor{display:none}
+  #pbCta{min-height:420px}
+  .pbcta-in{padding:70px 7vw}
+}
+</style>
+</head>
+<body>
+
+<div id="butterfly"><svg viewBox="0 0 160 110" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="bfg" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#f5e69a"/><stop offset="50%" stop-color="#d8b25a"/><stop offset="100%" stop-color="#8a601a"/>
+  </linearGradient></defs>
+  <g id="wingL">
+    <path d="M80 58 C64 36 36 12 16 15 C2 17 6 42 22 53 C40 65 66 63 80 58Z" fill="url(#bfg)" opacity=".95"/>
+    <path d="M80 58 C70 50 48 40 34 43 C25 45 27 56 38 60 C54 66 70 62 80 58Z" fill="url(#bfg)" opacity=".55"/>
+  </g>
+  <g id="wingR">
+    <path d="M80 58 C96 36 124 12 144 15 C158 17 154 42 138 53 C120 65 94 63 80 58Z" fill="url(#bfg)" opacity=".95"/>
+    <path d="M80 58 C90 50 112 40 126 43 C135 45 133 56 122 60 C106 66 90 62 80 58Z" fill="url(#bfg)" opacity=".55"/>
+  </g>
+  <ellipse cx="80" cy="58" rx="2.8" ry="17" fill="#6b4a18"/>
+  <path d="M80 43 Q73 31 65 26 M80 43 Q87 31 95 26" stroke="#6b4a18" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+</svg></div>
+
+<div id="camCursor">
+  <div class="cc-ring"></div>
+  <div class="cc-br a"></div><div class="cc-br b"></div><div class="cc-br c"></div><div class="cc-br d"></div>
+  <div class="cc-dot"></div>
+</div>
+
+<header id="hdr">
+  <a class="lbtn" href="index.html">
+    <img class="lsvg" src="fotos/logo-ap.png" alt="Anouk Peeters logo" width="44" height="44"/>
+    <span class="lw">Anouk Peeters</span>
+  </a>
+  <nav class="dnav">
+    <a href="https://anouk-peeters.nl/starthier/" target="_blank" rel="noopener">Start hier</a>
+    <a href="branding.html" class="cur">Branding</a>
+    <a href="fotografie.html">Fotografie</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="over-anouk.html">Over Anouk</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html#booking" class="dcta">Plan gratis Blik →</a>
+  </nav>
+  <button class="hbtn" id="menuBtn"><span></span><span></span><span></span></button>
+</header>
+
+<div id="mob">
+  <nav>
+    <a href="https://anouk-peeters.nl/starthier/" target="_blank" rel="noopener">Start hier</a>
+    <a href="branding.html" class="cur">Branding</a>
+    <a href="fotografie.html">Fotografie</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="over-anouk.html">Over Anouk</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <a href="contact.html#booking" class="mc">Plan je gratis Anouk's Blik →</a>
+</div>
+
+<main>
+
+<section id="pbHero">
+  <div class="pbh-bg" id="pbHeroBg"></div>
+  <div class="pbh-ov"></div>
+  <div class="pbh-in rv">
+    <div class="lbl">1-op-1 Traject · The Bigger Picture</div>
+    <h1>Zichtbaarheid is geen truc. <em>Het is een thuiskomen.</em></h1>
+    <p>Geen losse tips of een eenmalige shoot, maar een traject dat jou en je merk van binnenuit sterker maakt. Strategisch én intuïtief, precies zoals jij in elkaar zit.</p>
+    <div class="pbh-btns">
+      <a href="#pbPrijzen" class="btn btg">Bekijk de trajecten →</a>
+      <a href="https://calendly.com/anoukpeetersfotografie-info/klik-en-connect" target="_blank" rel="noopener" class="btn bto">Plan een Klik &amp; Connect-gesprek</a>
+    </div>
+    <a href="#pbVerhaal" class="scue">Lees het verhaal
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v15M12 19l-6-6M12 19l6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<section class="pb-herken">
+  <div class="lbl">Een bekend verhaal</div>
+  <h2>Je foto's, je posts, je website... het klopt allemaal. Maar van binnen voelt het <em>niet helemaal als jij</em>.</h2>
+  <p class="pbh-welcome">Ik ben Anouk, en ik hoor het bijna elke week van ondernemers die hun vak allang onder de knie hebben: "Dit ben ik niet helemaal." "Er moet iets veranderen, maar ik weet niet wat." "Ik weet zoveel, maar het voelt versnipperd." Herken je iets hiervan?</p>
+  <ul class="pbh-list">
+    <li>Je hebt al foto's, posts en misschien een hele website, maar er mist iets dat je niet kan benoemen.</li>
+    <li>Je bent gegroeid of veranderd, maar je zichtbaarheid is in het oude blijven hangen.</li>
+    <li>Je verzamelt tips en strategieën, maar zonder dat het ergens samenkomt tot één duidelijke lijn.</li>
+    <li>Je voelt dat je geen losse quick-fix nodig hebt, maar een stevig fundament om op verder te bouwen.</li>
+  </ul>
+  <p class="pbh-close">Als je jezelf hierin herkent: zichtbaarheid is geen truc die je toepast, het is een thuiskomen bij jezelf. En dat begint hier.</p>
+</section>
+
+<div class="pb-qb photobg rv">
+  <div class="qbbg" id="pbStandBg"></div>
+  <div class="qbov"></div>
+  <div class="qbin">
+    <blockquote>&ldquo;Iedereen loopt hetzelfde bos in. Totdat je ontdekt dat jouw pad er al lag.&rdquo;</blockquote>
+    <p>Natuur geeft rust, richting en ruimte: precies wat jij nodig hebt om weer bij jezelf te landen. The Bigger Picture werkt vanuit datzelfde principe. Niet zoeken naar een nieuwe versie van jezelf, maar ontdekken wat er al was, en dat zichtbaar maken.</p>
+  </div>
+</div>
+
+<section id="pbVerhaal">
+  <div class="pb-intro rv">
+    <h2>Niet alleen fotograaf, <em>ook strateeg en sparringpartner</em></h2>
+    <p>We kijken niet alleen naar je foto's of content, maar naar het hele plaatje: jouw energie, je merk, je verhaal, en waar je naar toe groeit.</p>
+  </div>
+
+  <div class="pb-row rv">
+    <div class="pb-photo" data-src="ph1"></div>
+    <div class="pb-copy">
+      <span class="tag">Vooraf · Kick-off van 2-2,5 uur</span>
+      <h3>We beginnen met <em>een gesprek</em>, niet met een plan</h3>
+      <p>Je hoeft niet alles al uitgezocht te hebben. Geen perfect plan, geen uitgewerkte strategie, geen honderd ideeën. Het is genoeg dat je voelt dat het tijd is om zichtbaar te worden op een manier die echt bij je past. Vanuit daar bouwen we samen de rode draad.</p>
+    </div>
+  </div>
+
+  <div class="pb-qb cream rv">
+    <blockquote>&ldquo;Anouk is echt GOUD! Ze weet precies hoe ze je in de juiste energie kan krijgen.&rdquo;</blockquote>
+    <div class="pbq-name">Yvonne Huijs &middot; Oersterk</div>
+  </div>
+
+  <div class="pb-row rev rv">
+    <div class="pb-photo" data-src="ph2"></div>
+    <div class="pb-copy">
+      <span class="tag">Tijdens het traject · Focus-sessies</span>
+      <h3>Strategisch <em>én</em> intuïtief</h3>
+      <p>We kijken naar positionering, energie, keuzes maken, en het merk dat je bouwt. Niet oppervlakkig, maar van binnenuit. Zodat de zichtbaarheid die ontstaat impact heeft, omdat ze klopt met wie je bent en waar je naar groeit.</p>
+    </div>
+  </div>
+
+  <div class="pb-row rv">
+    <div class="pb-photo" data-src="ph3"></div>
+    <div class="pb-copy">
+      <span class="tag">Resultaat</span>
+      <h3>Een merk dat <em>blijft kloppen</em>, ook als jij verandert</h3>
+      <p>Je krijgt richting, duidelijkheid en een stevig fundament om op verder te bouwen. Een merk dat overeind blijft staan, ook wanneer jij groeit of verandert, in plaats van telkens opnieuw te beginnen. Je ideale klant ziet je dan niet alleen, ze voelt je, en herkent: dit klopt.</p>
+    </div>
+  </div>
+</section>
+
+<section class="pb-why">
+  <div class="pb-row">
+    <div class="pb-photo" data-src="phWhy"></div>
+    <div class="pb-copy">
+      <span class="tag">Waarom met mij</span>
+      <h3>Niet je fotograaf alleen, <em>je strategische denkpartner</em></h3>
+      <p>Ik ben niet alleen fotograaf. Ik ben coach, strateeg en vertaler van energie naar beeld. Ik werk niet met trucjes of standaardadvies, maar met rust, richting en een stevig fundament, voor nu en voor de fase die nog komt.</p>
+      <ul class="pbh-list" style="margin-top:18px">
+        <li>Je hoeft het niet alleen uit te zoeken: we bouwen het samen.</li>
+        <li>Geen quick-fix, maar een fundament dat blijft staan, ook als jij verandert.</li>
+        <li>Je ideale klant ziet je niet alleen, ze voelt je, en herkent: dit klopt.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="pbPrijzen">
+  <div class="sh rv">
+    <div class="lbl c">De trajecten</div>
+    <h2>Kies <em>jouw</em> tempo</h2>
+    <p>Drie wegen naar hetzelfde thuiskomen: een eerste stevige stap, de volle diepte, of een doorlopend traject dat met je meegroeit.</p>
+  </div>
+  <div class="pr-grid">
+    <div class="pr-card rv">
+      <div class="pr-kicker">3 maanden · eerste stevige stap</div>
+      <h3>Basis Frame</h3>
+      <div class="pr-price">&euro;1.997<span> eenmalig, excl. btw</span></div>
+      <div class="pr-sub">Voor wie duidelijke richting wil, zonder zich meteen voor zes maanden te binden.</div>
+      <p class="pr-desc">Je hoeft niet meteen alles om te gooien. In drie maanden tijd leggen we het fundament: scherpere keuzes, meer rust in je hoofd, en een merk dat eindelijk klopt met wie je nu bent.</p>
+      <ul class="pr-incl">
+        <li>Kick-off van 2-2,5 uur, live of online</li>
+        <li>4 focus-sessies via Zoom, ca. 75-90 min</li>
+        <li>WhatsApp/mail tussen sessies door</li>
+        <li>Gespreid betalen mogelijk</li>
+      </ul>
+      <p class="pr-note">Optioneel uit te breiden met een fotoshoot op maat.</p>
+      <a href="https://calendly.com/anoukpeetersfotografie-info/klik-en-connect" target="_blank" rel="noopener" class="btn bto">Yess, ik wil dit! →</a>
+    </div>
+    <div class="pr-card feat rv">
+      <div class="pr-badge">Meest gekozen</div>
+      <div class="pr-kicker">6 maanden · de volle diepte</div>
+      <h3>Full <em>Frame</em></h3>
+      <div class="pr-price">&euro;2.997<span> eenmalig, excl. btw</span></div>
+      <div class="pr-sub">Voor wie niet nog een keer oppervlakkig wil beginnen, maar het deze keer goed wil doen.</div>
+      <p class="pr-desc">Zes maanden waarin we niet alleen je merk, maar ook je manier van zichtbaar zijn herbouwen: van binnenuit, in jouw tempo, met ruimte om het ook echt te laten landen.</p>
+      <ul class="pr-incl">
+        <li>8 focus-sessies + 1 live verdiepingssessie (na 3 mnd)</li>
+        <li>Persoonlijke check van social media, website en positionering</li>
+        <li>Gratis ticket voor een smartphone-livedag (t.w.v. &euro;197)</li>
+        <li>WhatsApp/mail gedurende het hele traject</li>
+      </ul>
+      <p class="pr-note">Optioneel uit te breiden met een fotoshoot op maat.</p>
+      <a href="https://calendly.com/anoukpeetersfotografie-info/klik-en-connect" target="_blank" rel="noopener" class="btn btg">Ja, deze past bij mij! →</a>
+    </div>
+    <div class="pr-card rv">
+      <div class="pr-kicker">Doorlopend · jouw tempo</div>
+      <h3>Inner Frame</h3>
+      <div class="pr-price">vanaf &euro;597<span> per maand, doorlopend</span></div>
+      <div class="pr-sub">Voor wie niet aan een einddatum wil vastzitten, maar blijvend wil bouwen.</div>
+      <p class="pr-desc">Geen vast aantal maanden, maar een doorlopend traject dat met je meegroeit: strategie, storytelling én een brandingshoot, helemaal op jouw maat.</p>
+      <ul class="pr-incl">
+        <li>Kick-off + minimaal 1 focus-sessie per maand</li>
+        <li>Brandingshoot, minimaal 25 professionele beelden</li>
+        <li>WhatsApp/mail gedurende het hele traject</li>
+      </ul>
+      <p class="pr-note">Stop of pas aan wanneer het past bij jouw fase.</p>
+      <a href="https://calendly.com/anoukpeetersfotografie-info/klik-en-connect" target="_blank" rel="noopener" class="btn bto">Vraag je gesprek aan →</a>
+    </div>
+  </div>
+  <div class="pr-trust rv">
+    <div>Persoonlijk gesprek vooraf, geen verrassingen achteraf</div>
+    <div>Gespreid betalen mogelijk bij elk traject</div>
+    <div>100% online mogelijk, met dezelfde diepgang</div>
+  </div>
+  <div class="pb-coach rv">
+    <p>Liever eerst iets lichters? Bekijk de <a href="branding.html#boost-sessie">Zichtbaarheid Reset</a> of de livedag <a href="zichtbaarmetjesmartphone.html">Stralend Zichtbaar met je Smartphone</a>, of plan meteen een vrijblijvend <a href="https://calendly.com/anoukpeetersfotografie-info/klik-en-connect" target="_blank" rel="noopener">Klik &amp; Connect-gesprek</a>.</p>
+  </div>
+  <p class="pr-foot rv">Alle prijzen excl. btw. Reiskosten bij een fotoshoot worden apart afgestemd.</p>
+</section>
+
+<section id="pbProces">
+  <div class="lbl">Werkwijze</div>
+  <div class="pp-grid">
+    <div class="pp-step rv">
+      <div class="pp-num">01</div>
+      <h4>Kennismaking</h4>
+      <p>In een kick-off van 2-2,5 uur duiken we in jouw verhaal, je energie en waar je nu vastloopt.</p>
+    </div>
+    <div class="pp-step rv">
+      <div class="pp-num">02</div>
+      <h4>Focus-sessies</h4>
+      <p>Stap voor stap, strategisch én intuïtief, bouwen we aan de rode draad in je merk en je zichtbaarheid.</p>
+    </div>
+    <div class="pp-step rv">
+      <div class="pp-num">03</div>
+      <h4>Een merk dat blijft staan</h4>
+      <p>Je gaat verder met richting, duidelijkheid en een fundament dat ook bij verandering overeind blijft.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pbFaq">
+  <div class="fq-inner">
+    <div class="lbl">Veelgestelde vragen</div>
+    <h2>Nog even <em>twijfelen</em>?</h2>
+    <div class="faq-item rv">
+      <h4>Kan het traject volledig online?</h4>
+      <p>Ja, alle focus-sessies en de kick-off kunnen via Zoom, met dezelfde diepgang en begeleiding, minus de reistijd.</p>
+    </div>
+    <div class="faq-item rv">
+      <h4>Moet ik al precies weten wat ik wil, of waar ik vastloop?</h4>
+      <p>Nee. Je mag ook komen met losse ideeën, twijfel, of een leeg vel. Samen ontdekken we de rode draad, de richting en de energie. Dat is precies het werk.</p>
+    </div>
+    <div class="faq-item rv">
+      <h4>Hoeveel tijd kost dit me ongeveer per maand?</h4>
+      <p>Reken op één focus-sessie van ongeveer 60 minuten per 2-3 weken, plus ruimte om de inzichten toe te passen. Het blijft behapbaar, juist omdat het je rust, richting en overzicht geeft.</p>
+    </div>
+    <div class="faq-item rv">
+      <h4>Wat als ik tussendoor vragen heb?</h4>
+      <p>Tijdens je traject kan je me altijd appen of mailen met vragen, twijfels of tussentijdse inzichten. Je staat er nooit alleen voor.</p>
+    </div>
+    <div class="faq-item rv">
+      <h4>Kan dit gecombineerd worden met een fotoshoot?</h4>
+      <p>Zeker. Tijdens The Bigger Picture ontdekken we samen wat je zichtbaarheid nodig heeft. Voor veel ondernemers is een fotoshoot daarna een logische volgende stap, in Nederland of tijdens een Eifel Experience. We plannen 'm op het moment dat past bij jouw energie en agenda.</p>
+    </div>
+    <div class="faq-item rv">
+      <h4>Kan ik het traject in termijnen betalen?</h4>
+      <p>Ja, bij elk traject zijn er termijnopties. Tijdens het Klik &amp; Connect-gesprek bespreken we wat voor jou prettig werkt. Investeren in je zichtbaarheid mag rust geven, geen stress.</p>
+    </div>
+    <div class="faq-item rv">
+      <h4>Ik start net of doe een rebrand, en heb nog geen website of duidelijke branding. Kan jij meedenken over de hele basis?</h4>
+      <p>Ja, juist dan is The Bigger Picture heel waardevol. We bouwen samen het fundament: verhaal, positionering, energie en gewenste uitstraling. Van daaruit bepaal je wat je nog nodig hebt, of dat een website, foto's, contentstrategie of een heel andere richting is.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<section class="pb-meet rv">
+  <div class="pbmeet-photo"><img src="fotos/anouk-paikea-weide.jpg" alt="Anouk en Paikea in het veld" loading="lazy"/></div>
+  <div class="lbl">Voel jij het al?</div>
+  <p class="pbh-welcome">Mag ik je meenemen in een traject waarin we niet alleen naar je beeld kijken, maar naar het hele plaatje: jouw energie, je merk, je verhaal? Geen trucjes, maar een thuiskomen bij wie je al was.</p>
+</section>
+
+<section id="pbCta" class="rv">
+  <div class="pbcta-bg" id="pbCtaBg"></div>
+  <div class="pbcta-ov"></div>
+  <div class="pbcta-in">
+    <div class="lbl">Klaar voor de volgende stap</div>
+    <h2>Zullen we even <em>bellen</em>?</h2>
+    <p>Geen verplichting, geen verkooppraatje. Een kop koffie (digitaal) om te voelen of dit jouw volgende stap is.</p>
+    <a href="https://calendly.com/anoukpeetersfotografie-info/klik-en-connect" target="_blank" rel="noopener" class="btn btg">Plan een Klik &amp; Connect-gesprek →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="fi">
+    <img src="fotos/logo-ap.png" alt="Anouk Peeters logo" width="56" height="56"/>
+    <div class="fl">
+      <a href="https://anouk-peeters.nl" target="_blank" rel="noopener">anouk-peeters.nl</a>
+      <a href="mailto:info@anoukpeetersfotografie.nl">info@anoukpeetersfotografie.nl</a>
+    </div>
+    <div class="fl">
+      <span>Biesven 13</span>
+      <span>5595 DD Leende</span>
+    </div>
+    <div class="fsocial">
+      <a href="https://www.instagram.com/anouk_peeters.nl/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/anouk-peeters-b15a25141" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8.6" r="1.15" fill="currentColor"/><path d="M8 11.4V17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12.2 17v-3.6c0-1.1.7-1.9 1.9-1.9 1.1 0 1.7.8 1.7 1.9V17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.2 11.4V17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </a>
+      <a href="https://open.spotify.com/show/60hWIuD1aRJuJIv2wGz0BJ" target="_blank" rel="noopener" aria-label="Podcast: Authentiek Zichtbaar Zijn">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M7.3 10.3c3.1-1 6.6-.8 9.1.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M8 13.1c2.5-.8 5.3-.6 7.3.7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M8.7 15.7c1.8-.5 3.8-.4 5.2.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </a>
+    </div>
+    <div class="footer-extra">
+      <div class="moon"></div>
+      <span class="season" id="seasonTag"></span>
+    </div>
+  </div>
+  <nav class="ffnav">
+    <a href="https://anouk-peeters.nl/starthier/" target="_blank" rel="noopener">Start hier</a>
+    <a href="branding.html" class="cur">Branding</a>
+    <a href="fotografie.html">Fotografie</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="over-anouk.html">Over Anouk</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html#booking">Plan gratis Blik</a>
+  </nav>
+  <div class="fc">Anouk Peeters Fotografie &middot; Intuïtief branding-expert &amp; fotograaf<br>Personal branding · Fotografie · Natuur · Eifel &amp; Nederland · © Anouk Peeters<br>KvK 68721501 · BTW NL001684117B46 · <a href="docs/algemene-voorwaarden-dupho.pdf" target="_blank" rel="noopener">Algemene voorwaarden</a></div>
+</footer>
+
+<button id="sndBtn" aria-label="Natuurgeluid aan/uit" title="Natuurgeluid aan/uit">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path class="w1" d="M3 9v6h4l5 5V4L7 9H3Z" fill="currentColor"/>
+    <path class="w2" d="M16 8.5c1 .9 1.6 2.1 1.6 3.5s-.6 2.6-1.6 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+    <path class="w3" d="M18.5 5.5c1.9 1.7 3 4 3 6.5s-1.1 4.8-3 6.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+    <path class="xmark" d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  </svg>
+</button>
+<audio id="bosAudio" loop preload="none">
+  <source src="audio/bos-ambient.m4a" type="audio/mp4">
+  <source src="audio/bos-ambient.ogg" type="audio/ogg">
+</audio>
+
+<div id="lbox">
+  <button id="lboxClose" aria-label="Sluiten">&times;</button>
+  <img id="lboxImg" src="" alt=""/>
+</div>
+
+<script>
+(function(){
+"use strict";
+const CDN="https://i0.wp.com/anouk-peeters.nl/wp-content/uploads/";
+const img=(p,w)=>CDN+p+"?w="+(w||1100)+"&ssl=1";
+const L=p=>"fotos/"+p;
+
+// Header scroll-state
+const hdr=document.getElementById('hdr');
+addEventListener('scroll',()=>hdr.classList.toggle('s',scrollY>50),{passive:true});
+
+// Menu
+const body=document.body;
+const tog=()=>body.classList.toggle('menu-open');
+const cls=()=>body.classList.remove('menu-open');
+document.getElementById('menuBtn')?.addEventListener('click',tog);
+document.querySelectorAll('#mob nav a').forEach(a=>a.addEventListener('click',cls));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')cls();});
+
+// Reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting)en.target.classList.add('in');}),{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+// Hero-achtergrond - Anouk, warm en dichtbij
+const pbHeroBg=document.getElementById('pbHeroBg');
+if(pbHeroBg){
+  pbHeroBg.style.backgroundImage="url('"+L("anouk-camera-goldenhour.jpg")+"')";
+  pbHeroBg.style.backgroundPosition="center 30%";
+}
+
+// Quote-sectie achtergrond - het bos, zelfde beeld als de homepage
+const pbStandBg=document.getElementById('pbStandBg');
+if(pbStandBg){
+  pbStandBg.style.backgroundImage="url('"+L("bos-zonnestraal.jpg")+"')";
+  pbStandBg.style.backgroundPosition="center 30%";
+}
+
+// Slot-CTA achtergrond - hoopvolle zonsondergang
+const pbCtaBg=document.getElementById('pbCtaBg');
+if(pbCtaBg)pbCtaBg.style.backgroundImage="url('"+L("zonsondergang-heuvels.jpg")+"')";
+
+// Grote verhaal-foto's - laten de foto's spreken, geen slideshow nodig
+const PB_PHOTOS={
+  ph1:{url:L("anouk-bos-boom.jpg"),pos:"22%"},
+  ph2:{url:L("anouk-paikea-steiger.jpg"),pos:"28%"},
+  ph3:{url:L("anouk-paikea-eifel-uitzicht.jpg"),pos:"48%"},
+  phWhy:{url:L("anouk-camera-lachend.jpg"),pos:"32%"},
+};
+document.querySelectorAll('.pb-photo[data-src]').forEach(el=>{
+  const ph=PB_PHOTOS[el.dataset.src];
+  if(!ph)return;
+  const im=document.createElement('img');
+  im.loading='lazy';im.alt='';im.src=ph.url;
+  im.style.objectPosition="center "+ph.pos;
+  el.appendChild(im);
+  im.addEventListener('load',()=>im.classList.add('in'));
+  if(im.complete)im.classList.add('in');
+  el.addEventListener('click',()=>openLbox(ph.url));
+});
+
+// Blader-motief in de hoeken (gelijk aan de andere pagina's)
+const LEAF_SVG='<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">'+
+  '<path d="M26 188 Q46 142 40 98 Q36 60 50 24" stroke="currentColor" stroke-width="1.1"/>'+
+  '<g transform="translate(50,24)">'+
+    '<path d="M0,0 C-9,-11 -10,-26 0,-40 C10,-26 9,-11 0,0Z" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity=".18"/>'+
+    '<path d="M0,0 C-9,-11 -10,-26 0,-40 C10,-26 9,-11 0,0Z" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity=".18" transform="rotate(60)"/>'+
+    '<path d="M0,0 C-9,-11 -10,-26 0,-40 C10,-26 9,-11 0,0Z" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity=".18" transform="rotate(120)"/>'+
+    '<path d="M0,0 C-9,-11 -10,-26 0,-40 C10,-26 9,-11 0,0Z" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity=".18" transform="rotate(180)"/>'+
+    '<path d="M0,0 C-9,-11 -10,-26 0,-40 C10,-26 9,-11 0,0Z" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity=".18" transform="rotate(240)"/>'+
+    '<path d="M0,0 C-9,-11 -10,-26 0,-40 C10,-26 9,-11 0,0Z" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity=".18" transform="rotate(300)"/>'+
+    '<circle cx="0" cy="0" r="3" fill="currentColor" opacity=".6"/>'+
+  '</g>'+
+  '<path d="M0,0 C-6,-7 -6,-16 0,-24 C6,-16 6,-7 0,0Z" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity=".15" transform="translate(34,108) rotate(-30)"/>'+
+  '</svg>';
+function addLeafDeco(sel,opts){
+  document.querySelectorAll(sel).forEach(el=>{
+    (opts||[{c:'tl'}]).forEach(o=>{
+      const d=document.createElement('div');
+      d.className='leaf-deco '+o.c+(o.gold?' gold':'');
+      d.innerHTML=LEAF_SVG;
+      el.insertBefore(d,el.firstChild);
+    });
+  });
+}
+addLeafDeco('#pbPrijzen',[{c:'tl',gold:true},{c:'br',gold:true}]);
+addLeafDeco('.pbcta-in',[{c:'tl',gold:true},{c:'br',gold:true}]);
+addLeafDeco('footer',[{c:'tl',gold:true}]);
+
+// Gouden vlinder - vliegt los rond
+const bfEl=document.getElementById('butterfly');
+if(bfEl){
+  const dustColors=['rgba(232,201,106,.9)','rgba(216,178,90,.85)'];
+  let bfBaseX=innerWidth*.84,bfBaseY=innerHeight*.24;
+  let bfX=bfBaseX,bfY=bfBaseY,bfFrame=0;
+  addEventListener('resize',()=>{bfBaseX=innerWidth*.84;bfBaseY=innerHeight*.24;});
+  function spawnDust(x,y){
+    const d=document.createElement('div');d.className='bdust';
+    const sz=4+Math.random()*5;
+    d.style.width=sz+"px";d.style.height=sz+"px";
+    d.style.left=x+"px";d.style.top=y+"px";
+    d.style.background='radial-gradient(circle,'+dustColors[Math.random()<.5?0:1]+',rgba(200,160,60,0))';
+    document.body.appendChild(d);
+    requestAnimationFrame(()=>{
+      d.style.opacity='0';
+      d.style.transform='translate('+(Math.random()*24-12)+'px,'+(14+Math.random()*22)+'px) scale(.15)';
+    });
+    setTimeout(()=>d.remove(),1550);
+  }
+  function animButterfly(now){
+    requestAnimationFrame(animButterfly);
+    bfFrame++;
+    const t=now*.001;
+    const flyX=bfBaseX+Math.sin(t*.5)*40+Math.sin(t*.13)*60;
+    const flyY=bfBaseY+Math.cos(t*.4)*30;
+    bfX+=(flyX-bfX)*.04;bfY+=(flyY-bfY)*.04;
+    bfEl.style.transform="translate("+bfX+"px,"+bfY+"px) rotate("+(Math.sin(t*.6)*6)+"deg)";
+    if(bfFrame%4===0)spawnDust(bfX+36+(Math.random()*14-7),bfY+32+(Math.random()*10-5));
+  }
+  requestAnimationFrame(animButterfly);
+}
+
+// Camera-cursor - alleen op desktop met muis
+if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+  document.body.classList.add('camcursor-on');
+  const cc=document.getElementById('camCursor');
+  if(cc){
+    cc.classList.add('show');
+    addEventListener('mousemove',e=>{cc.style.left=e.clientX+"px";cc.style.top=e.clientY+"px";});
+    let actx;
+    function shutterSound(){
+      try{
+        actx=actx||new (window.AudioContext||window.webkitAudioContext)();
+        const t0=actx.currentTime;
+        const o=actx.createOscillator(),g=actx.createGain();
+        o.type='square';o.frequency.setValueAtTime(1200,t0);
+        g.gain.setValueAtTime(.0001,t0);
+        g.gain.exponentialRampToValueAtTime(.05,t0+.004);
+        g.gain.exponentialRampToValueAtTime(.0001,t0+.045);
+        o.connect(g);g.connect(actx.destination);
+        o.start(t0);o.stop(t0+.05);
+      }catch(e){}
+    }
+    const hoverSel='.pb-photo';
+    document.addEventListener('mouseover',e=>{
+      if(e.target.closest(hoverSel)){
+        cc.classList.add('shut');shutterSound();
+        clearTimeout(cc._t);
+        cc._t=setTimeout(()=>cc.classList.remove('shut'),180);
+      }
+    });
+  }
+}
+
+// Seizoen in footer
+const seasonTag=document.getElementById('seasonTag');
+if(seasonTag){
+  const mo=new Date().getMonth();
+  const s=(mo===11||mo===0||mo===1)?['Winter','❄']:(mo>=2&&mo<=4)?['Lente','🌸']:(mo>=5&&mo<=7)?['Zomer','☀']:['Herfst','🍂'];
+  seasonTag.textContent=s[1]+" "+s[0];
+}
+
+// Geluid, opt-in, nooit autoplay
+const sndBtn=document.getElementById('sndBtn');
+const bosAudio=document.getElementById('bosAudio');
+if(sndBtn&&bosAudio){
+  sndBtn.addEventListener('click',()=>{
+    if(bosAudio.paused){bosAudio.volume=.38;bosAudio.play().catch(()=>{});sndBtn.classList.add('on');}
+    else{bosAudio.pause();sndBtn.classList.remove('on');}
+  });
+}
+
+// Lightbox - klik op een grote foto vergroot 'm
+const lbox=document.getElementById('lbox');
+const lboxImg=document.getElementById('lboxImg');
+function openLbox(url){lboxImg.src=url;lbox.classList.add('on');}
+function closeLbox(){lbox.classList.remove('on');}
+lbox?.addEventListener('click',closeLbox);
+document.getElementById('lboxClose')?.addEventListener('click',e=>{e.stopPropagation();closeLbox();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLbox();});
+})();
+</script>
+</body>
+</html>
