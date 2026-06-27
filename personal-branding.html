@@ -162,11 +162,13 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .pr-card h3 em{font-style:italic;color:var(--goldB)}
 .pr-price{font:200 clamp(26px,3vw,32px)/1 "Helvetica Neue";color:var(--goldB);margin-bottom:4px}
 .pr-price span{font:300 12px "Helvetica Neue";color:var(--ml)}
+.pr-future{font:300 italic 12px/1.5 "Helvetica Neue";color:var(--goldS);opacity:.85;margin-bottom:14px}
 .pr-sub{font:300 italic 14px/1.6 "Helvetica Neue";color:var(--ml);margin-bottom:18px}
 .pr-card p.pr-desc{font:300 14px/1.65 "Helvetica Neue";color:var(--tl);opacity:.86;margin-bottom:18px;flex:1}
 .pr-incl{list-style:none;margin:0 0 24px;padding:0;font:300 13px/1.8 "Helvetica Neue";color:var(--ml)}
 .pr-incl li{padding-left:18px;position:relative}
 .pr-incl li::before{content:"·";position:absolute;left:0;color:var(--goldB);font-weight:700}
+.pr-note{font:300 italic 12px/1.5 "Helvetica Neue";color:var(--ml);opacity:.8;margin:-8px 0 16px}
 .pr-card .btn{text-align:center;width:100%}
 .pb-coach{max-width:680px;margin:50px auto 0;text-align:center;padding:30px 8vw 0}
 .pb-coach p{font:300 italic 15px/1.7 "Helvetica Neue";color:var(--ml)}
@@ -176,6 +178,11 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .pr-trust div{font:300 13px/1.5 "Helvetica Neue";color:var(--ml);max-width:220px;
   padding-left:24px;position:relative;text-align:left}
 .pr-trust div::before{content:"✓";position:absolute;left:0;color:var(--goldB);font-weight:700}
+.pr-notice{max-width:640px;margin:0 auto 44px;padding:14px 22px;border:1px solid rgba(200,160,60,.3);
+  border-radius:30px;font:300 italic 13px/1.5 "Helvetica Neue";color:var(--goldB);
+  background:rgba(232,201,106,.06)}
+.pr-foot{max-width:680px;margin:30px auto 0;text-align:center;font:300 12px/1.6 "Helvetica Neue";
+  color:var(--ml);opacity:.7}
 
 /* HERKEN JE DIT - ecru blok, identificatie */
 .pb-herken{position:relative;z-index:10;background:#faf7f1;color:var(--td);
@@ -525,46 +532,55 @@ footer .fc a:hover{color:var(--goldB)}
     <h2>Kies <em>minder</em>, kies <em>sneller</em></h2>
     <p>Drie opties, geen ellenlange vergelijkingstabel. Je kiest hier niet alleen een pakket, je kiest voor een fotograaf die precies weet hoe ze de spanning wegneemt bij mensen die zich het liefst verstoppen voor een camera.</p>
   </div>
+  <div class="pr-notice rv">Let op: per 1 januari 2027 stijgen de tarieven van Gouden Dag en Door de Seizoenen. Boek dit jaar nog tegen de huidige prijs.</div>
   <div class="pr-grid">
     <div class="pr-card rv">
       <div class="pr-kicker">Eén moment</div>
-      <h3>Eerste Stap</h3>
+      <h3>Gouden Uur</h3>
       <div class="pr-price">&euro;1.297<span> excl. btw</span></div>
       <div class="pr-sub">Voor het moment dat je beseft: zo kan het niet langer.</div>
-      <p class="pr-desc">Je website-foto is een selfie van drie jaar terug, of een pasfoto die niemand laat zien wie je echt bent. In twee uur tijd gaan we van "ik moet er nog eens iets aan doen" naar een set beelden waar je zelf weer enthousiast van wordt, en die je met plezier deelt in plaats van wegklikt.</p>
+      <p class="pr-desc">Je website-foto is een selfie van drie jaar terug, of een pasfoto die niemand laat zien wie je echt bent. In twee uur tijd, op pad in de natuur, gaan we van "ik moet er nog eens iets aan doen" naar 25 beelden waar je zelf weer enthousiast van wordt, en die je met plezier deelt in plaats van wegklikt.</p>
       <ul class="pr-incl">
-        <li>Strategiegesprek vooraf</li>
-        <li>2 uur fotoshoot, 1 locatie</li>
-        <li>20 bewerkte beelden</li>
+        <li>Online strategiesessie vooraf</li>
+        <li>2 uur shoot op pad in de natuur</li>
+        <li>25 professionele digitale beelden</li>
+        <li>Eigen online galerij, levering binnen 30 dagen</li>
       </ul>
+      <p class="pr-note">WhatsApp-contact, visagie optioneel bij te boeken.</p>
       <a href="https://calendly.com/anoukpeetersfotografie-info/klik-en-connect" target="_blank" rel="noopener" class="btn bto">Ontdek of we klikken! →</a>
     </div>
     <div class="pr-card feat rv">
-      <div class="pr-badge">Meest gekozen</div>
+      <div class="pr-badge">Exclusief &middot; max. 7 per jaar</div>
       <div class="pr-kicker">Het hele jaar</div>
-      <h3>Het <em>Jaartraject</em></h3>
+      <h3>Door de <em>Seizoenen</em></h3>
       <div class="pr-price">&euro;297<span>/maand, 12 mnd, excl. btw</span></div>
+      <div class="pr-future">Vanaf 1 januari 2027: &euro;333/maand</div>
       <div class="pr-sub">Vier seizoenen, jouw hele verhaal, altijd een kloppend beeld.</div>
-      <p class="pr-desc">Jij groeit het hele jaar door, dus waarom zou je beeldmateriaal blijven stilstaan? Vier keer per jaar gaan we samen op pad, door alle seizoenen heen, zodat je nooit meer met een verouderde foto zit. Geen losse shoot, maar een jaar lang samen bouwen aan hoe de wereld je ziet.</p>
+      <p class="pr-desc">Jij groeit het hele jaar door, dus waarom zou je beeld blijven stilstaan? We gaan samen op pad door alle seizoenen heen: een Gouden Dag en twee Gouden Uren, zodat je nooit meer met een verouderd beeld zit. Omdat ik hier de tijd en aandacht in wil steken die het verdient, neem ik hooguit 7 klanten per jaar aan.</p>
       <ul class="pr-incl">
-        <li>4 shoots verspreid over het jaar</li>
-        <li>Ieder seizoen nieuwe beelden</li>
-        <li>Doorlopend strategisch advies</li>
-        <li>Voorrang in mijn planning</li>
+        <li>Halve dag kick-off strategiesessie &middot; jaarplan uitstippelen</li>
+        <li>1x Gouden Dag shoot + 2x Gouden Uur shoot</li>
+        <li>100 professionele digitale beelden over het jaar</li>
+        <li>Galerij na elke shoot, levering binnen 30 dagen</li>
+        <li>Gratis toegang smartphone live-dag (t.w.v. &euro;197)</li>
       </ul>
+      <p class="pr-note">WhatsApp-contact het hele jaar door, visagie / video / studiohuur optioneel bij te boeken.</p>
       <a href="https://calendly.com/anoukpeetersfotografie-info/klik-en-connect" target="_blank" rel="noopener" class="btn btg">Yes, dit gun ik mezelf →</a>
     </div>
     <div class="pr-card rv">
       <div class="pr-kicker">Mijn persoonlijke favoriet</div>
-      <h3>Goud</h3>
+      <h3>Gouden Dag</h3>
       <div class="pr-price">&euro;1.797<span> excl. btw</span></div>
-      <div class="pr-sub">Niet zomaar een paar foto's, maar je hele verhaal in beeld.</div>
-      <p class="pr-desc">Dit is het pakket waar ik zelf het meest van houd. Drie uur de tijd, een uitgebreide strategiesessie op locatie, ruimte voor meerdere outfits: genoeg om voor het eerst het gevoel te hebben dat je precies zo in beeld komt als je vanbinnen al wist dat je was.</p>
+      <div class="pr-future">Vanaf 1 januari 2027: &euro;1.997</div>
+      <div class="pr-sub">Een halve dag, helemaal jouw verhaal.</div>
+      <p class="pr-desc">Dit is het pakket waar ik zelf het meest van houd. Niet een paar haastige kiekjes, maar de tijd om verschillende kanten van je verhaal te laten zien: van zakelijk tot zacht, van stevig tot speels. Eindelijk ruimte om het hele plaatje te vangen, niet alleen een momentopname.</p>
       <ul class="pr-incl">
-        <li>3 uur fotoshoot, 1 locatie</li>
-        <li>Strategiesessie van 2 uur</li>
-        <li>40 bewerkte beelden</li>
+        <li>Live strategiesessie op locatie (ca. 2 uur)</li>
+        <li>Halve dag shoot op pad in de natuur</li>
+        <li>50 professionele digitale beelden</li>
+        <li>Eigen online galerij, levering binnen 30 dagen</li>
       </ul>
+      <p class="pr-note">WhatsApp-contact, visagie optioneel bij te boeken.</p>
       <a href="https://calendly.com/anoukpeetersfotografie-info/klik-en-connect" target="_blank" rel="noopener" class="btn bto">Dit wordt 'm! →</a>
     </div>
   </div>
@@ -576,6 +592,7 @@ footer .fc a:hover{color:var(--goldB)}
   <div class="pb-coach rv">
     <p>Wil je verder dan het beeld alleen? Bij elk pakket kun je uitbreiden met een persoonlijk <a href="https://anouk-peeters.nl/branding/" target="_blank" rel="noopener">coachingtraject</a>, voor wie niet alleen mooie beelden wil, maar ook van binnenuit wil groeien naar wat die beelden uitstralen.</p>
   </div>
+  <p class="pr-foot rv">Alle prijzen excl. btw. Reiskosten worden apart afgestemd.</p>
 </section>
 
 <section id="pbQuote" class="rv">
@@ -622,7 +639,7 @@ footer .fc a:hover{color:var(--goldB)}
     </div>
     <div class="faq-item rv">
       <h4>Welk pakket past bij mij?</h4>
-      <p>Heb je nu even een goed moment nodig, kies Eerste Stap. Wil je in één keer het volledige verhaal, dan is Goud mijn persoonlijke favoriet. En wil je het hele jaar door zichtbaar blijven en meegroeien, dan is het Jaartraject de slimste keuze, en veruit het populairst.</p>
+      <p>Heb je nu even een goed moment nodig, kies Gouden Uur. Wil je in één keer het volledige verhaal, dan is Gouden Dag mijn persoonlijke favoriet. En wil je het hele jaar door meegroeien, dan is Door de Seizoenen de slimste keuze, al neem ik daarvan hooguit 7 klanten per jaar aan.</p>
     </div>
     <div class="faq-item rv">
       <h4>Waar shooten we?</h4>
