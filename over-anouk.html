@@ -462,13 +462,21 @@ footer .fc a:hover{color:var(--goldB)}
   <p class="pbh-close">Wil je weten hoe dat eruitziet voor een eigen shoot of retreat? Kijk dan bij de <a href="eifel-experience.html" style="color:var(--gold);text-decoration:underline">Eifel Experience &amp; Retreat</a>.</p>
 </section>
 
+<div class="pb-qb photobg rv">
+  <div class="qbbg" id="pbFactsBg"></div>
+  <div class="qbov"></div>
+  <div class="qbin">
+    <blockquote>&ldquo;Met beide voeten in het gras, en toch altijd op zoek naar wat groter is dan mezelf.&rdquo;</blockquote>
+  </div>
+</div>
+
 <section class="pb-herken" style="background:#fff">
   <div class="lbl">Wat je nog niet van me wist</div>
   <h2>Een paar dingen <em>buiten de camera</em></h2>
   <p class="pbh-welcome">Naast dit hele verhaal ben ik ook gewoon... mij. Een paar dingen die je misschien nog niet wist:</p>
   <ul class="pbh-list">
     <li>Ik ben dol op spiritualiteit, maar het liefst met beide voeten in het gras.</li>
-    <li>Ik spaar sneakers en te grote oorbellen, in alle kleuren, soorten en maten.</li>
+    <li>Ik spaar sneakers en te grote oorbellen, in alle kleuren, soorten en maten. Maar het liefst loop ik op blote voeten.</li>
     <li>Ontzettend sociaal en ik houd van interactie, maar het liefst zit ik alleen met Paikea in de natuur.</li>
     <li>Na elke shoot kruip ik onder een deken op de bank, met Netflix aan.</li>
     <li>Ik heb een diploma als orthomoleculair voedingstherapeut.</li>
@@ -620,6 +628,13 @@ const pbStandBg=document.getElementById('pbStandBg');
 if(pbStandBg){
   pbStandBg.style.backgroundImage="url('"+L("anouk-paikea-eifel-uitzicht.jpg")+"')";
   pbStandBg.style.backgroundPosition="center 30%";
+}
+
+// Tweede quote-banner achtergrond - Anouk in het bos, geaard en lachend
+const pbFactsBg=document.getElementById('pbFactsBg');
+if(pbFactsBg){
+  pbFactsBg.style.backgroundImage="url('"+L("anouk-bos-boom.jpg")+"')";
+  pbFactsBg.style.backgroundPosition="center 15%";
 }
 
 // Slot-CTA achtergrond - Anouk bij het meer met Paikea
