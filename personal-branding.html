@@ -218,6 +218,7 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .pb-qb.photobg .qbbg{position:absolute;inset:0;background-size:cover;background-position:center 26%}
 .pb-qb.photobg .qbov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,22,9,.5),rgba(8,18,6,.8))}
 .pb-qb.photobg .qbin{position:relative;z-index:2;padding:60px 8vw;max-width:680px}
+.pb-qb.photobg .qbin p{font:300 italic 15px/1.7 "Helvetica Neue";color:var(--ml);max-width:520px;margin:18px auto 0}
 
 /* GALERIJ - meer van mijn werk, rustige auto-scroll, gelijk aan homepage */
 #pbStrip{position:relative;z-index:10;background:#fdfcf9;padding:80px 0 90px;overflow:hidden}
@@ -491,15 +492,25 @@ footer .fc a:hover{color:var(--goldB)}
 <section class="pb-herken">
   <div class="lbl">Herken je dit?</div>
   <h2>Sta je nog op die ene foto <em>van drie jaar terug</em>?</h2>
-  <p class="pbh-welcome">Ik ben Anouk, en al meer dan 10 jaar fotografeer ik coaches en therapeuten. Bijna iedereen die ik voor het eerst ontmoet, begint met hetzelfde verhaal:</p>
+  <p class="pbh-welcome">Ik ben Anouk, en fotografeer al 10 jaar. In die tijd mocht ik het verhaal van meer dan 100 ondernemers vertalen naar beeld, veel daarvan coaches en therapeuten. Bijna iedereen die ik voor het eerst ontmoet, begint met hetzelfde verhaal:</p>
   <ul class="pbh-list">
     <li>Je website-foto is alweer een paar jaar oud, en hij klopt eigenlijk niet meer met wie je nu bent.</li>
     <li>Je vermijdt de camera het liefst, want je voelt je nooit zo zelfverzekerd als je eruitziet.</li>
+    <li>Je denkt van jezelf dat je niet fotogeniek bent, terwijl het probleem nooit jouw gezicht is, maar een foto die niet bij je past.</li>
     <li>Je merk en je werk zijn gegroeid, maar je beeldmateriaal is blijven hangen in het verleden.</li>
     <li>Je deelt liever een quote dan een foto, omdat je geen beeld hebt waar je echt trots op bent.</li>
   </ul>
   <p class="pbh-close">Als je jezelf hierin herkent: dit is precies waarom deze fotoshoot bestaat. Niet om een rol te spelen voor de camera, maar om beelden te krijgen die echt jou ademen.</p>
 </section>
+
+<div class="pb-qb photobg rv">
+  <div class="qbbg" id="pbStandBg"></div>
+  <div class="qbov"></div>
+  <div class="qbin">
+    <blockquote>&ldquo;In een bos lijkt elke boom op de volgende. Tot je die ene tegenkomt die je bijblijft.&rdquo;</blockquote>
+    <p>Een foto heeft drie seconden om iemand te laten stoppen met scrollen. Niet om te imponeren, maar om te raken. Daarom ga ik niet voor het gladde plaatje dat overal hetzelfde oogt, maar voor het beeld dat klopt met jou, zodat je niet wegvalt tussen alle anderen.</p>
+  </div>
+</div>
 
 <section id="pbVerhaal">
   <div class="pb-intro rv">
@@ -512,7 +523,7 @@ footer .fc a:hover{color:var(--goldB)}
     <div class="pb-copy">
       <span class="tag">Vooraf</span>
       <h3>We beginnen met <em>een gesprek</em>, niet met een camera</h3>
-      <p>Voordat er ook maar één foto valt, wil ik je echt leren kennen: wie je bent, en waarom je doet wat je doet. Niet om een vragenlijstje af te werken, maar zodat ik het kan voelen en ademen, en we samen een verhaal kunnen maken. We beginnen bij je kern, van binnen naar buiten. Die kern bepaalt de plekken (in de natuur, in jouw praktijk, of op een toffe locatie), de kleding en de sfeer, niet andersom.</p>
+      <p>Voordat er ook maar één foto valt, wil ik je echt leren kennen: wie je bent, en waarom je doet wat je doet. Niet om een vragenlijstje af te werken, maar zodat ik het kan voelen en ademen, en we samen een verhaal kunnen maken. Vaak zie ik al binnen een paar minuten voor me waar jij op de foto mag staan, en wat jouw verhaal nu juist uniek maakt. We beginnen bij je kern, van binnen naar buiten. Die kern bepaalt de plekken (in de natuur, in jouw praktijk, of op een toffe locatie), de kleding en de sfeer, niet andersom.</p>
     </div>
   </div>
 
@@ -651,7 +662,6 @@ footer .fc a:hover{color:var(--goldB)}
     <h2>Een kleine <em>indruk</em></h2>
   </div>
   <div class="swp"><div class="str" id="pbS1"></div></div>
-  <div class="swp"><div class="str r" id="pbS2"></div></div>
   <div class="strip-cta">
     <a href="portfolio.html?cat=branding" class="ap-btn">
       <span class="ap-icon"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -816,7 +826,17 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
 // Hero-achtergrond - warme, levendige branding-foto
 const pbHeroBg=document.getElementById('pbHeroBg');
-if(pbHeroBg)pbHeroBg.style.backgroundImage="url('"+img("2024/07/Linda-Kasteel-2024-51-scaled.jpg",1600)+"')";
+if(pbHeroBg){
+  pbHeroBg.style.backgroundImage="url('"+img("2024/07/Linda-Kasteel-2024-51-scaled.jpg",1600)+"')";
+  pbHeroBg.style.backgroundPosition="center 13%";
+}
+
+// Boom-die-opvalt sectie - achtergrond
+const pbStandBg=document.getElementById('pbStandBg');
+if(pbStandBg){
+  pbStandBg.style.backgroundImage="url('"+img("2024/07/Linda-op-de-Heide-2024-155-scaled.jpg",1400)+"')";
+  pbStandBg.style.backgroundPosition="center 40%";
+}
 
 // Slot-CTA achtergrond
 const pbCtaBg=document.getElementById('pbCtaBg');
@@ -829,28 +849,30 @@ const pbqPhotoIngrid=document.getElementById('pbqPhotoIngrid');
 if(pbqPhotoIngrid)pbqPhotoIngrid.src=img("2025/12/Ingrid-Zee-2025-151-scaled.jpg",200);
 
 // Grote verhaal-foto's - laten de foto's spreken, geen slideshow nodig
+// pos = waar het hoofd in de originele foto staat, zodat de cover-crop niet het hoofd afsnijdt
 const PB_PHOTOS={
-  ph1:img("2025/12/Monique-Timmerfabriek-2025-95-scaled.jpg",1100),
-  ph2:img("2024/02/Miranda-Coach-Atelier-43-scaled.jpg",1100),
-  ph3:img("2025/07/Annet-Zoer-2025-143-scaled.jpg",1100),
-  phWhy:img("2026/05/Anouk-Soerendonk-2026-2_2-scaled.jpg",1100),
+  ph1:{url:img("2025/12/Monique-Timmerfabriek-2025-95-scaled.jpg",1100),pos:"15%"},
+  ph2:{url:img("2024/02/Miranda-Coach-Atelier-43-scaled.jpg",1100),pos:"25%"},
+  ph3:{url:img("2025/07/Annet-Zoer-2025-143-scaled.jpg",1100),pos:"18%"},
+  phWhy:{url:img("2026/05/Anouk-Soerendonk-2026-2_2-scaled.jpg",1100),pos:"15%"},
 };
 document.querySelectorAll('.pb-photo[data-src]').forEach(el=>{
-  const url=PB_PHOTOS[el.dataset.src];
-  if(!url)return;
+  const ph=PB_PHOTOS[el.dataset.src];
+  if(!ph)return;
   const im=document.createElement('img');
-  im.loading='lazy';im.alt='';im.src=url;
+  im.loading='lazy';im.alt='';im.src=ph.url;
+  im.style.objectPosition="center "+ph.pos;
   el.appendChild(im);
   im.addEventListener('load',()=>im.classList.add('in'));
   if(im.complete)im.classList.add('in');
-  el.addEventListener('click',()=>openLbox(url));
+  el.addEventListener('click',()=>openLbox(ph.url));
 });
 
 // Natuur & authenticiteit - banner-achtergrond
 const pbNatBg=document.getElementById('pbNatBg');
 if(pbNatBg)pbNatBg.style.backgroundImage="url('"+L("bloemenveld-goudenuur.jpg")+"')";
 
-// Fotobalk - meer van mijn werk, alleen personal branding (geen Eifel/Duitsland hier)
+// Fotobalk - een rij met de krachtigste beelden, alleen personal branding (geen Eifel/Duitsland hier)
 function buildStrip(items,el){
   if(!el)return;
   [...items,...items].forEach(([u,orient])=>{
@@ -866,19 +888,12 @@ const PB_STRIP_1=[
   [img("2024/07/Marinka-109-scaled.jpg",500),'v'],
   [img("2025/12/Ingrid-Zee-2025-151-scaled.jpg",700),'h'],
   [img("2022/07/Miranda-Coach-Atelier-7-scaled.jpg",500),'v'],
-  [img("2025/07/Annet-Zoer-2025-319-scaled.jpg",700),'h'],
   [img("2025/12/Monique-Timmerfabriek-2025-69-scaled.jpg",500),'v'],
-];
-const PB_STRIP_2=[
   [img("2025/12/Ingrid-2025-119-scaled.jpg",500),'v'],
-  [img("2024/07/Linda-op-de-Heide-2024-155-scaled.jpg",700),'h'],
   [img("2022/10/Marinka-Heeze-2-scaled.jpg",500),'v'],
   [img("2024/11/Ilse-deel-2-2024-55-scaled.jpg",500),'v'],
-  [img("2025/12/Ingrid-2025-159-scaled.jpg",500),'v'],
-  [img("2025/12/Monique-Timmerfabriek-2025-95-scaled.jpg",500),'v'],
 ];
 buildStrip(PB_STRIP_1,document.getElementById('pbS1'));
-buildStrip(PB_STRIP_2,document.getElementById('pbS2'));
 
 // Blader-motief in de hoeken (gelijk aan de andere pagina's)
 const LEAF_SVG='<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">'+
