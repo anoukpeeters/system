@@ -70,9 +70,13 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .bto{background:transparent;color:var(--tl);border:1px solid rgba(200,160,60,.38)}
 .bto:hover{background:rgba(200,160,60,.1);border-color:var(--goldB)}
 
-/* HERO */
-#fgHero{position:relative;z-index:10;padding:148px 8vw 64px;text-align:center;
-  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(232,201,106,.07),transparent 60%)}
+/* HERO - foto overheerst, weinig tekst */
+#fgHero{position:relative;z-index:10;overflow:hidden;min-height:74vh;
+  display:flex;align-items:center;justify-content:center;text-align:center}
+.fgh-bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center 30%}
+.fgh-ov{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(10,22,9,.35) 0%,rgba(10,22,9,.32) 40%,rgba(8,18,6,.86) 100%)}
+.fgh-in{position:relative;z-index:2;padding:148px 8vw 64px;max-width:680px}
 .lbl{font:600 10px/1 "SF Mono",monospace;letter-spacing:.34em;text-transform:uppercase;
   color:var(--goldS);margin-bottom:18px;display:flex;align-items:center;justify-content:center;
   gap:11px;opacity:.88}
@@ -368,9 +372,13 @@ footer .fc a:hover{color:var(--goldB)}
 <main>
 
 <section id="fgHero">
-  <div class="lbl">Start hier · Gratis</div>
-  <h1>Klaar om uit het bos te stappen, <em>en jouw pad te zien</em>?</h1>
-  <p class="sub">Twee gratis ingangen tot hetzelfde pad: een eerlijke blik op waar je nu staat, of een levendige masterclass die je meteen in beweging brengt.</p>
+  <div class="fgh-bg" id="fgHeroBg"></div>
+  <div class="fgh-ov"></div>
+  <div class="fgh-in rv">
+    <div class="lbl">Start hier · Gratis</div>
+    <h1>Klaar om uit het bos te stappen, <em>en jouw pad te zien</em>?</h1>
+    <p class="sub">Twee gratis ingangen tot hetzelfde pad: een eerlijke blik op waar je nu staat, of een levendige masterclass die je meteen in beweging brengt.</p>
+  </div>
 </section>
 
 <section id="fgPad">
@@ -524,6 +532,13 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')cls();});
 const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting)en.target.classList.add('in');}),{threshold:.1});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
+// Hero-achtergrond - het bos, zonlicht tussen de bomen
+const fgHeroBg=document.getElementById('fgHeroBg');
+if(fgHeroBg){
+  fgHeroBg.style.backgroundImage="url('"+L("bos-zonnestraal.jpg")+"')";
+  fgHeroBg.style.backgroundPosition="center 35%";
+}
+
 // Twee aanbod-kaarten - achtergrondfoto's
 const ogBg1=document.getElementById('ogBg1');
 if(ogBg1)ogBg1.style.backgroundImage="url('"+L("anouk-camera-lachend.jpg")+"')";
@@ -561,7 +576,6 @@ function addLeafDeco(sel,opts){
     });
   });
 }
-addLeafDeco('#fgHero',[{c:'tl',gold:true},{c:'br',gold:true}]);
 addLeafDeco('.fgcta-in',[{c:'tl',gold:true},{c:'br',gold:true}]);
 addLeafDeco('footer',[{c:'tl',gold:true}]);
 
