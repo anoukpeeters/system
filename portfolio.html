@@ -832,12 +832,16 @@ function buildSlide(el){
   const frame=document.createElement('div');
   frame.className='oslide-frame';
   let idx=0;
-  // Kader heeft een vaste verhouding (zie CSS, aspect-ratio:4/5) die nooit verandert tijdens
-  // het wisselen - dat voorkomt dat de pagina onder de scrollpositie blijft schuiven.
+  // Kader krijgt de verhouding van de eerste foto (zodra die geladen is) en verandert daarna
+  // niet meer tijdens het wisselen - dat voorkomt dat de pagina onder de scrollpositie blijft
+  // schuiven, en voorkomt dode letterbox-ruimte voor klanten met vooral liggende foto's.
   const imgs=urls.map((u,i)=>{
     const im=document.createElement('img');
     im.loading='lazy';im.alt='';im.src=u;
-    if(i===0)im.classList.add('active');
+    if(i===0){
+      im.classList.add('active');
+      im.addEventListener('load',()=>{frame.style.aspectRatio=im.naturalWidth+'/'+im.naturalHeight;},{once:true});
+    }
     frame.appendChild(im);
     return im;
   });
