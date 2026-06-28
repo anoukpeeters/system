@@ -69,13 +69,9 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .btg:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(200,160,60,.46)}
 .bto{background:transparent;color:var(--tl);border:1px solid rgba(200,160,60,.38)}
 
-/* PORTFOLIO HERO - foto overheerst, weinig tekst */
-#pfHero{position:relative;z-index:10;overflow:hidden;min-height:74vh;
-  display:flex;align-items:center;justify-content:center;text-align:center}
-.fgh-bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center 30%}
-.fgh-ov{position:absolute;inset:0;z-index:1;
-  background:linear-gradient(180deg,rgba(10,22,9,.35) 0%,rgba(10,22,9,.32) 40%,rgba(8,18,6,.86) 100%)}
-.fgh-in{position:relative;z-index:2;padding:148px 8vw 60px;max-width:680px}
+/* PORTFOLIO HERO */
+#pfHero{position:relative;z-index:10;padding:148px 8vw 60px;text-align:center;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(232,201,106,.07),transparent 60%)}
 .lbl{font:600 10px/1 "SF Mono",monospace;letter-spacing:.34em;text-transform:uppercase;
   color:var(--goldS);margin-bottom:18px;display:flex;align-items:center;justify-content:center;
   gap:11px;opacity:.88}
@@ -352,18 +348,14 @@ footer .fc a:hover{color:var(--goldB)}
 <main>
 
 <section id="pfHero">
-  <div class="fgh-bg" id="pfHeroBg"></div>
-  <div class="fgh-ov"></div>
-  <div class="fgh-in rv">
-    <div class="lbl">Portfolio</div>
-    <h1>Anderen gingen <em>het pad</em> je voor</h1>
-    <p class="sub">Een inkijkje in het bos: personal branding-shoots en natuurmomenten, in Nederland en de Eifel. Door elkaar, zoals het hoort, want het ene voedt het andere.</p>
-    <div class="pf-filter">
-      <button class="on" data-cat="all">Alles</button>
-      <button data-cat="branding">Personal branding</button>
-      <button data-cat="natuur">Natuur</button>
-      <button data-cat="events">Events</button>
-    </div>
+  <div class="lbl">Portfolio</div>
+  <h1>Anderen gingen <em>het pad</em> je voor</h1>
+  <p class="sub">Een inkijkje in het bos: personal branding-shoots en natuurmomenten, in Nederland en de Eifel. Door elkaar, zoals het hoort, want het ene voedt het andere.</p>
+  <div class="pf-filter">
+    <button class="on" data-cat="all">Alles</button>
+    <button data-cat="branding">Personal branding</button>
+    <button data-cat="natuur">Natuur</button>
+    <button data-cat="events">Events</button>
   </div>
 </section>
 
@@ -636,13 +628,6 @@ const CDN="https://i0.wp.com/anouk-peeters.nl/wp-content/uploads/";
 const img=(p,w)=>CDN+p+"?w="+(w||1100)+"&ssl=1";
 const L=p=>"fotos/"+p;
 
-// Hero-achtergrond - Anouk met camera
-const pfHeroBg=document.getElementById('pfHeroBg');
-if(pfHeroBg){
-  pfHeroBg.style.backgroundImage="url('"+L("anouk-pak-camera-bos.jpg")+"')";
-  pfHeroBg.style.backgroundPosition="center 15%";
-}
-
 // Header scroll-state
 const hdr=document.getElementById('hdr');
 addEventListener('scroll',()=>hdr.classList.toggle('s',scrollY>50),{passive:true});
@@ -687,6 +672,7 @@ function addLeafDeco(sel,opts){
     });
   });
 }
+addLeafDeco('#pfHero',[{c:'tl',gold:true},{c:'br',gold:true}]);
 addLeafDeco('.pfcta-in',[{c:'tl',gold:true},{c:'br',gold:true}]);
 addLeafDeco('footer',[{c:'tl',gold:true}]);
 
