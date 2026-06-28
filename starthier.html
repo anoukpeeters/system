@@ -542,7 +542,10 @@ if(fgHeroBg){
 
 // Twee aanbod-kaarten - achtergrondfoto's
 const ogBg1=document.getElementById('ogBg1');
-if(ogBg1)ogBg1.style.backgroundImage="url('"+L("anouk-camera-lachend.jpg")+"')";
+if(ogBg1){
+  ogBg1.style.backgroundImage="url('"+L("anouk-camera-goldenhour.jpg")+"')";
+  ogBg1.style.backgroundPosition="center 22%";
+}
 const ogBg2=document.getElementById('ogBg2');
 if(ogBg2){
   ogBg2.style.backgroundImage="url('"+L("anouk-paikea-weide.jpg")+"')";
@@ -674,7 +677,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLbox();});
 
 // Aanbod-foto's - één foto per sectie, dit is de doorklikpagina
 const OFFER_PHOTOS={
-  offBlik:[{url:L("anouk-camera-lachend.jpg"),pos:"center"}],
+  offBlik:[{url:L("anouk-camera-goldenhour.jpg"),pos:"center 22%"}],
   offMasterclass:[{url:L("anouk-paikea-weide.jpg"),pos:"80% center"}],
   offPodcast:[{url:"https://i.scdn.co/image/ab6765630000ba8ae54138dd591ed5bd9c1fcec6",pos:"center"}],
 };

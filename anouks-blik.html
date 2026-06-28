@@ -492,10 +492,10 @@ footer .fc a:hover{color:var(--goldB)}
     <div class="pb-photo" data-src="phWhy"></div>
     <div class="pb-copy">
       <span class="tag">Waarom dit gesprek</span>
-      <h3>Niet om te verkopen, <em>maar om je te laten zien</em></h3>
-      <p>Ik geloof dat zichtbaarheid altijd van binnen naar buiten werkt. In een kort gesprek hoor en zie ik vaak al genoeg om te voelen waar het voor jou wringt, en wat er voor jou kan veranderen.</p>
+      <h3>Ik wil je inspireren, <em>zichtbaar en zonder filter</em></h3>
+      <p>Ik wil zoveel mogelijk mensen laten zien hoe ze zichtbaar zichzelf kunnen zijn, en daarin uniek worden, zonder AI of een opgepoetste versie van wie ze zijn. In een kort gesprek hoor en zie ik vaak al genoeg om te voelen waar het voor jou wringt, en wat er voor jou kan veranderen.</p>
       <ul class="pbh-list" style="margin-top:18px">
-        <li>Een eerlijk antwoord op een eerlijke vraag, niet de versie die het beste verkoopt.</li>
+        <li>Een eerlijk antwoord op een eerlijke vraag, geen ingestudeerd verhaal.</li>
         <li>Je hoeft niets voor te bereiden: ik stel de vragen, jij mag gewoon vertellen.</li>
         <li>Na het gesprek weet je welke stappen nodig zijn om te stralen wat jou uniek maakt.</li>
       </ul>
@@ -591,7 +591,7 @@ footer .fc a:hover{color:var(--goldB)}
 </main>
 
 <section class="pb-meet rv">
-  <div class="pbmeet-photo"><img src="fotos/bos-zonnestraal.jpg" alt="Zonlicht tussen de bomen in het bos" loading="lazy"/></div>
+  <div class="pbmeet-photo"><img src="fotos/anouk-paikea-weide.jpg" alt="Anouk met Paikea in de weide" loading="lazy"/></div>
   <div class="lbl">Voel je dat al?</div>
   <p class="pbh-welcome">Voel jij dat je wel even een eerlijke blik kan gebruiken, maar nog geen idee hebt waar je moet beginnen? Begin dan hier. Het kost je niets, behalve 30 minuten.</p>
 </section>
@@ -691,11 +691,11 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')cls();});
 const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting)en.target.classList.add('in');}),{threshold:.1});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
-// Hero-achtergrond - Anouk, warm en benaderbaar
+// Hero-achtergrond - Anouk, recht de camera in, zelfde foto als bij #blik op de homepage
 const pbHeroBg=document.getElementById('pbHeroBg');
 if(pbHeroBg){
-  pbHeroBg.style.backgroundImage="url('"+L("anouk-paikea-steiger.jpg")+"')";
-  pbHeroBg.style.backgroundPosition="center 62%";
+  pbHeroBg.style.backgroundImage="url('"+L("anouk-camera-goldenhour.jpg")+"')";
+  pbHeroBg.style.backgroundPosition="center 35%";
 }
 
 // Quote-sectie achtergrond - het bos, zelfde taal als de homepage
@@ -705,14 +705,17 @@ if(pbStandBg){
   pbStandBg.style.backgroundPosition="center 30%";
 }
 
-// Slot-CTA achtergrond - waterval, helder en fris
+// Slot-CTA achtergrond - het bos, zelfde sfeer als de quote-sectie
 const pbCtaBg=document.getElementById('pbCtaBg');
-if(pbCtaBg)pbCtaBg.style.backgroundImage="url('"+L("waterval-eifel.jpg")+"')";
+if(pbCtaBg){
+  pbCtaBg.style.backgroundImage="url('"+L("bos-zonnestraal.jpg")+"')";
+  pbCtaBg.style.backgroundPosition="center 30%";
+}
 
 // Grote verhaal-foto's - laten de foto's spreken, geen slideshow nodig
 const PB_PHOTOS={
-  ph1:{url:L("anouk-camera-lachend.jpg"),pos:"center"},
-  ph2:{url:L("anouk-camera-goldenhour.jpg"),pos:"30%"},
+  ph1:{url:L("anouk-paikea-steiger.jpg"),pos:"68%"},
+  ph2:{url:L("anouk-camera-lachend.jpg"),pos:"center"},
   ph3:{url:L("anouk-paikea-eifel-uitzicht.jpg"),pos:"48%"},
   phWhy:{url:L("anouk-schilderen-papaver.jpg"),pos:"30%"},
 };
