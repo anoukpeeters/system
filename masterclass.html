@@ -425,7 +425,7 @@ footer .fc a:hover{color:var(--goldB)}
     <h1>Tijd om uit het bos te stappen, <em>en zichtbaar te zijn als jezelf</em></h1>
     <p>Je voelt het al: AI en alles wat daarop lijkt, verliest zijn glans. Authenticiteit is wat weer verkoopt. In 90 minuten, online en actief, ontdek je de pijlers achter jouw merk, en hoe je daarmee een totaalbeeld neerzet dat klopt: van binnen naar buiten.</p>
     <div class="pbh-btns">
-      <a href="#aanmelden" class="btn btg">Meld je gratis aan →</a>
+      <a href="#aanmelden" class="btn btg" data-signup-open>Meld je gratis aan →</a>
       <a href="#pbVerhaal" class="btn bto">Lees hoe het werkt</a>
     </div>
   </div>
@@ -523,7 +523,7 @@ footer .fc a:hover{color:var(--goldB)}
         <li>Een directe oefening, zodat je niet wacht tot &ldquo;later&rdquo;</li>
         <li>Replay beschikbaar voor 48 uur als je er niet live bij kan zijn</li>
       </ul>
-      <a href="#aanmelden" class="btn btg">Meld je gratis aan →</a>
+      <a href="#aanmelden" class="btn btg" data-signup-open>Meld je gratis aan →</a>
     </div>
   </div>
   <div class="pr-trust rv">
@@ -537,18 +537,30 @@ footer .fc a:hover{color:var(--goldB)}
 </section>
 
 <style>
-#aanmelden{position:relative;z-index:10;padding:30px 8vw 100px;text-align:center}
-#aanmelden .sh2{max-width:600px;margin:0 auto 30px}
-#aanmelden .sh2 h2{font:200 clamp(26px,4vw,42px)/1.2 "Helvetica Neue";color:var(--tl);margin-bottom:14px}
-#aanmelden .sh2 h2 em{font-style:italic;color:var(--goldB)}
-#aanmelden .sh2 p{font:300 italic 16px/1.7 "Helvetica Neue";color:var(--ml)}
+#signupModal{position:fixed;inset:0;z-index:60;background:rgba(8,18,6,.88);
+  display:flex;align-items:flex-start;justify-content:center;padding:6vh 5vw;
+  opacity:0;pointer-events:none;transition:opacity .3s;overflow-y:auto}
+#signupModal.on{opacity:1;pointer-events:auto}
+#signupModal .sm-box{position:relative;max-width:540px;width:100%;margin:auto}
+#signupModal .sm-close{position:absolute;top:-16px;right:-16px;width:38px;height:38px;border-radius:50%;
+  border:1px solid rgba(200,160,60,.45);background:var(--deep2);color:var(--goldB);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;font:300 22px/1 "Helvetica Neue";z-index:2;
+  box-shadow:0 8px 22px rgba(0,0,0,.35)}
+#signupModal .sm-close:hover{border-color:var(--goldB)}
+#signupModal .sh2{text-align:center;margin-bottom:14px}
+#signupModal .sh2 h2{font:200 clamp(22px,3.4vw,30px)/1.2 "Helvetica Neue";color:var(--tl);margin-bottom:8px}
+#signupModal .sh2 h2 em{font-style:italic;color:var(--goldB)}
+#signupModal .sh2 p{font:300 italic 14px/1.6 "Helvetica Neue";color:var(--ml)}
+@media(max-width:480px){#signupModal{padding:0;align-items:flex-end}#signupModal .sm-box{max-width:100%;margin:0}#signupModal .sm-close{top:8px;right:8px}}
 </style>
-<section id="aanmelden" class="rv">
-  <div class="sh2">
-    <div class="lbl c">Meld je aan</div>
-    <h2>Reserveer gratis je <em>plek</em></h2>
-    <p>Vul je gegevens in, en je ontvangt de Zoom-link in je mail.</p>
-  </div>
+<div id="signupModal">
+  <div class="sm-box">
+    <button class="sm-close" id="signupClose" aria-label="Sluiten">&times;</button>
+    <div class="sh2">
+      <div class="lbl c">Meld je aan</div>
+      <h2>Reserveer gratis je <em>plek</em></h2>
+      <p>Vul je gegevens in, en je ontvangt de Zoom-link in je mail.</p>
+    </div>
 
 <style>@import url(https://fonts.bunny.net/css?family=sans-serif:400);</style>
 <style>
@@ -1152,7 +1164,8 @@ window._load_script = function(url, callback, isSubmit) {
 })();
 
 </script>
-</section>
+  </div>
+</div>
 
 <section id="pbProces">
   <div class="lbl">Werkwijze</div>
@@ -1225,7 +1238,7 @@ window._load_script = function(url, callback, isSubmit) {
     <div class="lbl">Klaar om het zelf te doen</div>
     <h2>Zullen we jouw <em>totaalbeeld</em> scherp zetten?</h2>
     <p>Gewoon 90 minuten waarin je de pijlers ontdekt onder jouw merk, en hoe je die laat ademen.</p>
-    <a href="#aanmelden" class="btn btg">Meld je gratis aan →</a>
+    <a href="#aanmelden" class="btn btg" data-signup-open>Meld je gratis aan →</a>
   </div>
 </section>
 
@@ -1471,6 +1484,16 @@ function closeLbox(){lbox.classList.remove('on');}
 lbox?.addEventListener('click',closeLbox);
 document.getElementById('lboxClose')?.addEventListener('click',e=>{e.stopPropagation();closeLbox();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLbox();});
+
+// Aanmeld-popup - opent als overlay, in plaats van een los blok op de pagina
+const signupModal=document.getElementById('signupModal');
+function openSignup(){if(!signupModal)return;signupModal.classList.add('on');document.body.style.overflow='hidden';}
+function closeSignup(){if(!signupModal)return;signupModal.classList.remove('on');document.body.style.overflow='';}
+document.querySelectorAll('[data-signup-open]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();openSignup();}));
+document.getElementById('signupClose')?.addEventListener('click',closeSignup);
+signupModal?.addEventListener('click',e=>{if(e.target===signupModal)closeSignup();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSignup();});
+if(location.hash==='#aanmelden')openSignup();
 })();
 </script>
 </body>
