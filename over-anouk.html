@@ -657,8 +657,8 @@ if(pbStandBg){
 // Tweede quote-banner achtergrond - Anouk in het bos, geaard en lachend
 const pbFactsBg=document.getElementById('pbFactsBg');
 if(pbFactsBg){
-  pbFactsBg.style.backgroundImage="url('"+L("anouk-bos-boom.jpg")+"')";
-  pbFactsBg.style.backgroundPosition="center 15%";
+  pbFactsBg.style.backgroundImage="url('"+L("anouk-boom-camera-kijken.jpg")+"')";
+  pbFactsBg.style.backgroundPosition="center 25%";
 }
 
 // Slot-CTA achtergrond - Anouk bij het meer met Paikea
@@ -670,8 +670,8 @@ if(pbCtaBg){
 
 // Grote verhaal-foto's - laten de foto's spreken, geen slideshow nodig
 const PB_PHOTOS={
-  ph1:{url:L("anouk-schilderen-papaver.jpg"),pos:"30%"},
-  ph2:{url:L("anouk-camera-lachend.jpg"),pos:"40%"},
+  ph1:{url:L("anouk-portret-blazer.jpg"),pos:"15%"},
+  ph2:{url:L("anouk-paikea-weide-avond.jpg"),pos:"40%"},
   ph3:{url:L("anouk-paikea-weide.jpg"),pos:"40%"},
 };
 document.querySelectorAll('.pb-photo[data-src]').forEach(el=>{
@@ -697,13 +697,12 @@ function buildStrip(items,el){
   });
 }
 const PB_STRIP_1=[
-  [L("anouk-camera-goldenhour.jpg"),'h'],
-  [L("anouk-paikea-steiger.jpg"),'v'],
-  [L("anouk-bos-boom.jpg"),'h'],
-  [L("anouk-schilderen-papaver.jpg"),'v'],
   [L("anouk-camera-lachend.jpg"),'h'],
-  [L("anouk-paikea-weide.jpg"),'h'],
-  [L("anouk-paikea-eifel-uitzicht.jpg"),'h'],
+  [L("anouk-schilderen-papaver.jpg"),'v'],
+  [L("anouk-bos-boom.jpg"),'h'],
+  [L("anouk-paikea-eifel-avond.jpg"),'h'],
+  [L("anouk-camera-blazer-boom.jpg"),'v'],
+  [L("anouk-bos-camera-vrolijk.jpg"),'h'],
 ];
 buildStrip(PB_STRIP_1,document.getElementById('pbS1'));
 
