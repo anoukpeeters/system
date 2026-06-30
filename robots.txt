@@ -1,0 +1,5 @@
+User-Agent: *
+Disallow:
+crawl-delay: 5
+
+Sitemap: https://anouk-peeters.nl/sitemap.xml
