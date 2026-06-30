@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K77389VH06"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent','default',{'analytics_storage': (localStorage.getItem('cookieConsent')==='granted') ? 'granted' : 'denied'});
+  gtag('js', new Date());
+  gtag('config', 'G-K77389VH06', {'anonymize_ip': true});
+</script>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Privacybeleid · Anouk Peeters</title>
+<meta name="description" content="Privacybeleid van Anouk Peeters Fotografie: welke gegevens worden verzameld, waarom, en hoe je je cookievoorkeuren kunt beheren."/>
+<link rel="preconnect" href="https://i0.wp.com"/>
+<style>
+:root{
+  --sage:#dce8d8;--sage2:#c8d8c3;--sage3:#b4c8ae;
+  --deep:#1a3618;--deep2:#243e21;--deep3:#2f5229;
+  --gold:#c8a03c;--goldB:#e8c96a;--goldS:#d4b04e;
+  --cream:#f5f0e8;--tl:#e8f0e4;--td:#1a2d18;
+  --ml:#9ab89a;--md:#4a6248;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--deep);
+  color:var(--tl);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* HEADER (gelijk aan andere pagina's) */
+#hdr{position:fixed;top:0;left:0;right:0;z-index:30;height:68px;
+  display:flex;align-items:center;justify-content:space-between;padding:0 28px;
+  background:rgba(22,50,20,.93);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 rgba(200,160,60,.18);transition:background .42s,box-shadow .42s}
+.lbtn{background:none;border:none;cursor:pointer;padding:0;text-decoration:none;
+  display:flex;align-items:center;gap:9px}
+.lsvg{width:44px;height:44px;flex-shrink:0}
+.lw{font:600 11px/1 "SF Mono",monospace;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--goldS)}
+.dnav{display:flex;align-items:center;gap:2px}
+.dnav a{font:300 14px/1 "Helvetica Neue";color:var(--tl);text-decoration:none;
+  padding:8px 14px;border-radius:20px;transition:.22s;white-space:nowrap;opacity:.82}
+.dnav a:hover{background:rgba(200,160,60,.15);color:var(--goldB);opacity:1}
+.dnav a.cur{color:var(--goldB);opacity:1}
+.dcta{background:var(--gold)!important;color:var(--deep)!important;font-weight:700;
+  opacity:1!important;padding:9px 20px!important;
+  box-shadow:0 4px 16px rgba(200,160,60,.35)}
+.dcta:hover{background:var(--goldB)!important;box-shadow:0 8px 24px rgba(200,160,60,.48)!important}
+.hbtn{display:none;background:none;border:none;cursor:pointer;
+  width:38px;height:38px;flex-direction:column;align-items:center;
+  justify-content:center;gap:5px}
+.hbtn span{width:21px;height:1.5px;background:var(--goldS);border-radius:1px;
+  display:block;transition:.3s cubic-bezier(.4,0,.2,1)}
+.menu-open .hbtn span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.menu-open .hbtn span:nth-child(2){opacity:0}
+.menu-open .hbtn span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+@media(max-width:820px){.dnav{display:none}.hbtn{display:flex}}
+
+/* MOBILE MENU */
+#mob{position:fixed;inset:0;z-index:29;
+  background:rgba(18,38,16,.97);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  opacity:0;pointer-events:none;transition:opacity .35s}
+.menu-open #mob{opacity:1;pointer-events:auto}
+#mob nav a{display:block;font:200 clamp(28px,7vw,56px)/1.1 "Helvetica Neue";
+  color:var(--tl);text-decoration:none;padding:5px 22px;transition:color .2s}
+#mob nav a:hover,#mob nav a.cur{color:var(--goldB)}
+#mob .mc{margin-top:28px;padding:13px 36px;background:var(--gold);color:var(--deep);
+  font:700 11px/1 "SF Mono",monospace;letter-spacing:.18em;text-transform:uppercase;
+  text-decoration:none;border-radius:2px;box-shadow:0 8px 24px rgba(200,160,60,.35)}
+
+.btn{display:inline-block;padding:12px 26px;text-decoration:none;border-radius:2px;
+  font:700 11px/1 "SF Mono",monospace;letter-spacing:.15em;text-transform:uppercase;
+  border:none;cursor:pointer;transition:.3s}
+.btg{background:linear-gradient(120deg,var(--goldB),var(--gold));color:var(--deep);
+  box-shadow:0 6px 22px rgba(200,160,60,.32)}
+.btg:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(200,160,60,.46)}
+.bto{background:transparent;color:var(--tl);border:1px solid rgba(200,160,60,.38)}
+
+/* HERO */
+#cHero{position:relative;z-index:10;overflow:hidden;min-height:340px;
+  display:flex;align-items:center;justify-content:center;text-align:center}
+.ch-ov{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(11,24,10,.45) 0%,rgba(11,24,10,.4) 45%,rgba(10,22,9,.88) 100%)}
+.lbl{font:600 10px/1 "SF Mono",monospace;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--goldS);margin-bottom:18px;display:flex;align-items:center;justify-content:center;
+  gap:11px;opacity:.88}
+.lbl::before{content:"";width:28px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.ch-in{position:relative;z-index:2;padding:148px 8vw 70px;max-width:680px}
+.ch-in h1{font:200 clamp(32px,5vw,56px)/1.12 "Helvetica Neue";color:var(--tl);margin-bottom:20px}
+.ch-in h1 em{font-style:italic;color:var(--goldB)}
+.ch-in p{font:300 italic clamp(15px,1.7vw,18px)/1.7 "Helvetica Neue";color:var(--ml);
+  max-width:460px;margin:0 auto}
+
+/* BELEID-INHOUD */
+#pBeleid{position:relative;z-index:10;background:var(--cream);padding:80px 8vw 100px}
+.pb-wrap{max-width:760px;margin:0 auto}
+.pb-wrap h2{font:300 clamp(20px,2.6vw,26px)/1.3 "Helvetica Neue";color:var(--td);
+  margin:42px 0 14px}
+.pb-wrap h2:first-child{margin-top:0}
+.pb-wrap p,.pb-wrap li{font:300 15px/1.8 "Helvetica Neue";color:var(--md)}
+.pb-wrap ul{margin:0 0 14px 20px}
+.pb-wrap p{margin:0 0 14px}
+.pb-wrap a{color:var(--gold);text-decoration:underline}
+.pb-wrap strong{color:var(--td);font-weight:600}
+#pVoorkeuren{margin-top:46px;padding:24px;background:#fff;border-radius:6px;
+  border:1px solid rgba(200,160,60,.25)}
+#pVoorkeuren p{margin-bottom:14px}
+
+/* FOOTER (gelijk aan andere pagina's) */
+footer{position:relative;z-index:10;background:var(--deep);
+  border-top:1px solid rgba(200,160,60,.12);padding:80px 8vw 40px;margin-top:20px}
+footer .fi{max-width:1040px;margin:0 auto;
+  display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;align-items:center}
+footer .fl{display:flex;flex-direction:column;gap:7px;font:300 13px/1.5 "Helvetica Neue"}
+footer .fl a,footer .fl span{color:var(--ml);text-decoration:none;transition:color .2s}
+footer .fl a:hover{color:var(--goldB)}
+.fsocial{display:flex;gap:14px}
+.fsocial a{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  border:1.4px solid rgba(200,160,60,.55);color:var(--goldB);transition:.3s}
+.fsocial a:hover{color:var(--deep);border-color:var(--goldB);background:var(--goldB)}
+.fsocial svg{width:16px;height:16px}
+.fsocial svg *{stroke-width:1.9}
+.fmember{display:flex;align-items:center;gap:9px;text-decoration:none;opacity:.78;transition:opacity .25s}
+.fmember:hover{opacity:1}
+.fmember img{height:20px;width:auto;display:block;flex-shrink:0}
+.fmember span{font:300 11px/1.35 "Helvetica Neue";color:var(--ml)}
+.footer-extra{display:flex;align-items:center;gap:14px;perspective:700px}
+.moon{width:60px;height:60px;border-radius:50%;position:relative;flex-shrink:0;
+  background:radial-gradient(circle at 36% 34%,#fff6d8 0%,#f3dd9a 38%,#c8a03c 76%,#8a6018 100%);
+  box-shadow:0 0 24px rgba(232,201,106,.55),0 0 9px rgba(255,245,200,.5) inset;
+  animation:moonGlow 5s ease-in-out infinite,moonSpin 14s linear infinite;
+  transform-style:preserve-3d}
+.moon::before,.moon::after{content:"";position:absolute;border-radius:50%;
+  background:rgba(120,90,30,.32);box-shadow:inset 0 0 5px rgba(80,60,20,.4)}
+.moon::before{width:13px;height:13px;top:16px;left:37px}
+.moon::after{width:7px;height:7px;top:39px;left:16px}
+@keyframes moonGlow{0%,100%{box-shadow:0 0 18px rgba(232,201,106,.45),0 0 7px rgba(255,245,200,.4) inset}
+  50%{box-shadow:0 0 32px rgba(232,201,106,.72),0 0 11px rgba(255,245,200,.6) inset}}
+@keyframes moonSpin{0%{transform:rotateY(0deg)}100%{transform:rotateY(360deg)}}
+.season{font:600 9.5px/1 "SF Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--ml)}
+.ffnav{max-width:1040px;margin:34px auto 0;display:flex;flex-wrap:wrap;justify-content:center;
+  gap:6px 22px;border-top:1px solid rgba(200,160,60,.1);padding-top:24px}
+.ffnav a{font:300 12px/1 "Helvetica Neue";color:var(--ml);text-decoration:none;opacity:.75;transition:.2s}
+.ffnav a:hover{color:var(--goldB);opacity:1}
+.ffnav a.cur{color:var(--goldS);opacity:1}
+footer .fc{max-width:1040px;margin:18px auto 0;padding-top:0;
+  font:300 11px/1.8 "Helvetica Neue";color:var(--ml);opacity:.5;letter-spacing:.04em}
+footer .fc a{color:var(--ml);text-decoration:underline;opacity:.85}
+footer .fc a:hover{color:var(--goldB)}
+
+/* COOKIEBANNER */
+.cookiebar{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:var(--deep);color:var(--tl);
+  padding:18px 24px;display:none;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;
+  border-top:1px solid rgba(200,160,60,.3);box-shadow:0 -8px 30px rgba(0,0,0,.35);
+  font:300 13px/1.5 "Helvetica Neue",Arial,sans-serif}
+.cookiebar p{margin:0;max-width:560px}
+.cookiebar a{color:var(--goldB)}
+.cookiebar-btns{display:flex;gap:10px;flex-shrink:0}
+@media(max-width:560px){.cookiebar{flex-direction:column;text-align:center}.cookiebar-btns{justify-content:center}}
+
+@media(max-width:760px){
+  #cHero{min-height:280px}
+  .ch-in{padding:120px 7vw 56px}
+  #pBeleid{padding:56px 6vw 70px}
+}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <a class="lbtn" href="index.html">
+    <img class="lsvg" src="fotos/logo-ap.png" alt="Anouk Peeters logo" width="44" height="44"/>
+    <span class="lw">Anouk Peeters</span>
+  </a>
+  <nav class="dnav">
+    <a href="starthier.html">Start hier &middot; Gratis</a>
+    <a href="branding.html">Branding</a>
+    <a href="fotografie.html">Fotografie</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="over-anouk.html">Over Anouk</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html#booking" class="dcta">Klik &amp; Connect →</a>
+  </nav>
+  <button class="hbtn" id="menuBtn"><span></span><span></span><span></span></button>
+</header>
+
+<div id="mob">
+  <nav>
+    <a href="starthier.html">Start hier &middot; Gratis</a>
+    <a href="branding.html">Branding</a>
+    <a href="fotografie.html">Fotografie</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="over-anouk.html">Over Anouk</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <a href="contact.html#booking" class="mc">Plan je Klik &amp; Connect →</a>
+</div>
+
+<main>
+
+<section id="cHero">
+  <div class="ch-ov"></div>
+  <div class="ch-in">
+    <div class="lbl">Privacy</div>
+    <h1>Privacybeleid</h1>
+    <p>Hoe Anouk Peeters Fotografie omgaat met jouw gegevens, en hoe je je cookievoorkeuren kunt beheren.</p>
+  </div>
+</section>
+
+<section id="pBeleid">
+  <div class="pb-wrap">
+    <h2>Wie is verantwoordelijk</h2>
+    <p>Deze website, <strong>anouk-peeters.nl</strong>, wordt beheerd door Anouk Peeters Fotografie, Biesven 13, 5595 DD Leende. KvK 68721501 · BTW NL001684117B46. Vragen over dit privacybeleid? Mail naar <a href="mailto:info@anoukpeetersfotografie.nl">info@anoukpeetersfotografie.nl</a>.</p>
+
+    <h2>Welke gegevens worden verzameld</h2>
+    <p>Ik verzamel alleen gegevens die je zelf actief invult:</p>
+    <ul>
+      <li>Naam, e-mailadres en eventueel telefoonnummer als je je aanmeldt voor de gratis masterclass of een ander aanbod (via het inschrijfformulier, verwerkt door ActiveCampaign).</li>
+      <li>De gegevens die je invult bij het inplannen van een Klik &amp; Connect-gesprek (via Calendly).</li>
+      <li>Anonieme bezoekersstatistieken via Google Analytics, maar alleen als je daar toestemming voor geeft (zie hieronder).</li>
+    </ul>
+
+    <h2>Cookies en Google Analytics</h2>
+    <p>Deze site gebruikt Google Analytics om te zien hoeveel bezoekers de site krijgt, welke pagina's bezocht worden en waar bezoekers vandaan komen. Dit gebeurt volledig anoniem (IP-adressen worden gemaskeerd) en alleen nadat je hiervoor toestemming hebt gegeven via de cookiemelding onderaan de pagina. Zonder jouw toestemming worden er geen Analytics-cookies geplaatst.</p>
+    <p>Calendly en ActiveCampaign kunnen technische cookies plaatsen die nodig zijn om hun formulieren en planningstools te laten werken; dit zijn functionele cookies, geen trackingcookies.</p>
+
+    <h2>Delen met derden</h2>
+    <p>Gegevens worden nooit verkocht. Ze worden alleen gedeeld met de partijen die nodig zijn om de dienst te leveren: Google (Analytics), ActiveCampaign (e-mail/aanmeldingen) en Calendly (afspraken plannen). Deze partijen verwerken gegevens volgens hun eigen privacybeleid en zijn daarin gebonden aan de AVG.</p>
+
+    <h2>Bewaartermijn</h2>
+    <p>Contactgegevens worden bewaard zolang als nodig is voor het doel waarvoor ze zijn verstrekt, en niet langer dan wettelijk toegestaan. Wil je dat jouw gegevens worden verwijderd? Stuur een mail naar <a href="mailto:info@anoukpeetersfotografie.nl">info@anoukpeetersfotografie.nl</a>.</p>
+
+    <h2>Jouw rechten</h2>
+    <p>Je hebt het recht om je gegevens in te zien, te corrigeren of te laten verwijderen, en je kunt eerder gegeven toestemming altijd weer intrekken. Neem hiervoor contact op via <a href="mailto:info@anoukpeetersfotografie.nl">info@anoukpeetersfotografie.nl</a>.</p>
+
+    <div id="pVoorkeuren">
+      <h2 style="margin-top:0">Cookievoorkeuren wijzigen</h2>
+      <p>Heb je eerder een keuze gemaakt en wil je deze aanpassen? Klik op de knop hieronder om de cookiemelding opnieuw te tonen.</p>
+      <button id="resetConsent" class="btn bto">Cookievoorkeuren opnieuw instellen</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="fi">
+    <img src="fotos/logo-ap.png" alt="Anouk Peeters logo" width="56" height="56"/>
+    <div class="fl">
+      <a href="https://anouk-peeters.nl" target="_blank" rel="noopener">anouk-peeters.nl</a>
+      <a href="mailto:info@anoukpeetersfotografie.nl">info@anoukpeetersfotografie.nl</a>
+    </div>
+    <div class="fl">
+      <span>Biesven 13</span>
+      <span>5595 DD Leende</span>
+    </div>
+    <div class="fsocial">
+      <a href="https://www.instagram.com/anouk_peeters.nl/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/anouk-peeters-b15a25141" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8.6" r="1.15" fill="currentColor"/><path d="M8 11.4V17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12.2 17v-3.6c0-1.1.7-1.9 1.9-1.9 1.1 0 1.7.8 1.7 1.9V17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.2 11.4V17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </a>
+      <a href="https://open.spotify.com/show/60hWIuD1aRJuJIv2wGz0BJ" target="_blank" rel="noopener" aria-label="Podcast: Authentiek Zichtbaar Zijn">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M7.3 10.3c3.1-1 6.6-.8 9.1.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M8 13.1c2.5-.8 5.3-.6 7.3.7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M8.7 15.7c1.8-.5 3.8-.4 5.2.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </a>
+    </div>
+    <a class="fmember" href="https://www.dupho.nl/" target="_blank" rel="noopener" aria-label="Aangesloten bij DuPho, beroepsvereniging van fotografen">
+      <img src="fotos/dupho-logo.svg" alt="DuPho logo"/>
+      <span>Aangesloten bij<br>DuPho</span>
+    </a>
+    <div class="footer-extra">
+      <div class="moon"></div>
+      <span class="season" id="seasonTag"></span>
+    </div>
+  </div>
+  <nav class="ffnav">
+    <a href="starthier.html">Start hier &middot; Gratis</a>
+    <a href="branding.html">Branding</a>
+    <a href="fotografie.html">Fotografie</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="over-anouk.html">Over Anouk</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html#booking">Klik &amp; Connect</a>
+  </nav>
+  <div class="fc">Anouk Peeters Fotografie &middot; Intuïtief branding-expert &amp; fotograaf<br>Personal branding · Fotografie · Natuur · Eifel &amp; Nederland · © Anouk Peeters<br>KvK 68721501 · BTW NL001684117B46 · <a href="docs/algemene-voorwaarden-dupho.pdf" target="_blank" rel="noopener">Algemene voorwaarden</a> · <a href="privacybeleid.html" class="cur">Privacybeleid</a></div>
+</footer>
+
+<div id="cookieBanner" class="cookiebar">
+  <p>Deze website gebruikt Google Analytics-cookies om bezoekersstatistieken bij te houden. <a href="privacybeleid.html">Lees ons privacybeleid</a>.</p>
+  <div class="cookiebar-btns">
+    <button id="cookieDecline" class="btn bto">Weigeren</button>
+    <button id="cookieAccept" class="btn btg">Accepteren</button>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+// Header scroll-state
+const hdr=document.getElementById('hdr');
+addEventListener('scroll',()=>hdr.classList.toggle('s',scrollY>50),{passive:true});
+
+// Menu
+const body=document.body;
+const tog=()=>body.classList.toggle('menu-open');
+const cls=()=>body.classList.remove('menu-open');
+document.getElementById('menuBtn')?.addEventListener('click',tog);
+document.querySelectorAll('#mob nav a').forEach(a=>a.addEventListener('click',cls));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')cls();});
+
+// Seizoen in footer
+const seasonTag=document.getElementById('seasonTag');
+if(seasonTag){
+  const mo=new Date().getMonth();
+  const s=(mo===11||mo===0||mo===1)?['Winter','❄']:(mo>=2&&mo<=4)?['Lente','🌸']:(mo>=5&&mo<=7)?['Zomer','☀']:['Herfst','🍂'];
+  seasonTag.textContent=s[1]+" "+s[0];
+}
+
+// Cookietoestemming
+const banner=document.getElementById('cookieBanner');
+function showBanner(){banner.style.display='flex';}
+if(!localStorage.getItem('cookieConsent'))showBanner();
+document.getElementById('cookieAccept')?.addEventListener('click',()=>{
+  localStorage.setItem('cookieConsent','granted');
+  if(typeof gtag==='function')gtag('consent','update',{'analytics_storage':'granted'});
+  banner.style.display='none';
+});
+document.getElementById('cookieDecline')?.addEventListener('click',()=>{
+  localStorage.setItem('cookieConsent','denied');
+  banner.style.display='none';
+});
+document.getElementById('resetConsent')?.addEventListener('click',()=>{
+  localStorage.removeItem('cookieConsent');
+  showBanner();
+});
+})();
+</script>
+</body>
+</html>

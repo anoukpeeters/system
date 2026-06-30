@@ -2,6 +2,15 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8"/>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K77389VH06"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent','default',{'analytics_storage': (localStorage.getItem('cookieConsent')==='granted') ? 'granted' : 'denied'});
+  gtag('js', new Date());
+  gtag('config', 'G-K77389VH06', {'anonymize_ip': true});
+</script>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Start hier (Gratis) · Anouk Peeters</title>
 <meta name="description" content="Begin hier: een gratis 30 minuten Anouk's Blik op je hele online uitstraling, of de gratis live masterclass 'Je branding, van binnen naar buiten'. Kies waar je wil beginnen."/>
@@ -490,7 +499,7 @@ footer .fc a:hover{color:var(--goldB)}
     <a href="contact.html">Contact</a>
     <a href="contact.html#booking">Klik &amp; Connect</a>
   </nav>
-  <div class="fc">Anouk Peeters Fotografie &middot; Intuïtief branding-expert &amp; fotograaf<br>Personal branding · Fotografie · Natuur · Eifel &amp; Nederland · © Anouk Peeters<br>KvK 68721501 · BTW NL001684117B46 · <a href="docs/algemene-voorwaarden-dupho.pdf" target="_blank" rel="noopener">Algemene voorwaarden</a></div>
+  <div class="fc">Anouk Peeters Fotografie &middot; Intuïtief branding-expert &amp; fotograaf<br>Personal branding · Fotografie · Natuur · Eifel &amp; Nederland · © Anouk Peeters<br>KvK 68721501 · BTW NL001684117B46 · <a href="docs/algemene-voorwaarden-dupho.pdf" target="_blank" rel="noopener">Algemene voorwaarden</a> &middot; <a href="privacybeleid.html">Privacybeleid</a></div>
 </footer>
 
 <button id="sndBtn" aria-label="Natuurgeluid aan/uit" title="Natuurgeluid aan/uit">
@@ -719,6 +728,38 @@ function buildSlide(el){
   }
 }
 document.querySelectorAll('.beat-media[data-key]').forEach(buildSlide);
+})();
+</script>
+<div id="cookieBanner" class="cookiebar">
+  <p>Deze website gebruikt Google Analytics-cookies om bezoekersstatistieken bij te houden. <a href="privacybeleid.html">Lees ons privacybeleid</a>.</p>
+  <div class="cookiebar-btns">
+    <button id="cookieDecline" class="btn bto">Weigeren</button>
+    <button id="cookieAccept" class="btn btg">Accepteren</button>
+  </div>
+</div>
+<style>
+.cookiebar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#1a3618;color:#e8f0e4;
+  padding:18px 24px;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;
+  border-top:1px solid rgba(200,160,60,.3);box-shadow:0 -8px 30px rgba(0,0,0,.35);
+  font:300 13px/1.5 "Helvetica Neue",Arial,sans-serif}
+.cookiebar p{margin:0;max-width:560px}
+.cookiebar a{color:#e8c96a}
+.cookiebar-btns{display:flex;gap:10px;flex-shrink:0}
+@media(max-width:560px){.cookiebar{flex-direction:column;text-align:center}.cookiebar-btns{justify-content:center}}
+</style>
+<script>
+(function(){
+  var banner=document.getElementById('cookieBanner');
+  if(!localStorage.getItem('cookieConsent'))banner.style.display='flex';
+  document.getElementById('cookieAccept')?.addEventListener('click',function(){
+    localStorage.setItem('cookieConsent','granted');
+    if(typeof gtag==='function')gtag('consent','update',{'analytics_storage':'granted'});
+    banner.style.display='none';
+  });
+  document.getElementById('cookieDecline')?.addEventListener('click',function(){
+    localStorage.setItem('cookieConsent','denied');
+    banner.style.display='none';
+  });
 })();
 </script>
 </body>
