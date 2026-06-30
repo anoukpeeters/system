@@ -107,6 +107,7 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .beat{position:relative;z-index:10;max-width:1180px;margin:0 auto;padding:30px 8vw;
   display:flex;align-items:center;gap:64px;flex-wrap:wrap}
 .beat.rev{flex-direction:row-reverse}
+.beat:first-of-type{margin-top:32px}
 .beat+.beat::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
   width:180px;height:2px;background:linear-gradient(90deg,transparent,var(--goldB),transparent);opacity:.9}
 .beat+.beat::after{content:"";position:absolute;top:-4px;left:50%;transform:translateX(-50%) rotate(45deg);
@@ -119,9 +120,9 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .beat-text h3 em{font-style:italic;color:var(--goldB)}
 .beat-text p{font:300 italic 15px/1.65 "Helvetica Neue";color:var(--ml);max-width:360px}
 
-/* BRANDING-SLIDESHOW - kader past zich per foto aan op de eigen verhouding */
+/* BRANDING-SLIDESHOW - kader staat vast op de verhouding van de eerste foto (geen gespring bij wisselen); object-fit:contain voorkomt crop */
 .oslide-frame{position:relative;border-radius:2px;overflow:hidden;cursor:zoom-in;width:100%;
-  aspect-ratio:4/5;transition:aspect-ratio .5s ease;box-shadow:0 18px 44px rgba(10,24,8,.38);background:var(--deep2)}
+  aspect-ratio:4/5;box-shadow:0 18px 44px rgba(10,24,8,.38);background:var(--deep2)}
 .oslide-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
   opacity:0;transition:opacity 1.2s ease,filter .9s ease;filter:grayscale(.65) brightness(.86)}
 .oslide-frame img.active{opacity:1}
@@ -284,6 +285,7 @@ footer .fc a:hover{color:var(--goldB)}
 
 @media(max-width:760px){
   .beat,.beat.rev{flex-direction:column;gap:8px;padding:6px 5vw}
+  .beat:first-of-type{margin-top:30px}
   .beat+.beat::before,.beat+.beat::after{display:none}
   .beat-media{max-width:100%;width:100%}
   .beat-text{text-align:left;padding:0 2vw}
@@ -879,15 +881,15 @@ function buildSlide(el){
   const frame=document.createElement('div');
   frame.className='oslide-frame';
   let idx=0;
-  // Kader past de verhouding aan op iedere foto zelf, zodat elke foto in eigen formaat
-  // te zien is in plaats van vastgezet/gecrop op de verhouding van de eerste foto.
-  const setAR=im=>{ if(im.naturalWidth) frame.style.aspectRatio=im.naturalWidth+'/'+im.naturalHeight; };
+  // Kader krijgt de verhouding van de eerste foto (zodra die geladen is) en verandert daarna
+  // niet meer tijdens het wisselen - dat voorkomt dat de pagina/het kader bij iedere automatische
+  // wissel springt. object-fit:contain zorgt dat elke foto toch volledig (zonder crop) te zien blijft.
   const imgs=urls.map((u,i)=>{
     const im=document.createElement('img');
     im.loading='lazy';im.alt='';im.src=u;
     if(i===0){
       im.classList.add('active');
-      im.addEventListener('load',()=>setAR(im),{once:true});
+      im.addEventListener('load',()=>{frame.style.aspectRatio=im.naturalWidth+'/'+im.naturalHeight;},{once:true});
     }
     frame.appendChild(im);
     return im;
@@ -908,8 +910,6 @@ function buildSlide(el){
       imgs[idx].classList.remove('active');dotEls[idx].classList.remove('on');
       idx=n;
       imgs[idx].classList.add('active');dotEls[idx].classList.add('on');
-      if(imgs[idx].complete&&imgs[idx].naturalWidth)setAR(imgs[idx]);
-      else imgs[idx].addEventListener('load',()=>setAR(imgs[idx]),{once:true});
     };
     setInterval(()=>go((idx+1)%imgs.length),4600+Math.random()*900);
     dotEls.forEach((d,i)=>d.addEventListener('click',e=>{e.stopPropagation();go(i);}));
