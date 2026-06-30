@@ -119,9 +119,9 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .beat-text h3 em{font-style:italic;color:var(--goldB)}
 .beat-text p{font:300 italic 15px/1.65 "Helvetica Neue";color:var(--ml);max-width:360px}
 
-/* BRANDING-SLIDESHOW - kader staat vast op de verhouding van de eerste foto (geen layout-shift bij wisselen) */
+/* BRANDING-SLIDESHOW - kader past zich per foto aan op de eigen verhouding */
 .oslide-frame{position:relative;border-radius:2px;overflow:hidden;cursor:zoom-in;width:100%;
-  aspect-ratio:4/5;box-shadow:0 18px 44px rgba(10,24,8,.38);background:var(--deep2)}
+  aspect-ratio:4/5;transition:aspect-ratio .5s ease;box-shadow:0 18px 44px rgba(10,24,8,.38);background:var(--deep2)}
 .oslide-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
   opacity:0;transition:opacity 1.2s ease,filter .9s ease;filter:grayscale(.65) brightness(.86)}
 .oslide-frame img.active{opacity:1}
@@ -151,14 +151,12 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--de
 .nrow{display:flex;gap:12px;justify-content:center;align-items:flex-end;flex-wrap:wrap;
   padding:26px 5vw 0;max-width:1180px;margin:0 auto}
 .ntile{position:relative;border-radius:2px;overflow:hidden;cursor:zoom-in;flex-shrink:0;
-  box-shadow:0 18px 40px rgba(26,54,24,.2)}
+  height:250px;aspect-ratio:4/3;box-shadow:0 18px 40px rgba(26,54,24,.2)}
 .ntile img{display:block;width:100%;height:100%;object-fit:cover;
   filter:grayscale(.55) brightness(.92);transition:filter .9s ease,transform .6s ease}
 .in .ntile img{filter:none}
 .ntile:hover img{transform:scale(1.045)}
-.ntile.h{width:360px;height:250px}
-.ntile.v{width:225px;height:320px}
-.ntile.solo{width:560px;height:370px}
+.ntile.solo{height:370px}
 .ntile::before,.ntile::after{content:"";position:absolute;width:18px;height:18px;
   border:1.5px solid var(--gold);z-index:3}
 .ntile::before{top:8px;left:8px;border-right:none;border-bottom:none}
@@ -285,14 +283,16 @@ footer .fc a:hover{color:var(--goldB)}
 @media(max-width:640px){#sndBtn{left:14px;bottom:14px;width:42px;height:42px}}
 
 @media(max-width:760px){
-  .beat,.beat.rev{flex-direction:column;gap:14px;padding:18px 7vw}
-  .beat-media{max-width:280px;width:100%}
-  .beat-text{text-align:left}
-  .beat-text p{max-width:100%}
+  .beat,.beat.rev{flex-direction:column;gap:8px;padding:6px 5vw}
+  .beat+.beat::before,.beat+.beat::after{display:none}
+  .beat-media{max-width:100%;width:100%}
+  .beat-text{text-align:left;padding:0 2vw}
+  .beat-text .tag{margin-bottom:6px}
+  .beat-text h3{font-size:18px;margin-bottom:6px}
+  .beat-text p{max-width:100%;font-size:13px;line-height:1.5}
   .nrow{padding:18px 6vw 0;gap:9px}
-  .ntile.h{width:220px;height:155px}
-  .ntile.v{width:140px;height:198px}
-  .ntile.solo{width:280px;height:200px}
+  .ntile{height:155px}
+  .ntile.solo{height:200px}
   .interlude-box{padding:14px 7vw 28px}
   #camCursor{display:none}
   #pfCta{justify-content:center;min-height:480px}
@@ -879,15 +879,15 @@ function buildSlide(el){
   const frame=document.createElement('div');
   frame.className='oslide-frame';
   let idx=0;
-  // Kader krijgt de verhouding van de eerste foto (zodra die geladen is) en verandert daarna
-  // niet meer tijdens het wisselen - dat voorkomt dat de pagina onder de scrollpositie blijft
-  // schuiven, en voorkomt dode letterbox-ruimte voor klanten met vooral liggende foto's.
+  // Kader past de verhouding aan op iedere foto zelf, zodat elke foto in eigen formaat
+  // te zien is in plaats van vastgezet/gecrop op de verhouding van de eerste foto.
+  const setAR=im=>{ if(im.naturalWidth) frame.style.aspectRatio=im.naturalWidth+'/'+im.naturalHeight; };
   const imgs=urls.map((u,i)=>{
     const im=document.createElement('img');
     im.loading='lazy';im.alt='';im.src=u;
     if(i===0){
       im.classList.add('active');
-      im.addEventListener('load',()=>{frame.style.aspectRatio=im.naturalWidth+'/'+im.naturalHeight;},{once:true});
+      im.addEventListener('load',()=>setAR(im),{once:true});
     }
     frame.appendChild(im);
     return im;
@@ -908,6 +908,8 @@ function buildSlide(el){
       imgs[idx].classList.remove('active');dotEls[idx].classList.remove('on');
       idx=n;
       imgs[idx].classList.add('active');dotEls[idx].classList.add('on');
+      if(imgs[idx].complete&&imgs[idx].naturalWidth)setAR(imgs[idx]);
+      else imgs[idx].addEventListener('load',()=>setAR(imgs[idx]),{once:true});
     };
     setInterval(()=>go((idx+1)%imgs.length),4600+Math.random()*900);
     dotEls.forEach((d,i)=>d.addEventListener('click',e=>{e.stopPropagation();go(i);}));
@@ -932,11 +934,12 @@ function buildRow(el){
   const items=ROW_PHOTOS[el.dataset.rkey];
   if(!items||!items.length)return;
   const solo=items.length===1;
-  items.forEach(([u,o])=>{
+  items.forEach(([u])=>{
     const t=document.createElement('div');
-    t.className='ntile '+(solo?'solo':o);
+    t.className='ntile'+(solo?' solo':'');
     const im=document.createElement('img');
     im.loading='lazy';im.alt='';im.src=u;
+    im.addEventListener('load',()=>{t.style.aspectRatio=im.naturalWidth+'/'+im.naturalHeight;},{once:true});
     t.appendChild(im);
     t.addEventListener('click',e=>{e.stopPropagation();openLbox(u);});
     el.appendChild(t);
